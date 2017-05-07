@@ -5,6 +5,7 @@ namespace Nexendrie\Menu\DI;
 
 use Tester\Assert,
     Nexendrie\Menu\IMenuControlFactory,
+    Nexendrie\Menu\MenuControl,
     Nexendrie\Menu\Menu;
 
 require __DIR__ . "/../../../bootstrap.php";
@@ -17,8 +18,10 @@ class MenuExtensionTest extends \Tester\TestCase {
   }
   
   function testComponent() {
+    /** @var IMenuControlFactory $component */
     $component = $this->getService(IMenuControlFactory::class);
     Assert::type(IMenuControlFactory::class, $component);
+    Assert::type(MenuControl::class, $component->create());
   }
   
   function testMenu() {
