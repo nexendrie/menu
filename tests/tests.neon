@@ -6,7 +6,12 @@ extensions:
     menu: Nexendrie\Menu\DI\MenuExtension
 menu:
     default:
+        items:
+            Test: "Test:"
+            New Test: Test:new
+    list:
         title: Menu
+        type: list
         items:
             Test: "Test:"
             New Test: Test:new

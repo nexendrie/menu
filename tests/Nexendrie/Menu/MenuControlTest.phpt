@@ -29,9 +29,14 @@ class MenuControlTest extends \Tester\TestCase {
   }
   
   function testRenderList() {
-    $this->control->menu->type = "list";
     $filename = __DIR__ . "/menuListExpected.latte";
-    $this->checkRenderOutput($this->control, $filename);
+    $this->checkRenderOutput($this->control, $filename, ["list"]);
+  }
+  
+  function testInvalidMenu() {
+    Assert::exception(function() {
+      $this->control->render("invalid");
+    }, \InvalidArgumentException::class);
   }
 }
 
