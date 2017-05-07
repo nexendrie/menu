@@ -22,8 +22,19 @@ class MenuExtensionTest extends \Tester\TestCase {
   }
   
   function testMenu() {
+    /** @var Menu $menu */
     $menu = $this->getService(Menu::class);
     Assert::type(Menu::class, $menu);
+    Assert::same("inline", $menu->type);
+    $this->refreshContainer(["menu" => [
+      "default" => [
+        "type" => "list"
+      ]
+    ]]);
+    /** @var Menu $menu */
+    $menu = $this->getService(Menu::class);
+    Assert::type(Menu::class, $menu);
+    Assert::same("list", $menu->type);
   }
 }
 

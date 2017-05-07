@@ -7,6 +7,8 @@ namespace Nexendrie\Menu;
  * Menu
  *
  * @author Jakub Konečný
+ * @property string $type
+ * @property string $title
  */
 class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   use \Nette\SmartObject;
@@ -16,7 +18,41 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   /** @var string */
   protected $class = MenuItem::class;
   /** @var string */
-  protected $type = "simple";
+  protected $type = "inline";
+  /** @var string */
+  protected $title = "";
+  
+  /**
+   * @return string
+   */
+  function getType(): string {
+    return $this->type;
+  }
+  
+  /**
+   * @param string $type
+   */
+  function setType(string $type) {
+    $types = ["inline", "list",];
+    if(!in_array($type, $types)) {
+      throw new \InvalidArgumentException("Menu type can be either inline or list.");
+    }
+    $this->type = $type;
+  }
+  
+  /**
+   * @return string
+   */
+  function getTitle(): string {
+    return $this->title;
+  }
+  
+  /**
+   * @param string $title
+   */
+  function setTitle(string $title) {
+    $this->title = $title;
+  }
   
   /**
    * @return int

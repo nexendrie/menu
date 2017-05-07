@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
+use Nette\Utils\Arrays;
+
 /**
  * MenuControl
  *
@@ -12,6 +14,11 @@ namespace Nexendrie\Menu;
 class MenuControl extends \Nette\Application\UI\Control {
   /** @var Menu */
   protected $menu;
+  /** @var array */
+  protected $templates = [
+    "inline" => __DIR__ . "/menuSimple.latte",
+    "list" => __DIR__ . "/menuList.latte",
+  ];
   
   /**
    * MenuControl constructor.
@@ -22,9 +29,20 @@ class MenuControl extends \Nette\Application\UI\Control {
     $this->menu = $menu;
   }
   
+  /**
+   * @return Menu
+   */
+  function getMenu(): Menu {
+    return $this->menu;
+  }
+  
+  protected function getTemplateFilename(): string {
+    return Arrays::get($this->templates, $this->menu->type);
+  }
+  
   function render(): void {
-    $this->template->setFile(__DIR__ . "/menuSimple.latte");
-    $this->template->items = $this->menu->getIterator();
+    $this->template->setFile($this->getTemplateFilename());
+    $this->template->menu = $this->menu;
     $this->template->render();
   }
 }

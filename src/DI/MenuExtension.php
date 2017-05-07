@@ -19,19 +19,27 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     "default" => [],
   ];
   
+  protected $menuDefaults = [
+    "type" => "inline",
+    "title" => "",
+    "items" => [],
+  ];
+  
   function loadConfiguration(): void {
     $config = $this->getConfig($this->defaults);
     $builder = $this->getContainerBuilder();
     $builder->addDefinition($this->prefix("component"))
       ->setImplement(IMenuControlFactory::class);
-    $items = Helpers::merge($config["default"], []);
+    $data = Helpers::merge($config["default"], $this->menuDefaults);
     $builder->addDefinition($this->prefix("menu"))
-      ->setFactory(self::class . "::createMenu", [$items]);
+      ->setFactory(self::class . "::createMenu", [$data]);
   }
   
-  static function createMenu(array $items): Menu {
+  static function createMenu(array $config): Menu {
     $menu = new Menu;
-    foreach($items as $text => $link) {
+    $menu->title = $config["title"];
+    $menu->type = $config["type"];
+    foreach($config["items"] as $text => $link) {
       $menu[] = new MenuItem($link, $text);
     }
     return $menu;
