@@ -1,0 +1,37 @@
+image: nexendrie/php
+
+stages:
+  - test
+  - deploy
+
+cache:
+  paths:
+  - vendor/
+
+test:default:
+  stage: test
+  script:
+  - phing test
+
+test:cc:
+  stage: test
+  script:
+  - phing test-coverage
+  coverage: '/(\d+\%) covered/'
+  artifacts:
+    name: "Code coverage"
+    paths:
+    - coverage.html
+
+pages:
+  stage: deploy
+  environment:
+    name: documentation
+    url: https://nexendrie.gitlab.io/menu
+  script:
+  - phing documentation
+  artifacts:
+      paths:
+      - public
+  only:
+  - master@nexendrie/menu
