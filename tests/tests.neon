@@ -1,0 +1,10 @@
+application:
+    scanDirs: false
+services:
+    testbench.presenterMock: Testbench\Mocks\PresenterMock
+extensions:
+    menu: Nexendrie\Menu\DI\MenuExtension
+menu:
+    default:
+        Test: "Test:"
+        New Test: Test:new
