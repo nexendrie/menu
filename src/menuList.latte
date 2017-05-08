@@ -1,4 +1,4 @@
-  <nav id="menu">
+  <nav id="{$menu->htmlId}">
     {if $menu->title}<h3>{$menu->title}</h3>
     {else}{/if}<ul n:inner-foreach="$menu as $item">
         <li><a href="{plink $item->link}">{$item->text}</a></li>

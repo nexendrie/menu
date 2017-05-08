@@ -10,6 +10,7 @@ namespace Nexendrie\Menu;
  * @property string $type
  * @property string $title
  * @property-read string $name
+ * @property string $htmlId
  */
 class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   use \Nette\SmartObject;
@@ -24,9 +25,12 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   protected $title = "";
   /** @var string */
   protected $name;
+  /** @var string*/
+  protected $htmlId;
   
-  function __construct(string $name = "default") {
+  function __construct(string $name = "default", string $htmlId = "menu") {
     $this->name = $name;
+    $this->htmlId = $htmlId;
   }
   
   /**
@@ -66,6 +70,20 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
    */
   function getName(): string {
     return $this->name;
+  }
+  
+  /**
+   * @return string
+   */
+  function getHtmlId(): string {
+    return $this->htmlId;
+  }
+  
+  /**
+   * @param string $htmlId
+   */
+  function setHtmlId(string $htmlId) {
+    $this->htmlId = $htmlId;
   }
   
   /**

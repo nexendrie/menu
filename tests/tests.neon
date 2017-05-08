@@ -12,6 +12,7 @@ menu:
     list:
         title: Menu
         type: list
+        htmlId: testMenu
         items:
             Test: "Test:"
             New Test: Test:new

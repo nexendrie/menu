@@ -24,6 +24,12 @@ class MenuTest extends \Tester\TestCase {
     }, \InvalidArgumentException::class);
   }
   
+  function testHtmlId() {
+    Assert::same("menu", $this->menu->htmlId);
+    $this->menu->htmlId = "testMenu";
+    Assert::same("testMenu", $this->menu->htmlId);
+  }
+  
   /**
    * @return void
    */

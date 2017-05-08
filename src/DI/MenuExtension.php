@@ -22,6 +22,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   protected $menuDefaults = [
     "type" => "inline",
     "title" => "",
+    "htmlId" => "menu",
     "items" => [],
   ];
   
@@ -48,7 +49,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   }
   
   static function createMenu(string $name, array $config): Menu {
-    $menu = new Menu($name);
+    $menu = new Menu($name, $config["htmlId"]);
     $menu->title = $config["title"];
     $menu->type = $config["type"];
     foreach($config["items"] as $text => $link) {
