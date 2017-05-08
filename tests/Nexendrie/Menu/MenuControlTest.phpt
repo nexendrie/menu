@@ -52,6 +52,12 @@ class MenuControlTest extends \Tester\TestCase {
       $this->control->render("invalid");
     }, MenuNotFoundException::class);
   }
+  
+  function testInvalidMenuType() {
+    Assert::exception(function() {
+      $this->control->renderInvalid();
+    }, MenuTypeNotSupportedException::class);
+  }
 }
 
 $test = new MenuControlTest;

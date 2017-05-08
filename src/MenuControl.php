@@ -80,11 +80,9 @@ class MenuControl extends \Nette\Application\UI\Control {
     }
     if(Strings::startsWith($name, "render")) {
       $render = Strings::firstLower(Strings::after($name, "render"));
-      if(array_key_exists($render, $this->templates)) {
-        $menuName = Arrays::get($args, 0, "default");
-        $this->baseRender($menuName, $render);
-        return;
-      }
+      $menuName = Arrays::get($args, 0, "default");
+      $this->baseRender($menuName, $render);
+      return;
     }
     return parent::__call($name, $args);
   }
