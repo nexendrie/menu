@@ -30,7 +30,7 @@ class MenuControl extends \Nette\Application\UI\Control {
   /**
    * @param string $menuName
    * @return Menu
-   * @throws \InvalidArgumentException
+   * @throws MenuNotFoundException
    */
   protected function getMenu(string $menuName): Menu {
     foreach($this->menus as $name => $menu) {
@@ -38,18 +38,18 @@ class MenuControl extends \Nette\Application\UI\Control {
         return $menu;
       }
     }
-    throw new \InvalidArgumentException("Menu $menuName not found.");
+    throw new MenuNotFoundException("Menu $menuName not found.");
   }
   
   /**
    * @param string $menuType
    * @return string
-   * @throws \InvalidArgumentException
+   * @throws MenuTypeNotSupportedException
    */
   protected function getTemplateFilename(string $menuType): string {
     $filename = Arrays::get($this->templates, $menuType, "");
     if($filename === "") {
-      throw new \InvalidArgumentException("Menu type $menuType is not supported.");
+      throw new MenuTypeNotSupportedException("Menu type $menuType is not supported.");
     } else {
       return $filename;
     }
@@ -59,13 +59,14 @@ class MenuControl extends \Nette\Application\UI\Control {
    * @param string $menuName
    * @param string $menuType
    * @return void
-   * @throws \InvalidArgumentException
+   * @throws MenuNotFoundException
+   * @throws MenuTypeNotSupportedException
    */
   protected function baseRender(string $menuName, string $menuType): void {
     try {
       $menu = $this->getMenu($menuName);
       $templateFile = $this->getTemplateFilename($menuType);
-    } catch(\InvalidArgumentException $e) {
+    } catch(MenuNotFoundException | MenuTypeNotSupportedException $e) {
       throw $e;
     }
     $this->template->setFile($templateFile);
