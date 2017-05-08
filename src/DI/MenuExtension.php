@@ -14,6 +14,8 @@ use Nexendrie\Menu\IMenuControlFactory,
  * @author Jakub Konečný
  */
 class MenuExtension extends \Nette\DI\CompilerExtension {
+  const COMPONENT_SERVICE = "componentFactory";
+  
   /** @var array */
   protected $defaults = [
     "default" => [],
@@ -28,7 +30,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   function loadConfiguration(): void {
     $config = $this->getConfig($this->defaults);
     $builder = $this->getContainerBuilder();
-    $builder->addDefinition($this->prefix("componentFactory"))
+    $builder->addDefinition($this->prefix(static::COMPONENT_SERVICE))
       ->setImplement(IMenuControlFactory::class);
     foreach($config as $name => $menu) {
       $data = Helpers::merge($menu, $this->menuDefaults);
@@ -40,7 +42,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   
   function beforeCompile(): void {
     $builder = $this->getContainerBuilder();
-    $control = $builder->getDefinition($this->prefix("componentFactory"));
+    $control = $builder->getDefinition($this->prefix(static::COMPONENT_SERVICE));
     $menus = $builder->findByType(Menu::class);
     foreach($menus as $menuName => $menu) {
       $control->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
