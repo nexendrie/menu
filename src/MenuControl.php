@@ -105,7 +105,7 @@ class MenuControl extends \Nette\Application\UI\Control {
    *
    * @param $name
    * @param $args
-   * @return mixed|void
+   * @return mixed
    */
   function __call($name, $args) {
     if($name === "render") {
