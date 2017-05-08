@@ -28,11 +28,11 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   function loadConfiguration(): void {
     $config = $this->getConfig($this->defaults);
     $builder = $this->getContainerBuilder();
-    $builder->addDefinition($this->prefix("component"))
+    $builder->addDefinition($this->prefix("componentFactory"))
       ->setImplement(IMenuControlFactory::class);
     foreach($config as $name => $menu) {
       $data = Helpers::merge($menu, $this->menuDefaults);
-      $builder->addDefinition($this->prefix("menu.$name"))
+      $builder->addDefinition($this->prefix($name))
         ->setFactory(self::class . "::createMenu", [$name, $data])
         ->setAutowired(($name === "default"));
     }
@@ -40,7 +40,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   
   function beforeCompile(): void {
     $builder = $this->getContainerBuilder();
-    $control = $builder->getDefinition($this->prefix("component"));
+    $control = $builder->getDefinition($this->prefix("componentFactory"));
     $menus = $builder->findByType(Menu::class);
     foreach($menus as $menuName => $menu) {
       $control->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
