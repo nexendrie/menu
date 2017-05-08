@@ -3,12 +3,16 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Nette\Utils\Arrays;
+use Nette\Utils\Arrays,
+    Nette\Utils\Strings;
 
 /**
  * MenuControl
  *
  * @author Jakub Konečný
+ * @method void render(string $menuName = "default")
+ * @method void renderInline(string $menuName = "default")
+ * @method void renderList(string $menuName = "default")
  */
 class MenuControl extends \Nette\Application\UI\Control {
   /** @var Menu[] */
@@ -69,16 +73,19 @@ class MenuControl extends \Nette\Application\UI\Control {
     $this->template->render();
   }
   
-  function renderInline(string $menuName = "default"): void {
-    $this->baseRender($menuName, "inline");
-  }
-  
-  function renderList(string $menuName = "default"): void {
-    $this->baseRender($menuName, "list");
-  }
-  
-  function render(string $menuName = "default"): void {
-    $this->renderInline($menuName);
+  function __call($name, $args) {
+    if($name === "render") {
+      $name = "renderInline";
+    }
+    if(Strings::startsWith($name, "render")) {
+      $render = Strings::firstLower(Strings::after($name, "render"));
+      if(array_key_exists($render, $this->templates)) {
+        $menuName = Arrays::get($args, 0, "default");
+        $this->baseRender($menuName, $render);
+        return;
+      }
+    }
+    return parent::__call($name, $args);
   }
 }
 ?>
