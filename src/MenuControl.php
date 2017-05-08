@@ -27,6 +27,16 @@ class MenuControl extends \Nette\Application\UI\Control {
     $this->menus[$menu->name] = & $menu;
   }
   
+  function addMenuType(string $name, string $template): void {
+    if(array_key_exists($name, $this->templates)) {
+      throw new MenuTypeAlreadyDefinedException("Menu type $name is already defined");
+    }
+    if(!file_exists($template)) {
+      throw new TemplateNotFoundException("File $template does not exist.");
+    }
+    $this->templates[$name] = realpath($template);
+  }
+  
   /**
    * @param string $menuName
    * @return Menu

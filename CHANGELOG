@@ -2,6 +2,7 @@ Version 0.1.0+dev
 - allowed setting menu's html id
 - menu type's is now determined in template, see documentation
 - changed thrown exceptions
+- added support for custom menu types
 
 Version 0.1.0
 - first version

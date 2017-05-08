@@ -31,10 +31,21 @@ class MenuControlTest extends \Tester\TestCase {
     ob_start();
     $control->$method(...$renderParameters);
     if(is_file($expected)) {
-      \Tester\Assert::matchFile($expected, ob_get_clean());
+      Assert::matchFile($expected, ob_get_clean());
     } else {
-      \Tester\Assert::match($expected, ob_get_clean());
+      Assert::match($expected, ob_get_clean());
     }
+  }
+  
+  function testAddMenuType() {
+    Assert::exception(function() {
+      $this->control->addMenuType("inline", "");
+    }, MenuTypeAlreadyDefinedException::class);
+    Assert::exception(function() {
+      $this->control->addMenuType("custom", "");
+    }, TemplateNotFoundException::class);
+    $this->control->addMenuType("custom", __DIR__ . "/menuCustom.latte");
+    $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuCustom.Expected.latte", "renderCustom");
   }
   
   function testRenderInline() {

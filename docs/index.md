@@ -19,7 +19,7 @@ Simple usage
 
 Register the extension in your config file
 
-```
+```yaml
 extensions:
     menu: Nexendrie\Menu\DI\MenuExtension
 ```
@@ -38,7 +38,7 @@ menu:
 
 Then inject the control to your presenter
 
-```
+```php
 class BasePresenter extends \Nette\Application\UI\Presenter {
   /** @var \Nexendrie\Menu\IMenuControlFactory @inject */
   public $menuFactory;
@@ -71,7 +71,7 @@ By default, all items will be printed to a single row. If you prefer your menu b
 
 . For list-style menu you can define title. It will be displayed as heading before the items.
 
-```
+```yaml
 menu:
     default:
         title: Menu
@@ -79,12 +79,38 @@ menu:
             ...
 ```
 
+### Custom menu types
+
+It is possible to define custom menu types in MenuControl via method addMenuType. It expects type name and template's filename as arguments.
+
+```php
+class BasePresenter extends \Nette\Application\UI\Presenter {
+  /** @var \Nexendrie\Menu\IMenuControlFactory @inject */
+  public $menuFactory;
+  
+  /**
+   * @return \Nexendrie\Menu\MenuControl
+   */
+  protected function createComponentMenu() {
+    $control = $this->menuFactory->create();
+    $control->addMenuType("custom", __DIR__ . "");
+    return $control;
+  }
+}
+```
+
+Then you can use it just like default types.
+
+```
+{control menu:custom}
+```
+
 Multiple menus
 --------------
 
 If you want, you can define multiple menus and decide which one you want to show in the template. Just add next section to your config
 
-```
+```yaml
 menu:
     default:
         items:
