@@ -44,10 +44,6 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
    * @param string $type
    */
   function setType(string $type) {
-    $types = ["inline", "list",];
-    if(!in_array($type, $types)) {
-      throw new \InvalidArgumentException("Menu type can be either inline or list.");
-    }
     $this->type = $type;
   }
   

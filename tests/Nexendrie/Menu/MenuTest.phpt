@@ -19,9 +19,6 @@ class MenuTest extends \Tester\TestCase {
     Assert::same("inline", $this->menu->type);
     $this->menu->type = "list";
     Assert::same("list", $this->menu->type);
-    Assert::exception(function() {
-      $this->menu->type = "custom";
-    }, \InvalidArgumentException::class);
   }
   
   function testHtmlId() {
