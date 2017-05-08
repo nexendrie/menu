@@ -37,19 +37,48 @@ class MenuControl extends \Nette\Application\UI\Control {
     throw new \InvalidArgumentException("Menu $menuName not found.");
   }
   
-  protected function getTemplateFilename(string $menu): string {
-    return Arrays::get($this->templates, $this->getMenu($menu)->type);
+  /**
+   * @param string $menuType
+   * @return string
+   * @throws \InvalidArgumentException
+   */
+  protected function getTemplateFilename(string $menuType): string {
+    $filename = Arrays::get($this->templates, $menuType, "");
+    if($filename === "") {
+      throw new \InvalidArgumentException("Menu type $menuType is not supported.");
+    } else {
+      return $filename;
+    }
   }
   
-  function render(string $menuName = "default"): void {
+  /**
+   * @param string $menuName
+   * @param string $menuType
+   * @return void
+   * @throws \InvalidArgumentException
+   */
+  protected function baseRender(string $menuName, string $menuType): void {
     try {
       $menu = $this->getMenu($menuName);
+      $templateFile = $this->getTemplateFilename($menuType);
     } catch(\InvalidArgumentException $e) {
       throw $e;
     }
-    $this->template->setFile($this->getTemplateFilename($menuName));
+    $this->template->setFile($templateFile);
     $this->template->menu = $menu;
     $this->template->render();
+  }
+  
+  function renderInline(string $menuName = "default"): void {
+    $this->baseRender($menuName, "inline");
+  }
+  
+  function renderList(string $menuName = "default"): void {
+    $this->baseRender($menuName, "list");
+  }
+  
+  function render(string $menuName = "default"): void {
+    $this->renderInline($menuName);
   }
 }
 ?>

@@ -66,11 +66,7 @@ Menu types
 By default, all items will be printed to a single row. If you prefer your menu being rendered as a list, use this:
 
 ```
-menu:
-    default:
-        type: list
-        items:
-            ...
+{control menu:list}
 ```
 
 . For list-style menu you can define title. It will be displayed as heading before the items.
@@ -78,7 +74,6 @@ menu:
 ```
 menu:
     default:
-        type: list
         title: Menu
         items:
             ...
@@ -97,7 +92,6 @@ menu:
             New Test: Test:new
     list:
         title: Menu
-        type: list
         items:
             Test: "Test:"
             New Test: Test:new

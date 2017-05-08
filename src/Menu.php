@@ -7,7 +7,6 @@ namespace Nexendrie\Menu;
  * Menu
  *
  * @author Jakub Konečný
- * @property string $type
  * @property string $title
  * @property-read string $name
  * @property string $htmlId
@@ -20,8 +19,6 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   /** @var string */
   protected $class = MenuItem::class;
   /** @var string */
-  protected $type = "inline";
-  /** @var string */
   protected $title = "";
   /** @var string */
   protected $name;
@@ -31,20 +28,6 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   function __construct(string $name = "default", string $htmlId = "menu") {
     $this->name = $name;
     $this->htmlId = $htmlId;
-  }
-  
-  /**
-   * @return string
-   */
-  function getType(): string {
-    return $this->type;
-  }
-  
-  /**
-   * @param string $type
-   */
-  function setType(string $type) {
-    $this->type = $type;
   }
   
   /**
