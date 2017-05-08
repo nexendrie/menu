@@ -40,15 +40,15 @@ Then inject the control to your presenter
 
 ```
 class BasePresenter extends \Nette\Application\UI\Presenter {
-  	/** @var \Nexendrie\Menu\IMenuControlFactory @inject */
-  	public $menuFactory;
+  /** @var \Nexendrie\Menu\IMenuControlFactory @inject */
+  public $menuFactory;
   
-  	/**
-  	 * @return \Nexendrie\Menu\MenuControl
-  	 */
-  	protected function createComponentMenu() {
-  	  return $this->menuFactory->create();
-  	}
+  /**
+   * @return \Nexendrie\Menu\MenuControl
+   */
+  protected function createComponentMenu() {
+    return $this->menuFactory->create();
+  }
 }
 ```
 
