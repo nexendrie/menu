@@ -27,6 +27,16 @@ class MenuControl extends \Nette\Application\UI\Control {
     $this->menus[$menu->name] = & $menu;
   }
   
+  /**
+   * Register new menu type
+   * Also creates new virtual method renderName
+   *
+   * @param string $name
+   * @param string $template
+   * @return void
+   * @throws MenuTypeAlreadyDefinedException
+   * @throws TemplateNotFoundException
+   */
   function addMenuType(string $name, string $template): void {
     if(array_key_exists($name, $this->templates)) {
       throw new MenuTypeAlreadyDefinedException("Menu type $name is already defined");
@@ -52,6 +62,8 @@ class MenuControl extends \Nette\Application\UI\Control {
   }
   
   /**
+   * Returns filename of template for a menu type
+   *
    * @param string $menuType
    * @return string
    * @throws MenuTypeNotSupportedException
@@ -66,6 +78,8 @@ class MenuControl extends \Nette\Application\UI\Control {
   }
   
   /**
+   * Contains all logic for rendering the component
+   *
    * @param string $menuName
    * @param string $menuType
    * @return void
@@ -84,6 +98,15 @@ class MenuControl extends \Nette\Application\UI\Control {
     $this->template->render();
   }
   
+  /**
+   * Defines virtual methods for rendering menu types
+   * renderAbc will try to render menu of abc type
+   * Anything that does not start with render is handled by \Nette\SmartObject
+   *
+   * @param $name
+   * @param $args
+   * @return mixed|void
+   */
   function __call($name, $args) {
     if($name === "render") {
       $name = "renderInline";
