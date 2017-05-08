@@ -26,7 +26,7 @@ extensions:
 
 and define your menu
 
-```
+```yaml
 menu:
     default:
         items:
@@ -103,6 +103,15 @@ Then you can use it just like default types.
 
 ```
 {control menu:custom}
+```
+
+Alternatively, you can define new menu type via neon.
+
+```yaml
+extensions:
+    menu_types: Nexendrie\Menu\DI\MenuTypesExtension
+menu_types:
+    custom: path/to/template
 ```
 
 Multiple menus

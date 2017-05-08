@@ -4,6 +4,7 @@ services:
     testbench.presenterMock: Testbench\Mocks\PresenterMock
 extensions:
     menu: Nexendrie\Menu\DI\MenuExtension
+    menu_types: Nexendrie\Menu\DI\MenuTypesExtension
 menu:
     default:
         items:

@@ -1,3 +1,6 @@
+Version 0.2.0+dev
+- it is possible to define new menu types from neon
+
 Version 0.2.0
 - allowed setting menu's html id
 - menu type's is now determined in template, see documentation
