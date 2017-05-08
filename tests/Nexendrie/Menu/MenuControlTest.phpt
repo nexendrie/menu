@@ -38,7 +38,7 @@ class MenuControlTest extends \Tester\TestCase {
   }
   
   function testRenderInline() {
-    $filename = __DIR__ . "/menuSimpleExpected.latte";
+    $filename = __DIR__ . "/menuInlineExpected.latte";
     $this->checkRenderOutput($this->control, $filename);
   }
   
