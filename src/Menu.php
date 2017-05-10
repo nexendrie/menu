@@ -111,7 +111,7 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
       throw new \InvalidArgumentException("Argument must be of $this->class type.");
     }
     if($index === NULL) {
-      $this->items[] = $item;
+      $this->items[] = & $item;
     } elseif($index < 0 OR $index >= count($this->items)) {
       throw new \OutOfRangeException("Offset invalid or out of range.");
     } else {
