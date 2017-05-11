@@ -2,6 +2,7 @@ application:
     scanDirs: false
 services:
     testbench.presenterMock: Testbench\Mocks\PresenterMock
+    - Nexendrie\Menu\Translator
 extensions:
     menu: Nexendrie\Menu\DI\MenuExtension
     menu_types: Nexendrie\Menu\DI\MenuTypesExtension
@@ -12,8 +13,14 @@ menu:
             New Test: Test:new
     list:
         title: Menu
-        type: list
         htmlId: testMenu
+        items:
+            Test: "Test:"
+            New Test: Test:new
+    translated:
+        title: Menu
+        htmlId: testMenu
+        translate: true
         items:
             Test: "Test:"
             New Test: Test:new

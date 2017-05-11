@@ -24,6 +24,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   protected $menuDefaults = [
     "title" => "",
     "htmlId" => "menu",
+    "translate" => false,
     "items" => [],
   ];
   
@@ -37,6 +38,10 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
       $builder->addDefinition($this->prefix($name))
         ->setFactory(self::class . "::createMenu", [$name, $data])
         ->setAutowired(($name === "default"));
+      if($data["translate"]) {
+        $builder->getDefinition($this->prefix($name))
+          ->addSetup("setTranslator");
+      }
     }
   }
   

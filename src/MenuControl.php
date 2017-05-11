@@ -10,6 +10,7 @@ use Nette\Utils\Arrays,
  * MenuControl
  *
  * @author Jakub Konečný
+ * @property \Nette\Bridges\ApplicationLatte\Template $template
  * @method void render(string $menuName = "default")
  * @method void renderInline(string $menuName = "default")
  * @method void renderList(string $menuName = "default")
@@ -94,6 +95,7 @@ class MenuControl extends \Nette\Application\UI\Control {
       throw $e;
     }
     $this->template->setFile($templateFile);
+    $this->template->setTranslator($menu->translator);
     $this->template->menu = $menu;
     $this->template->render();
   }

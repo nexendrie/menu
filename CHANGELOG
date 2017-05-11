@@ -1,5 +1,6 @@
 Version 0.2.0+dev
 - it is possible to define new menu types from neon
+- added support for translating
 
 Version 0.2.0
 - allowed setting menu's html id

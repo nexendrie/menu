@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
+use Nette\Localization\ITranslator;
+
 /**
  * Menu
  *
@@ -10,6 +12,7 @@ namespace Nexendrie\Menu;
  * @property string $title
  * @property-read string $name
  * @property string $htmlId
+ * @property ITranslator $translator
  */
 class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   use \Nette\SmartObject;
@@ -24,10 +27,17 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   protected $name;
   /** @var string*/
   protected $htmlId;
+  /** @var  ITranslator */
+  protected $translator;
   
   function __construct(string $name = "default", string $htmlId = "menu") {
     $this->name = $name;
     $this->htmlId = $htmlId;
+    $this->translator = new class implements ITranslator {
+      function translate($message, $count = NULL): string {
+        return $message;
+      }
+    };
   }
   
   /**
@@ -63,6 +73,20 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
    */
   function setHtmlId(string $htmlId) {
     $this->htmlId = $htmlId;
+  }
+  
+  /**
+   * @return ITranslator
+   */
+  function getTranslator(): ITranslator {
+    return $this->translator;
+  }
+  
+  /**
+   * @param ITranslator $translator
+   */
+  function setTranslator(ITranslator $translator) {
+    $this->translator = $translator;
   }
   
   /**

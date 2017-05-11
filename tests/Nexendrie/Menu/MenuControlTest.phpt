@@ -58,6 +58,11 @@ class MenuControlTest extends \Tester\TestCase {
     $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["list"]);
   }
   
+  function testTranslating() {
+    $filename = __DIR__ . "/menuTranslatedExpected.latte";
+    $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["translated"]);
+  }
+  
   function testInvalidMenu() {
     Assert::exception(function() {
       $this->control->render("invalid");

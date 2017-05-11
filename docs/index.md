@@ -34,7 +34,7 @@ menu:
             New Test: Test:new
 ```
 
-. This creates menu with 2 items. Format for items is simple: Links's title: Destination. Currently you can only create links to presenters in your application.
+. This creates menu with 2 items. Format for items is simple: Text: Destination. Currently you can only create links to presenters in your application.
 
 Then inject the control to your presenter
 
@@ -146,3 +146,18 @@ or
 ```
 
 for default menu.
+
+Translating
+-----------
+
+It is possible to have links' text translated. Just register your translator to DI and add translate: true to the menu's definition.
+
+```yaml
+menu:
+    list:
+        title: Menu
+        translate: true
+        items:
+            Test: "Test:"
+            New Test: Test:new
+```
