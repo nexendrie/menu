@@ -1,1 +1,3 @@
-  <nav id="{$menu->htmlId}">{foreach $menu as $item}<a href="{plink $item->link}">{_$item->text}</a>{if !$iterator->isLast()} {/if}{/foreach}</nav>
+  <nav id="{$menu->htmlId}">
+    {foreach $menu as $item}<a href="{plink $item->link}">{_$item->text}</a>{if !$iterator->isLast()} {/if}{/foreach}
+  </nav>
