@@ -108,10 +108,9 @@ Then you can use it just like default types.
 Alternatively, you can define new menu type via neon.
 
 ```yaml
-extensions:
-    menu_types: Nexendrie\Menu\DI\MenuTypesExtension
-menu_types:
-    custom: path/to/template
+menu:
+    menu_types:
+        custom: path/to/template
 ```
 
 Multiple menus

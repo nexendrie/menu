@@ -5,7 +5,6 @@ services:
     - Nexendrie\Menu\Translator
 extensions:
     menu: Nexendrie\Menu\DI\MenuExtension
-    menu_types: Nexendrie\Menu\DI\MenuTypesExtension
 menu:
     default:
         items:

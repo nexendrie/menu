@@ -6,7 +6,8 @@ namespace Nexendrie\Menu\DI;
 use Tester\Assert,
     Nexendrie\Menu\IMenuControlFactory,
     Nexendrie\Menu\MenuControl,
-    Nexendrie\Menu\Menu;
+    Nexendrie\Menu\Menu,
+    Nexendrie\Menu\MenuTypeAlreadyDefinedException;
 
 require __DIR__ . "/../../../bootstrap.php";
 
@@ -28,6 +29,19 @@ class MenuExtensionTest extends \Tester\TestCase {
     /** @var Menu $menu */
     $menu = $this->getService(Menu::class);
     Assert::type(Menu::class, $menu);
+  }
+  
+  function testMenuTypes() {
+    $this->refreshContainer(["menu" => [
+      "menu_types" => [
+        "custom" => __DIR__ . "/../menuCustom.latte",
+      ]
+    ]]);
+    /** @var MenuControl $control */
+    $control = $this->getService(IMenuControlFactory::class)->create();
+    Assert::exception(function() use($control) {
+      $control->addMenuType("custom", "");
+    }, MenuTypeAlreadyDefinedException::class);
   }
 }
 

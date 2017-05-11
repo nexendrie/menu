@@ -15,6 +15,7 @@ use Nexendrie\Menu\IMenuControlFactory,
  */
 class MenuExtension extends \Nette\DI\CompilerExtension {
   const COMPONENT_SERVICE = "componentFactory";
+  const MENU_TYPES_SECTION = "menu_types";
   
   /** @var array */
   protected $defaults = [
@@ -28,12 +29,19 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     "items" => [],
   ];
   
+  function __construct() {
+    $this->defaults[static::MENU_TYPES_SECTION] = [];
+  }
+  
   function loadConfiguration(): void {
     $config = $this->getConfig($this->defaults);
     $builder = $this->getContainerBuilder();
     $builder->addDefinition($this->prefix(static::COMPONENT_SERVICE))
       ->setImplement(IMenuControlFactory::class);
     foreach($config as $name => $menu) {
+      if($name === static::MENU_TYPES_SECTION) {
+        continue;
+      }
       $data = Helpers::merge($menu, $this->menuDefaults);
       $builder->addDefinition($this->prefix($name))
         ->setFactory(self::class . "::createMenu", [$name, $data])
@@ -47,10 +55,14 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   
   function beforeCompile(): void {
     $builder = $this->getContainerBuilder();
+    $config = $this->getConfig($this->defaults);
     $control = $builder->getDefinition($this->prefix(static::COMPONENT_SERVICE));
     $menus = $builder->findByType(Menu::class);
     foreach($menus as $menuName => $menu) {
       $control->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
+    }
+    foreach($config[static::MENU_TYPES_SECTION] as $type => $template) {
+      $control->addSetup('?->addMenuType(?,?);', ["@self", $type, $template]);
     }
   }
   
