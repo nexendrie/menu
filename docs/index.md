@@ -149,7 +149,7 @@ for default menu.
 Translating
 -----------
 
-It is possible to have links' text translated. Just register your translator to DI and add translate: true to the menu's definition.
+It is possible to have links' text and menu's title translated. Just register your translator to DI and add translate: true to the menu's definition.
 
 ```yaml
 menu:
