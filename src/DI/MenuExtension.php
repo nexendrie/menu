@@ -30,7 +30,10 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   ];
   
   function __construct() {
-    $this->defaults[static::MENU_TYPES_SECTION] = [];
+    $this->defaults[static::MENU_TYPES_SECTION] = [
+      "inline" => __DIR__ . "/../menuInline.latte",
+      "list" => __DIR__ . "/../menuList.latte",
+    ];
   }
   
   function loadConfiguration(): void {

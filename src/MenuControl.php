@@ -19,10 +19,7 @@ class MenuControl extends \Nette\Application\UI\Control {
   /** @var Menu[] */
   protected $menus = [];
   /** @var array */
-  protected $templates = [
-    "inline" => __DIR__ . "/menuInline.latte",
-    "list" => __DIR__ . "/menuList.latte",
-  ];
+  protected $templates = [];
   
   function addMenu(Menu $menu): void {
     $this->menus[$menu->name] = & $menu;
