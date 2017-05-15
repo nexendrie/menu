@@ -124,7 +124,7 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   }
   
   /**
-   * @param int $index
+   * @param int|NULL $index
    * @param MenuItem $item
    * @return void
    * @throws \OutOfRangeException

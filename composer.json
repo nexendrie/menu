@@ -28,7 +28,7 @@
         "nexendrie/code-quality": "dev-master",
         "nette/tester": "dev-master",
         "nexendrie/site-generator": "1.0.x-dev",
-        "phpstan/phpstan-nette": "^0.6.2"
+        "phpstan/phpstan-nette": "^0.7"
     },
     "autoload": {
         "psr-4": {
