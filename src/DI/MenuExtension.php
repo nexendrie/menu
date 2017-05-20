@@ -9,7 +9,9 @@ use Nexendrie\Menu\IMenuControlFactory,
     Nexendrie\Menu\ConditionUserLoggedIn,
     Nexendrie\Menu\ConditionUserInRole,
     Nexendrie\Menu\ConditionPermission,
-    Nexendrie\Menu\ConditionCallback;
+    Nexendrie\Menu\ConditionCallback,
+    Nette\Reflection\ClassType,
+    Nette\Utils\Strings;
 
 /**
  * MenuExtension
@@ -51,9 +53,12 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
       "acl" => ConditionPermission::class,
       "callback" => ConditionCallback::class,
     ];
-    $this->specialSections = [
-      static::SECTION_MENU_TYPES, static::SECTION_CONDITIONS,
-    ];
+    $constants = (new ClassType(static::class))->constants;
+    foreach($constants as $name => $value) {
+      if(Strings::startsWith($name, "SECTION_")) {
+        $this->specialSections[] = $value;
+      }
+    }
   }
   
   function loadConfiguration(): void {
