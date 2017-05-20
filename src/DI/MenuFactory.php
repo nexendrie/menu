@@ -41,8 +41,8 @@ class MenuFactory {
         throw new InvalidMenuItemDefinitionException("Menu item is missing link.");
       }
       $item = new MenuItem($definition["link"], $text);
-      if(array_key_exists(MenuExtension::CONDITIONS_SECTION, $definition) AND is_array($definition[MenuExtension::CONDITIONS_SECTION])) {
-        foreach($definition[MenuExtension::CONDITIONS_SECTION] as $condition => $value) {
+      if(array_key_exists(MenuExtension::SECTION_CONDITIONS, $definition) AND is_array($definition[MenuExtension::SECTION_CONDITIONS])) {
+        foreach($definition[MenuExtension::SECTION_CONDITIONS] as $condition => $value) {
           if(!array_key_exists($condition, $this->conditions)) {
             throw new MenuItemConditionNotSupportedException("Condition $condition is not defined.");
           }
