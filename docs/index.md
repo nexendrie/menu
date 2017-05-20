@@ -160,3 +160,64 @@ menu:
             Test: "Test:"
             New Test: Test:new
 ```
+
+Conditional menu items
+----------------------
+
+Sometimes, you want to show certain menu items only if a condition is met. A few condition types are available by default and you can even define custom ones. Examples:
+
+```yaml
+menu:
+    default:
+        items:
+            Test: "Test:"
+            New Test: Test:new
+            Structured:
+                link: Test:structured
+                conditions:
+                    loggedIn: false
+                    role: guest
+                    acl: resource:privilege
+                    callback: some::callback
+```
+
+. If multiple conditions are used, ALL must be met else the item will not be shown.
+
+### Custom conditions
+
+You can define custom conditions in neon:
+
+```yaml
+menu:
+    conditions:
+        custom: App\Menu\CustomCondition
+```
+
+. Then you can use it as any default condition:
+
+```yaml
+menu:
+    default:
+        items:
+            Test: "Test:"
+            New Test: Test:new
+            Structured:
+                link: Test:structured
+                conditions:
+                    custom: NULL
+```
+
+.
+
+Classes with conditions have to implement Nexendrie\Menu\IMenuItemCondition interface.
+
+```php
+<?php
+interface IMenuItemCondition {
+  function getName(): string;
+  function isAllowed($parameter = NULL): bool;
+}
+?>
+```
+
+Method isAllowed return true if the item should be shown, else false. All conditions are service in DI container, so they can depend on other services. It accepts one argument.

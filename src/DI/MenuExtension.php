@@ -5,8 +5,11 @@ namespace Nexendrie\Menu\DI;
 
 use Nexendrie\Menu\IMenuControlFactory,
     Nexendrie\Menu\Menu,
-    Nexendrie\Menu\MenuItem,
-    Nette\DI\Config\Helpers;
+    Nette\DI\Config\Helpers,
+    Nexendrie\Menu\ConditionUserLoggedIn,
+    Nexendrie\Menu\ConditionUserInRole,
+    Nexendrie\Menu\ConditionPermission,
+    Nexendrie\Menu\ConditionCallback;
 
 /**
  * MenuExtension
@@ -15,13 +18,18 @@ use Nexendrie\Menu\IMenuControlFactory,
  */
 class MenuExtension extends \Nette\DI\CompilerExtension {
   const COMPONENT_SERVICE = "componentFactory";
+  const MENU_FACTORY_SERVICE = "menuFactory";
   const MENU_TYPES_SECTION = "menu_types";
+  const CONDITIONS_SECTION = "conditions";
   
   /** @var array */
   protected $defaults = [
     "default" => [],
   ];
   
+  /**
+   * @var array
+   */
   protected $menuDefaults = [
     "title" => "",
     "htmlId" => "menu",
@@ -29,10 +37,22 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     "items" => [],
   ];
   
+  /** @var string[] */
+  protected $specialSections = [];
+  
   function __construct() {
     $this->defaults[static::MENU_TYPES_SECTION] = [
       "inline" => __DIR__ . "/../menuInline.latte",
       "list" => __DIR__ . "/../menuList.latte",
+    ];
+    $this->defaults[static::CONDITIONS_SECTION] = [
+      "loggedIn" => ConditionUserLoggedIn::class,
+      "role" => ConditionUserInRole::class,
+      "acl" => ConditionPermission::class,
+      "callback" => ConditionCallback::class,
+    ];
+    $this->specialSections = [
+      static::MENU_TYPES_SECTION, static::CONDITIONS_SECTION,
     ];
   }
   
@@ -41,17 +61,22 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     $builder = $this->getContainerBuilder();
     $builder->addDefinition($this->prefix(static::COMPONENT_SERVICE))
       ->setImplement(IMenuControlFactory::class);
+    $builder->addDefinition($this->prefix(static::MENU_FACTORY_SERVICE))
+      ->setFactory(MenuFactory::class, [$config[static::CONDITIONS_SECTION]]);
+    foreach($config[static::CONDITIONS_SECTION] as $name => $class) {
+      $builder->addDefinition($this->prefix("condition.$name"))
+        ->setClass($class);
+    }
     foreach($config as $name => $menu) {
-      if($name === static::MENU_TYPES_SECTION) {
+      if(in_array($name, $this->specialSections)) {
         continue;
       }
       $data = Helpers::merge($menu, $this->menuDefaults);
-      $builder->addDefinition($this->prefix($name))
-        ->setFactory(self::class . "::createMenu", [$name, $data])
+      $service = $builder->addDefinition($this->prefix($name))
+        ->setFactory("@" . MenuFactory::class . "::createMenu", [$name, $data, $config[static::CONDITIONS_SECTION]])
         ->setAutowired(($name === "default"));
       if($data["translate"]) {
-        $builder->getDefinition($this->prefix($name))
-          ->addSetup("setTranslator");
+        $service->addSetup("setTranslator");
       }
     }
   }
@@ -67,15 +92,6 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     foreach($config[static::MENU_TYPES_SECTION] as $type => $template) {
       $control->addSetup('?->addMenuType(?,?);', ["@self", $type, $template]);
     }
-  }
-  
-  static function createMenu(string $name, array $config): Menu {
-    $menu = new Menu($name, $config["htmlId"]);
-    $menu->title = $config["title"];
-    foreach($config["items"] as $text => $link) {
-      $menu[] = new MenuItem($link, $text);
-    }
-    return $menu;
   }
 }
 ?>

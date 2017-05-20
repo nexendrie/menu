@@ -1,7 +1,13 @@
 application:
     scanDirs: false
+security:
+    users:
+        test:
+            password: test
+            roles: abc
 services:
     testbench.presenterMock: Testbench\Mocks\PresenterMock
+    - Nexendrie\Menu\Authorizator
     - Nexendrie\Menu\Translator
 extensions:
     menu: Nexendrie\Menu\DI\MenuExtension
@@ -10,6 +16,14 @@ menu:
         items:
             Test: "Test:"
             New Test: Test:new
+            Structured:
+                link: Test:structured
+                conditions:
+                    loggedIn: false
+            Invisible:
+                link: Test:invisible
+                conditions:
+                    loggedIn: true
     list:
         title: Menu
         htmlId: testMenu

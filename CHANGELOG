@@ -1,3 +1,7 @@
+Version 0.3.0+dev
+- added conditional menu items
+- menus are now created by a factory (in DIC extension)
+
 Version 0.3.0
 - it is possible to define new menu types from neon
 - added support for translating

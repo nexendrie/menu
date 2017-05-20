@@ -30,6 +30,9 @@
         "nexendrie/site-generator": "1.0.x-dev",
         "phpstan/phpstan-nette": "^0.7"
     },
+    "suggest": {
+        "nette/security": "To use menu item conditions related to user"
+    },
     "autoload": {
         "psr-4": {
             "Nexendrie\\Menu\\": "src/"
