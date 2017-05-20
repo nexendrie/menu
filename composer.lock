@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "latte/latte",
-            "version": "v2.4.3",
+            "version": "v2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/latte.git",
-                "reference": "b62ee346467e1e2402a43c499cf6047fddc5d321"
+                "reference": "7d207e620cfc1386fb7ccd8de403d5760f7ca655"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/latte/zipball/b62ee346467e1e2402a43c499cf6047fddc5d321",
-                "reference": "b62ee346467e1e2402a43c499cf6047fddc5d321",
+                "url": "https://api.github.com/repos/nette/latte/zipball/7d207e620cfc1386fb7ccd8de403d5760f7ca655",
+                "reference": "7d207e620cfc1386fb7ccd8de403d5760f7ca655",
                 "shasum": ""
             },
             "require": {
@@ -34,8 +34,7 @@
             },
             "suggest": {
                 "ext-fileinfo": "to use filter |datastream",
-                "ext-mbstring": "to use filters like lower, upper, capitalize, ...",
-                "ext-xml": "to use filters like length, substring, ..."
+                "ext-mbstring": "to use filters like lower, upper, capitalize, ..."
             },
             "type": "library",
             "extra": {
@@ -70,7 +69,7 @@
                 "templating",
                 "twig"
             ],
-            "time": "2017-01-19T11:06:59+00:00"
+            "time": "2017-05-17T12:00:19+00:00"
         },
         {
             "name": "nette/application",
@@ -1552,7 +1551,7 @@
                 "quality",
                 "testing"
             ],
-            "time": "2017-05-15T08:19:42+00:00"
+            "time": "2017-05-15 08:19:42"
         },
         {
             "name": "nexendrie/site-generator",
@@ -1560,12 +1559,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nexendrie/site-generator.git",
-                "reference": "55005ec5cb490e26f7b5711f891d01772b9d8714"
+                "reference": "790dc5cf472ab7366fbc8c766db64a67d6271c20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nexendrie/site-generator/zipball/55005ec5cb490e26f7b5711f891d01772b9d8714",
-                "reference": "55005ec5cb490e26f7b5711f891d01772b9d8714",
+                "url": "https://api.github.com/repos/nexendrie/site-generator/zipball/790dc5cf472ab7366fbc8c766db64a67d6271c20",
+                "reference": "790dc5cf472ab7366fbc8c766db64a67d6271c20",
                 "shasum": ""
             },
             "require": {
@@ -1615,7 +1614,7 @@
                 "static",
                 "website"
             ],
-            "time": "2017-05-15T08:22:40+00:00"
+            "time": "2017-05-20T08:20:00+00:00"
         },
         {
             "name": "nikic/php-parser",
