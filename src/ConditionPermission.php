@@ -34,6 +34,7 @@ class ConditionPermission implements IMenuItemCondition {
    * @param string $parameter
    * @return bool
    * @throws \InvalidArgumentException
+   * @throws \OutOfBoundsException
    */
   function isAllowed($parameter = NULL): bool {
     if(!is_string($parameter)) {

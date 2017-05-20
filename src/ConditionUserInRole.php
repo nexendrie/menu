@@ -18,10 +18,6 @@ class ConditionUserInRole implements IMenuItemCondition {
   /** @var string */
   protected $name = "role";
   
-  /**
-   * ConditionUserInRole constructor.
-   * @param User $user
-   */
   function __construct(User $user) {
     $this->user = $user;
   }
