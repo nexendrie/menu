@@ -1,13 +1,9 @@
 application:
     scanDirs: false
-security:
-    users:
-        test:
-            password: test
-            roles: abc
 services:
     testbench.presenterMock: Testbench\Mocks\PresenterMock
     - Nexendrie\Menu\Authorizator
+    - Nexendrie\Menu\Authenticator
     - Nexendrie\Menu\Translator
 extensions:
     menu: Nexendrie\Menu\DI\MenuExtension
