@@ -69,7 +69,7 @@ By default, all items will be printed to a single row. If you prefer your menu b
 {control menu:list}
 ```
 
-. For list-style menu you can define title. It will be displayed as heading before the items.
+. For a list-style menu, you can define title. It will be displayed as heading before the items.
 
 ```yaml
 menu:
@@ -93,19 +93,19 @@ class BasePresenter extends \Nette\Application\UI\Presenter {
    */
   protected function createComponentMenu() {
     $control = $this->menuFactory->create();
-    $control->addMenuType("custom", __DIR__ . "");
+    $control->addMenuType("custom", __DIR__ . "/customMenuTemplate.latte");
     return $control;
   }
 }
 ```
 
-Then you can use it just like default types.
+Then you can use it just like the default types.
 
 ```
 {control menu:custom}
 ```
 
-Alternatively, you can define new menu type via neon.
+Alternatively, you can define new menu types via neon.
 
 ```yaml
 menu:
@@ -116,7 +116,7 @@ menu:
 Multiple menus
 --------------
 
-If you want, you can define multiple menus and decide which one you want to show in the template. Just add next section to your config
+If you want, you can define multiple menus and decide in the template which one you want to show. Just add next section to your config
 
 ```yaml
 menu:
@@ -164,7 +164,7 @@ menu:
 Conditional menu items
 ----------------------
 
-Sometimes, you want to show certain menu items only if a condition is met. A few condition types are available by default and you can even define custom ones. Examples:
+Sometimes, you want to show certain menu items only if a condition is met. A few condition types are available by default and you can even define custom ones. Examples for default types:
 
 ```yaml
 menu:
@@ -220,4 +220,4 @@ interface IMenuItemCondition {
 ?>
 ```
 
-Method isAllowed return true if the item should be shown, else false. All conditions are service in DI container, so they can depend on other services. It accepts one argument.
+Method isAllowed return true if the item should be shown, else false. It accepts one argument. All conditions are registered as services in DI container, so they can depend on other services.
