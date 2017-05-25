@@ -28,6 +28,20 @@ class MenuFactory {
     $this->conditions = $conditions;
   }
   
+  /**
+   * @param string $name
+   * @return IMenuItemCondition
+   * @throws MenuItemConditionNotSupportedException
+   */
+  protected function getCondition(string $name): IMenuItemCondition {
+    if(array_key_exists($name, $this->conditions)) {
+      /** @var IMenuItemCondition $condition */
+      $condition = $this->container->getByType($this->conditions[$name]);
+      return $condition;
+    }
+    throw new MenuItemConditionNotSupportedException("Condition $name is not defined.");
+  }
+  
   function createMenu(string $name, array $config): Menu {
     $menu = new Menu($name, $config["htmlId"]);
     $menu->title = $config["title"];
@@ -43,11 +57,11 @@ class MenuFactory {
       $item = new MenuItem($definition["link"], $text);
       if(array_key_exists(MenuExtension::SECTION_CONDITIONS, $definition) AND is_array($definition[MenuExtension::SECTION_CONDITIONS])) {
         foreach($definition[MenuExtension::SECTION_CONDITIONS] as $condition => $value) {
-          if(!array_key_exists($condition, $this->conditions)) {
-            throw new MenuItemConditionNotSupportedException("Condition $condition is not defined.");
+          try {
+            $conditionService = $this->getCondition($condition);
+          } catch(MenuItemConditionNotSupportedException $e) {
+            throw $e;
           }
-          /** @var IMenuItemCondition $conditionService */
-          $conditionService = $this->container->getByType($this->conditions[$condition]);
           $item->addCondition($conditionService, $value);
         }
       }
