@@ -72,6 +72,9 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     $builder->addDefinition($this->prefix(static::SERVICE_MENU_FACTORY))
       ->setFactory(MenuFactory::class, [$config[static::SECTION_CONDITIONS]])
       ->setAutowired(false);
+    if(count($config[static::SECTION_CONDITIONS])) {
+      trigger_error("Section " . $this->prefix(static::SECTION_CONDITIONS) . "is deprecated. Register custom conditons manually.", E_USER_DEPRECATED);
+    }
     foreach($config[static::SECTION_CONDITIONS] as $name => $class) {
       $builder->addDefinition($this->prefix("condition.$name"))
         ->setClass($class);
