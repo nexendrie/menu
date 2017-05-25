@@ -1,3 +1,6 @@
+Version 1.0.0+dev
+- menu item conditions can be manually registered as services now
+
 Version 1.0.0
 - added conditional menu items
 - menus are now created by a factory (in DIC extension)

@@ -193,6 +193,13 @@ menu:
         custom: App\Menu\CustomCondition
 ```
 
+or (preferably) register it as a service:
+
+```yaml
+services:
+    - App\Menu\CustomCondtion
+```
+
 . Then you can use it as any default condition:
 
 ```yaml

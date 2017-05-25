@@ -42,17 +42,20 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
   /** @var string[] */
   protected $specialSections = [];
   
+  /** @var string[] */
+  protected $defaultConditions = [
+    "loggedIn" => ConditionUserLoggedIn::class,
+    "role" => ConditionUserInRole::class,
+    "acl" => ConditionPermission::class,
+    "callback" => ConditionCallback::class,
+  ];
+  
   function __construct() {
     $this->defaults[static::SECTION_MENU_TYPES] = [
       "inline" => __DIR__ . "/../menuInline.latte",
       "list" => __DIR__ . "/../menuList.latte",
     ];
-    $this->defaults[static::SECTION_CONDITIONS] = [
-      "loggedIn" => ConditionUserLoggedIn::class,
-      "role" => ConditionUserInRole::class,
-      "acl" => ConditionPermission::class,
-      "callback" => ConditionCallback::class,
-    ];
+    $this->defaults[static::SECTION_CONDITIONS] = [];
     $constants = (new ClassType(static::class))->constants;
     foreach($constants as $name => $value) {
       if(Strings::startsWith($name, "SECTION_")) {
@@ -69,6 +72,10 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     $builder->addDefinition($this->prefix(static::SERVICE_MENU_FACTORY))
       ->setFactory(MenuFactory::class, [$config[static::SECTION_CONDITIONS]]);
     foreach($config[static::SECTION_CONDITIONS] as $name => $class) {
+      $builder->addDefinition($this->prefix("condition.$name"))
+        ->setClass($class);
+    }
+    foreach($this->defaultConditions as $name => $class) {
       $builder->addDefinition($this->prefix("condition.$name"))
         ->setClass($class);
     }

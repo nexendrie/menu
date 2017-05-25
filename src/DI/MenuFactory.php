@@ -39,6 +39,13 @@ class MenuFactory {
       $condition = $this->container->getByType($this->conditions[$name]);
       return $condition;
     }
+    foreach($this->container->findByType(IMenuItemCondition::class) as $serviceName) {
+      /** @var IMenuItemCondition $service */
+      $service = $this->container->createService($serviceName);
+      if($service->getName() === $name) {
+        return $service;
+      }
+    }
     throw new MenuItemConditionNotSupportedException("Condition $name is not defined.");
   }
   
