@@ -70,7 +70,8 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     $builder->addDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY))
       ->setImplement(IMenuControlFactory::class);
     $builder->addDefinition($this->prefix(static::SERVICE_MENU_FACTORY))
-      ->setFactory(MenuFactory::class, [$config[static::SECTION_CONDITIONS]]);
+      ->setFactory(MenuFactory::class, [$config[static::SECTION_CONDITIONS]])
+      ->setAutowired(false);
     foreach($config[static::SECTION_CONDITIONS] as $name => $class) {
       $builder->addDefinition($this->prefix("condition.$name"))
         ->setClass($class);
@@ -85,7 +86,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
       }
       $data = Helpers::merge($menu, $this->menuDefaults);
       $service = $builder->addDefinition($this->prefix($name))
-        ->setFactory("@" . MenuFactory::class . "::createMenu", [$name, $data])
+        ->setFactory("@" . $this->prefix(static::SERVICE_MENU_FACTORY) . "::createMenu", [$name, $data])
         ->setAutowired(($name === "default"));
       if($data["translate"]) {
         $service->addSetup("setTranslator");

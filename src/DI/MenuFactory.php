@@ -14,6 +14,7 @@ use Nette\DI\Container,
  * MenuFactory
  *
  * @author Jakub Konečný
+ * @internal
  */
 class MenuFactory {
   use \Nette\SmartObject;

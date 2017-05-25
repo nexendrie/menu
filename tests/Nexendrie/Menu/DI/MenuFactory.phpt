@@ -17,7 +17,7 @@ class MenuFactoryTest extends \Tester\TestCase {
   protected $factory;
   
   function setUp() {
-    $this->factory = $this->getService(MenuFactory::class);
+    $this->factory = $this->getContainer()->getService("menu." . MenuExtension::SERVICE_MENU_FACTORY);
   }
   
   function testCreateMenu() {

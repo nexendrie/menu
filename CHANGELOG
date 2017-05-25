@@ -1,5 +1,6 @@
 Version 1.0.0+dev
 - menu item conditions can be manually registered as services now
+- MenuFactory is not autowired anymore
 
 Version 1.0.0
 - added conditional menu items
