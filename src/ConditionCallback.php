@@ -9,6 +9,8 @@ namespace Nexendrie\Menu;
  * @author Jakub Konečný
  */
 class ConditionCallback implements IMenuItemCondition {
+  use \Nette\SmartObject;
+  
   /** @var string */
   protected $name = "callback";
   
