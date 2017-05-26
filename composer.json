@@ -26,8 +26,8 @@
     },
     "require-dev": {
         "nexendrie/code-quality": "dev-master",
-        "nette/tester": "dev-master",
-        "nexendrie/site-generator": "1.0.x-dev",
+        "nette/tester": "^2.0",
+        "nexendrie/site-generator": "^1.0",
         "phpstan/phpstan-nette": "^0.7"
     },
     "suggest": {
@@ -50,5 +50,7 @@
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

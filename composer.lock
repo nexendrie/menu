@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c55e1bc0d9384be13021a0779efadc1",
+    "content-hash": "e27ae3587c9d690b673e547519e15ec4",
     "packages": [
         {
             "name": "latte/latte",
@@ -2424,13 +2424,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
-        "nexendrie/code-quality": 20,
-        "nette/tester": 20,
-        "nexendrie/site-generator": 20
+        "nexendrie/code-quality": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": ">=7.1.0"
