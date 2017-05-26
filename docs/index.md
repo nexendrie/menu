@@ -185,15 +185,7 @@ menu:
 
 ### Custom conditions
 
-You can define custom conditions in neon:
-
-```yaml
-menu:
-    conditions:
-        custom: App\Menu\CustomCondition
-```
-
-or (preferably) register it as a service:
+You can define custom conditions in neon, just register it as a service:
 
 ```yaml
 services:

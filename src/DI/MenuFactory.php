@@ -21,12 +21,9 @@ class MenuFactory {
   
   /** @var Container */
   protected $container;
-  /** @var array */
-  protected $conditions = [];
   
-  function __construct(array $conditions, Container $container) {
+  function __construct(Container $container) {
     $this->container = $container;
-    $this->conditions = $conditions;
   }
   
   /**
@@ -35,11 +32,6 @@ class MenuFactory {
    * @throws MenuItemConditionNotSupportedException
    */
   protected function getCondition(string $name): IMenuItemCondition {
-    if(array_key_exists($name, $this->conditions)) {
-      /** @var IMenuItemCondition $condition */
-      $condition = $this->container->getByType($this->conditions[$name]);
-      return $condition;
-    }
     foreach($this->container->findByType(IMenuItemCondition::class) as $serviceName) {
       /** @var IMenuItemCondition $service */
       $service = $this->container->createService($serviceName);
