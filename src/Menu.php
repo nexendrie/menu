@@ -13,6 +13,7 @@ use Nette\Localization\ITranslator;
  * @property-read string $name
  * @property string $htmlId
  * @property ITranslator $translator
+ * @property-read MenuItem[] $allowedItems
  */
 class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
   use \Nette\SmartObject;
@@ -153,6 +154,19 @@ class Menu implements \ArrayAccess, \Countable, \IteratorAggregate {
       throw new \OutOfRangeException("Offset invalid or out of range.");
     }
     array_splice($this->items, $index, 1);
+  }
+  
+  /**
+   * @return MenuItem[]
+   */
+  function getAllowedItems(): array {
+    $items = [];
+    foreach($this->items as $item) {
+      if($item->isAllowed()) {
+        $items[] = $item;
+      }
+    }
+    return $items;
   }
 }
 ?>
