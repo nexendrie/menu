@@ -42,30 +42,49 @@ class MenuFactory {
     throw new MenuItemConditionNotSupportedException("Condition $name is not defined.");
   }
   
+  /**
+   * @param string $text
+   * @param string|array $definition
+   * @return MenuItem
+   * @throws \InvalidArgumentException
+   * @throws InvalidMenuItemDefinitionException
+   * @throws MenuItemConditionNotSupportedException
+   */
+  protected function createItem(string $text, $definition): MenuItem {
+    if(is_string($definition)) {
+      return new MenuItem($definition, $text);
+    } elseif(!is_array($definition)) {
+      throw new \InvalidArgumentException("Menu item has to be either string or array.");
+    } elseif(!array_key_exists("link", $definition)) {
+      throw new InvalidMenuItemDefinitionException("Menu item is missing link.");
+    }
+    $item = new MenuItem($definition["link"], $text);
+    if(array_key_exists(MenuExtension::SECTION_CONDITIONS, $definition) AND is_array($definition[MenuExtension::SECTION_CONDITIONS])) {
+      foreach($definition[MenuExtension::SECTION_CONDITIONS] as $condition => $value) {
+        try {
+          $conditionService = $this->getCondition($condition);
+        } catch(MenuItemConditionNotSupportedException $e) {
+          throw $e;
+        }
+        $item->addCondition($conditionService, $value);
+      }
+    }
+    return $item;
+  }
+  
+  /**
+   * @param string $name
+   * @param array $config
+   * @return Menu
+   * @throws \InvalidArgumentException
+   * @throws InvalidMenuItemDefinitionException
+   * @throws MenuItemConditionNotSupportedException
+   */
   function createMenu(string $name, array $config): Menu {
     $menu = new Menu($name, $config["htmlId"]);
     $menu->title = $config["title"];
     foreach($config["items"] as $text => $definition) {
-      if(is_string($definition)) {
-        $menu[] = new MenuItem($definition, $text);
-        continue;
-      } elseif(!is_array($definition)) {
-        throw new \InvalidArgumentException("Menu item has to be either string or array.");
-      } elseif(!array_key_exists("link", $definition)) {
-        throw new InvalidMenuItemDefinitionException("Menu item is missing link.");
-      }
-      $item = new MenuItem($definition["link"], $text);
-      if(array_key_exists(MenuExtension::SECTION_CONDITIONS, $definition) AND is_array($definition[MenuExtension::SECTION_CONDITIONS])) {
-        foreach($definition[MenuExtension::SECTION_CONDITIONS] as $condition => $value) {
-          try {
-            $conditionService = $this->getCondition($condition);
-          } catch(MenuItemConditionNotSupportedException $e) {
-            throw $e;
-          }
-          $item->addCondition($conditionService, $value);
-        }
-      }
-      $menu[] = $item;
+      $menu[] = $this->createItem($text, $definition);
     }
     return $menu;
   }
