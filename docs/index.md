@@ -113,6 +113,8 @@ menu:
         custom: path/to/template
 ```
 
+In the template, you have the menu available in variable $menu. Its most notable properties are htmlId, title and allowedItems. Property allowedItems contains only item items for which all conditions to show are met. If you, for whatever reason, need access to all items, just loop over $menu variable. A menu item has properties link, text and allowed.
+
 Multiple menus
 --------------
 
