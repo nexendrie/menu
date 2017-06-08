@@ -1,6 +1,7 @@
 Version 2.0.0-dev
 - removed section menu.conditions
 - added virtual property Menu::$allowedItems
+- added dependency on nexendrie/utils
 
 Version 1.1.0
 - menu item conditions can be manually registered as services now
