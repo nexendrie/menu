@@ -29,7 +29,7 @@ class Menu extends Collection {
   protected $name;
   /** @var string*/
   protected $htmlId;
-  /** @var  ITranslator */
+  /** @var ITranslator */
   protected $translator;
   
   function __construct(string $name = "default", string $htmlId = "menu") {
