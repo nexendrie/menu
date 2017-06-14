@@ -30,14 +30,12 @@ class ConditionCallback implements IMenuItemCondition {
   function isAllowed($parameter = NULL): bool {
     if(!is_callable($parameter)) {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects callback as parameter.");
-    } else {
-      $result = call_user_func($parameter);
-      if(!is_bool($result)) {
-        throw new \UnexpectedValueException("The callback for method " . static::class . "::isAllowed has to return boolean, " . gettype($result) . " returned.");
-      } else {
-        return $result;
-      }
     }
+    $result = call_user_func($parameter);
+    if(!is_bool($result)) {
+      throw new \UnexpectedValueException("The callback for method " . static::class . "::isAllowed has to return boolean, " . gettype($result) . " returned.");
+    }
+    return $result;
   }
 }
 ?>

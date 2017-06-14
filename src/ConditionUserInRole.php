@@ -30,9 +30,8 @@ class ConditionUserInRole implements IMenuItemCondition {
   function isAllowed($parameter = NULL): bool {
     if(!is_string($parameter)) {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects string as parameter.");
-    } else {
-      return $this->user->isInRole($parameter);
     }
+    return $this->user->isInRole($parameter);
   }
   
   /**

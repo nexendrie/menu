@@ -32,9 +32,8 @@ class ConditionUserLoggedIn implements IMenuItemCondition {
       return true;
     } elseif(!is_bool($parameter)) {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects boolean as parameter.");
-    } else {
-      return ($parameter === $this->user->isLoggedIn());
     }
+    return ($parameter === $this->user->isLoggedIn());
   }
   
   /**

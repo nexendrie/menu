@@ -41,9 +41,8 @@ class ConditionPermission implements IMenuItemCondition {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects string as parameter.");
     } elseif(!Strings::contains($parameter, ":")) {
       throw new \OutOfBoundsException("Method " . static::class . "::isAllowed expects parameter in format resource:privilege.");
-    } else {
-      return $this->user->isAllowed(Strings::before($parameter, ":"), Strings::after($parameter, ":"));
     }
+    return $this->user->isAllowed(Strings::before($parameter, ":"), Strings::after($parameter, ":"));
   }
 }
 ?>
