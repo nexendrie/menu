@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "886417458604d2816fc478f57cc4548f",
+    "content-hash": "91d0c4c9181154bdfcf0a5ad9d5959fc",
     "packages": [
         {
             "name": "latte/latte",
@@ -1608,20 +1608,20 @@
                 "quality",
                 "testing"
             ],
-            "time": "2017-06-14T08:49:22+00:00"
+            "time": "2017-06-14 06:49:22"
         },
         {
             "name": "nexendrie/site-generator",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nexendrie/site-generator.git",
-                "reference": "6341a289970d98b9e6bceb7e9bc44d9e00111415"
+                "url": "https://gitlab.com/nexendrie/site-generator.git",
+                "reference": "ac973f516d087c286c4648ef379de8b5de1a3992"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nexendrie/site-generator/zipball/6341a289970d98b9e6bceb7e9bc44d9e00111415",
-                "reference": "6341a289970d98b9e6bceb7e9bc44d9e00111415",
+                "url": "https://gitlab.com/api/v3/projects/nexendrie%2Fsite-generator/repository/archive.zip?sha=ac973f516d087c286c4648ef379de8b5de1a3992",
+                "reference": "ac973f516d087c286c4648ef379de8b5de1a3992",
                 "shasum": ""
             },
             "require": {
@@ -1670,7 +1670,7 @@
                 "static",
                 "website"
             ],
-            "time": "2017-06-10 13:37:18"
+            "time": "2017-06-15T12:17:18+00:00"
         },
         {
             "name": "nikic/php-parser",
