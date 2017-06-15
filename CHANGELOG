@@ -1,5 +1,4 @@
 Version 2.0.0-dev
-- removed section menu.conditions
 - added virtual property Menu::$allowedItems
 - added dependency on nexendrie/utils
 

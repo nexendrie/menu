@@ -21,9 +21,12 @@ class MenuFactory {
   
   /** @var Container */
   protected $container;
+  /** @var array */
+  protected $conditions = [];
   
-  function __construct(Container $container) {
+  function __construct(array $conditions, Container $container) {
     $this->container = $container;
+    $this->conditions = $conditions;
   }
   
   /**
