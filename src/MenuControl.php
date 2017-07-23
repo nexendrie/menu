@@ -21,7 +21,7 @@ class MenuControl extends \Nette\Application\UI\Control {
   /** @var array */
   protected $templates = [];
   
-  function addMenu(Menu $menu): void {
+  public function addMenu(Menu $menu): void {
     $this->menus[$menu->name] = & $menu;
   }
   
@@ -35,7 +35,7 @@ class MenuControl extends \Nette\Application\UI\Control {
    * @throws MenuTypeAlreadyDefinedException
    * @throws TemplateNotFoundException
    */
-  function addMenuType(string $name, string $template): void {
+  public function addMenuType(string $name, string $template): void {
     if(array_key_exists($name, $this->templates)) {
       throw new MenuTypeAlreadyDefinedException("Menu type $name is already defined");
     }
@@ -106,7 +106,7 @@ class MenuControl extends \Nette\Application\UI\Control {
    * @param $args
    * @return mixed
    */
-  function __call($name, $args) {
+  public function __call($name, $args) {
     if($name === "render") {
       $name = "renderInline";
     }

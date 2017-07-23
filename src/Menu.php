@@ -32,11 +32,11 @@ class Menu extends Collection {
   /** @var ITranslator */
   protected $translator;
   
-  function __construct(string $name = "default", string $htmlId = "menu") {
+  public function __construct(string $name = "default", string $htmlId = "menu") {
     $this->name = $name;
     $this->htmlId = $htmlId;
     $this->translator = new class implements ITranslator {
-      function translate($message, $count = NULL): string {
+      public function translate($message, $count = NULL): string {
         return $message;
       }
     };
@@ -45,56 +45,56 @@ class Menu extends Collection {
   /**
    * @return string
    */
-  function getTitle(): string {
+  public function getTitle(): string {
     return $this->title;
   }
   
   /**
    * @param string $title
    */
-  function setTitle(string $title) {
+  public function setTitle(string $title) {
     $this->title = $title;
   }
   
   /**
    * @return string
    */
-  function getName(): string {
+  public function getName(): string {
     return $this->name;
   }
   
   /**
    * @return string
    */
-  function getHtmlId(): string {
+  public function getHtmlId(): string {
     return $this->htmlId;
   }
   
   /**
    * @param string $htmlId
    */
-  function setHtmlId(string $htmlId) {
+  public function setHtmlId(string $htmlId) {
     $this->htmlId = $htmlId;
   }
   
   /**
    * @return ITranslator
    */
-  function getTranslator(): ITranslator {
+  public function getTranslator(): ITranslator {
     return $this->translator;
   }
   
   /**
    * @param ITranslator $translator
    */
-  function setTranslator(ITranslator $translator) {
+  public function setTranslator(ITranslator $translator) {
     $this->translator = $translator;
   }
   
   /**
    * @return MenuItem[]
    */
-  function getAllowedItems(): array {
+  public function getAllowedItems(): array {
     $items = [];
     foreach($this->items as $item) {
       if($item->isAllowed()) {

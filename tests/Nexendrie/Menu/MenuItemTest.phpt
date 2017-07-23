@@ -11,17 +11,17 @@ class MenuItemTest extends \Tester\TestCase {
   /** @var MenuItem */
   protected $item;
   
-  function setUp() {
+  public function setUp() {
     $this->item = new MenuItem("Test:", "Test");
   }
   
-  function testLink() {
+  public function testLink() {
     Assert::same("Test:", $this->item->link);
     $this->item->link = "Test:new";
     Assert::same("Test:new", $this->item->link);
   }
   
-  function testText() {
+  public function testText() {
     Assert::same("Test", $this->item->text);
     $this->item->text = "New Test";
     Assert::same("New Test", $this->item->text);

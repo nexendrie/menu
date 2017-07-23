@@ -16,24 +16,24 @@ require __DIR__ . "/../../../bootstrap.php";
 class MenuExtensionTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
-  function setUp() {
+  public function setUp() {
     $this->refreshContainer();
   }
   
-  function testComponent() {
+  public function testComponent() {
     /** @var IMenuControlFactory $component */
     $component = $this->getService(IMenuControlFactory::class);
     Assert::type(IMenuControlFactory::class, $component);
     Assert::type(MenuControl::class, $component->create());
   }
   
-  function testMenu() {
+  public function testMenu() {
     /** @var Menu $menu */
     $menu = $this->getService(Menu::class);
     Assert::type(Menu::class, $menu);
   }
   
-  function testMenuTypes() {
+  public function testMenuTypes() {
     $this->refreshContainer(["menu" => [
       "menu_types" => [
         "custom" => __DIR__ . "/../menuCustom.latte",
@@ -46,7 +46,7 @@ class MenuExtensionTest extends \Tester\TestCase {
     }, MenuTypeAlreadyDefinedException::class);
   }
   
-  function testConditions() {
+  public function testConditions() {
     $condition = $this->getService(ConditionCallback::class);
     Assert::type(ConditionCallback::class, $condition);
     set_error_handler(function($errno, $errstr, $errfile, $errline) {

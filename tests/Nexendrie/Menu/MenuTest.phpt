@@ -11,11 +11,11 @@ class MenuTest extends \Tester\TestCase {
   /** @var Menu */
   protected $menu;
   
-  function setUp() {
+  public function setUp() {
     $this->menu = new Menu;
   }
   
-  function testHtmlId() {
+  public function testHtmlId() {
     Assert::same("menu", $this->menu->htmlId);
     $this->menu->htmlId = "testMenu";
     Assert::same("testMenu", $this->menu->htmlId);
@@ -24,14 +24,14 @@ class MenuTest extends \Tester\TestCase {
   /**
    * @return void
    */
-  function testGetAllowedItems() {
+  public function testGetAllowedItems() {
     $item1 = new MenuItem("Test:", "Test");
     $item1->addCondition(new class implements IMenuItemCondition {
-      function getName(): string {
+      public function getName(): string {
         return "true";
       }
       
-      function isAllowed($parameter = NULL): bool {
+      public function isAllowed($parameter = NULL): bool {
         return true;
       }
     }, NULL);
@@ -39,11 +39,11 @@ class MenuTest extends \Tester\TestCase {
     $this->menu[] = $item1;
     $item2 = new MenuItem("Test:", "Test");
     $item2->addCondition(new class implements IMenuItemCondition {
-      function getName(): string {
+      public function getName(): string {
         return "false";
       }
     
-      function isAllowed($parameter = NULL): bool {
+      public function isAllowed($parameter = NULL): bool {
         return false;
       }
     }, NULL);

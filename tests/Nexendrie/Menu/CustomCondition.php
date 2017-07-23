@@ -9,11 +9,11 @@ namespace Nexendrie\Menu;
  * @author Jakub Konečný
  */
 class CustomCondition implements IMenuItemCondition {
-  function getName(): string {
+  public function getName(): string {
     return "custom";
   }
   
-  function isAllowed($parameter = NULL): bool {
+  public function isAllowed($parameter = NULL): bool {
     return true;
   }
 }

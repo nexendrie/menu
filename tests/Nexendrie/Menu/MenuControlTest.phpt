@@ -15,7 +15,7 @@ class MenuControlTest extends \Tester\TestCase {
   /** @var MenuControl */
   protected $control;
   
-  function setUp() {
+  public function setUp() {
     static $control = NULL;
     if(is_null($control)) {
       $control = $this->getService(IMenuControlFactory::class)->create();
@@ -37,7 +37,7 @@ class MenuControlTest extends \Tester\TestCase {
     }
   }
   
-  function testAddMenuType() {
+  public function testAddMenuType() {
     Assert::exception(function() {
       $this->control->addMenuType("inline", "");
     }, MenuTypeAlreadyDefinedException::class);
@@ -48,28 +48,28 @@ class MenuControlTest extends \Tester\TestCase {
     $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuCustom.Expected.latte", "renderCustom");
   }
   
-  function testRenderInline() {
+  public function testRenderInline() {
     $filename = __DIR__ . "/menuInlineExpected.latte";
     $this->checkRenderOutput($this->control, $filename);
   }
   
-  function testRenderList() {
+  public function testRenderList() {
     $filename = __DIR__ . "/menuListExpected.latte";
     $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["list"]);
   }
   
-  function testTranslating() {
+  public function testTranslating() {
     $filename = __DIR__ . "/menuTranslatedExpected.latte";
     $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["translated"]);
   }
   
-  function testInvalidMenu() {
+  public function testInvalidMenu() {
     Assert::exception(function() {
       $this->control->render("invalid");
     }, MenuNotFoundException::class);
   }
   
-  function testInvalidMenuType() {
+  public function testInvalidMenuType() {
     Assert::exception(function() {
       $this->control->renderInvalid();
     }, MenuTypeNotSupportedException::class);

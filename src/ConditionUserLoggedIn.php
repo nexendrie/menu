@@ -18,7 +18,7 @@ class ConditionUserLoggedIn implements IMenuItemCondition {
   /** @var string */
   protected $name = "loggedIn";
   
-  function __construct(User $user) {
+  public function __construct(User $user) {
     $this->user = $user;
   }
   
@@ -27,7 +27,7 @@ class ConditionUserLoggedIn implements IMenuItemCondition {
    * @return bool
    * @throws \InvalidArgumentException
    */
-  function isAllowed($parameter = NULL): bool {
+  public function isAllowed($parameter = NULL): bool {
     if(is_null($parameter)) {
       return true;
     } elseif(!is_bool($parameter)) {
@@ -39,7 +39,7 @@ class ConditionUserLoggedIn implements IMenuItemCondition {
   /**
    * @return string
    */
-  function getName(): string {
+  public function getName(): string {
     return $this->name;
   }
 }

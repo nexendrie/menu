@@ -50,7 +50,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     "callback" => ConditionCallback::class,
   ];
   
-  function __construct() {
+  public function __construct() {
     $this->defaults[static::SECTION_MENU_TYPES] = [
       "inline" => __DIR__ . "/../menuInline.latte",
       "list" => __DIR__ . "/../menuList.latte",
@@ -64,7 +64,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     }
   }
   
-  function loadConfiguration(): void {
+  public function loadConfiguration(): void {
     $config = $this->getConfig($this->defaults);
     $builder = $this->getContainerBuilder();
     $builder->addDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY))
@@ -97,7 +97,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     }
   }
   
-  function beforeCompile(): void {
+  public function beforeCompile(): void {
     $builder = $this->getContainerBuilder();
     $config = $this->getConfig($this->defaults);
     $control = $builder->getDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY));

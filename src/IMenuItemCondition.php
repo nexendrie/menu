@@ -7,7 +7,7 @@ namespace Nexendrie\Menu;
  * @author Jakub Konečný
  */
 interface IMenuItemCondition {
-  function getName(): string;
-  function isAllowed($parameter = NULL): bool;
+  public function getName(): string;
+  public function isAllowed($parameter = NULL): bool;
 }
 ?>

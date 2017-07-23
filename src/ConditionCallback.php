@@ -17,7 +17,7 @@ class ConditionCallback implements IMenuItemCondition {
   /**
    * @return string
    */
-  function getName(): string {
+  public function getName(): string {
     return $this->name;
   }
   
@@ -27,7 +27,7 @@ class ConditionCallback implements IMenuItemCondition {
    * @throws \InvalidArgumentException
    * @throws \UnexpectedValueException
    */
-  function isAllowed($parameter = NULL): bool {
+  public function isAllowed($parameter = NULL): bool {
     if(!is_callable($parameter)) {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects callback as parameter.");
     }

@@ -21,7 +21,7 @@ class MenuItem {
   /** @var array of [IMenuItemCondition, parameter] */
   protected $conditions = [];
   
-  function __construct(string $link, string $text) {
+  public function __construct(string $link, string $text) {
     $this->link = $link;
     $this->text = $text;
   }
@@ -29,28 +29,28 @@ class MenuItem {
   /**
    * @return string
    */
-  function getLink(): string {
+  public function getLink(): string {
     return $this->link;
   }
   
   /**
    * @param string $link
    */
-  function setLink(string $link) {
+  public function setLink(string $link) {
     $this->link = $link;
   }
   
   /**
    * @return string
    */
-  function getText(): string {
+  public function getText(): string {
     return $this->text;
   }
   
   /**
    * @param string $text
    */
-  function setText(string $text) {
+  public function setText(string $text) {
     $this->text = $text;
   }
   
@@ -59,14 +59,14 @@ class MenuItem {
    * @param mixed $parameter
    * @return void
    */
-  function addCondition(IMenuItemCondition $condition, $parameter): void {
+  public function addCondition(IMenuItemCondition $condition, $parameter): void {
     $this->conditions[$condition->getName()] = [$condition, $parameter];
   }
   
   /**
    * @return bool
    */
-  function isAllowed(): bool {
+  public function isAllowed(): bool {
     foreach($this->conditions as $condition) {
       if(!$condition[0]->isAllowed($condition[1])) {
         return false;

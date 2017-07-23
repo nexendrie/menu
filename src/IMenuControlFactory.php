@@ -9,6 +9,6 @@ namespace Nexendrie\Menu;
  */
 interface IMenuControlFactory {
   /** @return MenuControl */
-  function create();
+  public function create();
 }
 ?>

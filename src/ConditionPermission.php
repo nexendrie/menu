@@ -19,14 +19,14 @@ class ConditionPermission implements IMenuItemCondition {
   /** @var string */
   protected $name = "acl";
   
-  function __construct(User $user) {
+  public function __construct(User $user) {
     $this->user = $user;
   }
   
   /**
    * @return string
    */
-  function getName(): string {
+  public function getName(): string {
     return $this->name;
   }
   
@@ -36,7 +36,7 @@ class ConditionPermission implements IMenuItemCondition {
    * @throws \InvalidArgumentException
    * @throws \OutOfBoundsException
    */
-  function isAllowed($parameter = NULL): bool {
+  public function isAllowed($parameter = NULL): bool {
     if(!is_string($parameter)) {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects string as parameter.");
     } elseif(!Strings::contains($parameter, ":")) {

@@ -13,15 +13,15 @@ class ConditionCallbackTest extends \Tester\TestCase {
   /** @var ConditionCallback */
   protected $condition;
   
-  function setUp() {
+  public function setUp() {
     $this->condition = $this->getService(ConditionCallback::class);
   }
   
-  function testGetName() {
+  public function testGetName() {
     Assert::type("string", $this->condition->getName());
   }
   
-  function testIsAllowed() {
+  public function testIsAllowed() {
     Assert::exception(function() {
       $this->condition->isAllowed(NULL);
     }, \InvalidArgumentException::class);

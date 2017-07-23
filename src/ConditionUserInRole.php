@@ -18,7 +18,7 @@ class ConditionUserInRole implements IMenuItemCondition {
   /** @var string */
   protected $name = "role";
   
-  function __construct(User $user) {
+  public function __construct(User $user) {
     $this->user = $user;
   }
   
@@ -27,7 +27,7 @@ class ConditionUserInRole implements IMenuItemCondition {
    * @return bool
    * @throws \InvalidArgumentException
    */
-  function isAllowed($parameter = NULL): bool {
+  public function isAllowed($parameter = NULL): bool {
     if(!is_string($parameter)) {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects string as parameter.");
     }
@@ -37,7 +37,7 @@ class ConditionUserInRole implements IMenuItemCondition {
   /**
    * @return string
    */
-  function getName(): string {
+  public function getName(): string {
     return $this->name;
   }
 }

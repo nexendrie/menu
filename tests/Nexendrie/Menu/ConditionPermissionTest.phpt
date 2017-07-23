@@ -13,15 +13,15 @@ class ConditionPermissionTest extends \Tester\TestCase {
   /** @var ConditionPermission */
   protected $condition;
   
-  function setUp() {
+  public function setUp() {
     $this->condition = $this->getService(ConditionPermission::class);
   }
   
-  function testGetName() {
+  public function testGetName() {
     Assert::type("string", $this->condition->getName());
   }
   
-  function testIsAllowed() {
+  public function testIsAllowed() {
     Assert::exception(function() {
       $this->condition->isAllowed();
     }, \InvalidArgumentException::class);

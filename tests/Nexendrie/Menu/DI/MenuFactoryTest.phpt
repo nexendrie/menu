@@ -16,11 +16,11 @@ class MenuFactoryTest extends \Tester\TestCase {
   /** @var MenuFactory */
   protected $factory;
   
-  function setUp() {
+  public function setUp() {
     $this->factory = $this->getContainer()->getService("menu." . MenuExtension::SERVICE_MENU_FACTORY);
   }
   
-  function testCreateMenu() {
+  public function testCreateMenu() {
     $config = [
       "htmlId" => "menu",
       "title" => "Menu",

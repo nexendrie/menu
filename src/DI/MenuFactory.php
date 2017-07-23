@@ -24,7 +24,7 @@ class MenuFactory {
   /** @var array */
   protected $conditions = [];
   
-  function __construct(array $conditions, Container $container) {
+  public function __construct(array $conditions, Container $container) {
     $this->container = $container;
     $this->conditions = $conditions;
   }
@@ -83,7 +83,7 @@ class MenuFactory {
    * @throws InvalidMenuItemDefinitionException
    * @throws MenuItemConditionNotSupportedException
    */
-  function createMenu(string $name, array $config): Menu {
+  public function createMenu(string $name, array $config): Menu {
     $menu = new Menu($name, $config["htmlId"]);
     $menu->title = $config["title"];
     foreach($config["items"] as $text => $definition) {
