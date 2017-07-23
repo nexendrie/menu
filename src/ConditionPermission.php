@@ -11,9 +11,7 @@ use Nette\Security\User,
  *
  * @author Jakub Konečný
  */
-class ConditionPermission implements IMenuItemCondition {
-  use \Nette\SmartObject;
-  
+class ConditionPermission extends BaseCondition {
   /** @var  User */
   protected $user;
   /** @var string */
@@ -21,10 +19,6 @@ class ConditionPermission implements IMenuItemCondition {
   
   public function __construct(User $user) {
     $this->user = $user;
-  }
-  
-  public function getName(): string {
-    return $this->name;
   }
   
   /**

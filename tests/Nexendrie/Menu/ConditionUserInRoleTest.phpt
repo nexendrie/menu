@@ -19,7 +19,7 @@ class ConditionUserInRoleTest extends \Tester\TestCase {
   }
   
   public function testGetName() {
-    Assert::type("string", $this->condition->getName());
+    Assert::same("role", $this->condition->getName());
   }
   
   public function testIsAllowed() {

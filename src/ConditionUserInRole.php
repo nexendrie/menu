@@ -10,9 +10,7 @@ use Nette\Security\User;
  *
  * @author Jakub Konečný
  */
-class ConditionUserInRole implements IMenuItemCondition {
-  use \Nette\SmartObject;
-  
+class ConditionUserInRole extends BaseCondition {
   /** @var  User */
   protected $user;
   /** @var string */
@@ -31,10 +29,6 @@ class ConditionUserInRole implements IMenuItemCondition {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects string as parameter.");
     }
     return $this->user->isInRole($parameter);
-  }
-  
-  public function getName(): string {
-    return $this->name;
   }
 }
 ?>

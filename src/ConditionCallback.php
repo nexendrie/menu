@@ -8,16 +8,7 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class ConditionCallback implements IMenuItemCondition {
-  use \Nette\SmartObject;
-  
-  /** @var string */
-  protected $name = "callback";
-  
-  public function getName(): string {
-    return $this->name;
-  }
-  
+class ConditionCallback extends BaseCondition {
   /**
    * @param callable $parameter
    * @throws \InvalidArgumentException

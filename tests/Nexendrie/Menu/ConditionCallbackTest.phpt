@@ -18,7 +18,7 @@ class ConditionCallbackTest extends \Tester\TestCase {
   }
   
   public function testGetName() {
-    Assert::type("string", $this->condition->getName());
+    Assert::same("callback", $this->condition->getName());
   }
   
   public function testIsAllowed() {

@@ -10,7 +10,7 @@ use Nette\Security\User;
  *
  * @author Jakub Konečný
  */
-class ConditionUserLoggedIn implements IMenuItemCondition {
+class ConditionUserLoggedIn extends BaseCondition {
   use \Nette\SmartObject;
   
   /** @var  User */
@@ -33,10 +33,6 @@ class ConditionUserLoggedIn implements IMenuItemCondition {
       throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects boolean as parameter.");
     }
     return ($parameter === $this->user->isLoggedIn());
-  }
-  
-  public function getName(): string {
-    return $this->name;
   }
 }
 ?>
