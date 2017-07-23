@@ -29,9 +29,6 @@ class MenuControl extends \Nette\Application\UI\Control {
    * Register new menu type
    * Also creates new virtual method renderName
    *
-   * @param string $name
-   * @param string $template
-   * @return void
    * @throws MenuTypeAlreadyDefinedException
    * @throws TemplateNotFoundException
    */
@@ -46,8 +43,6 @@ class MenuControl extends \Nette\Application\UI\Control {
   }
   
   /**
-   * @param string $menuName
-   * @return Menu
    * @throws MenuNotFoundException
    */
   protected function getMenu(string $menuName): Menu {
@@ -62,8 +57,6 @@ class MenuControl extends \Nette\Application\UI\Control {
   /**
    * Returns filename of template for a menu type
    *
-   * @param string $menuType
-   * @return string
    * @throws MenuTypeNotSupportedException
    */
   protected function getTemplateFilename(string $menuType): string {
@@ -78,9 +71,6 @@ class MenuControl extends \Nette\Application\UI\Control {
   /**
    * Contains all logic for rendering the component
    *
-   * @param string $menuName
-   * @param string $menuType
-   * @return void
    * @throws MenuNotFoundException
    * @throws MenuTypeNotSupportedException
    */

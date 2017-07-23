@@ -26,46 +26,29 @@ class MenuItem {
     $this->text = $text;
   }
   
-  /**
-   * @return string
-   */
   public function getLink(): string {
     return $this->link;
   }
   
-  /**
-   * @param string $link
-   */
   public function setLink(string $link) {
     $this->link = $link;
   }
   
-  /**
-   * @return string
-   */
   public function getText(): string {
     return $this->text;
   }
   
-  /**
-   * @param string $text
-   */
   public function setText(string $text) {
     $this->text = $text;
   }
   
   /**
-   * @param IMenuItemCondition $condition
    * @param mixed $parameter
-   * @return void
    */
   public function addCondition(IMenuItemCondition $condition, $parameter): void {
     $this->conditions[$condition->getName()] = [$condition, $parameter];
   }
   
-  /**
-   * @return bool
-   */
   public function isAllowed(): bool {
     foreach($this->conditions as $condition) {
       if(!$condition[0]->isAllowed($condition[1])) {

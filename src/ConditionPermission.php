@@ -23,16 +23,12 @@ class ConditionPermission implements IMenuItemCondition {
     $this->user = $user;
   }
   
-  /**
-   * @return string
-   */
   public function getName(): string {
     return $this->name;
   }
   
   /**
    * @param string $parameter
-   * @return bool
    * @throws \InvalidArgumentException
    * @throws \OutOfBoundsException
    */

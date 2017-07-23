@@ -14,16 +14,12 @@ class ConditionCallback implements IMenuItemCondition {
   /** @var string */
   protected $name = "callback";
   
-  /**
-   * @return string
-   */
   public function getName(): string {
     return $this->name;
   }
   
   /**
    * @param callable $parameter
-   * @return bool
    * @throws \InvalidArgumentException
    * @throws \UnexpectedValueException
    */

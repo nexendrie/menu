@@ -24,7 +24,6 @@ class ConditionUserInRole implements IMenuItemCondition {
   
   /**
    * @param string $parameter Role
-   * @return bool
    * @throws \InvalidArgumentException
    */
   public function isAllowed($parameter = NULL): bool {
@@ -34,9 +33,6 @@ class ConditionUserInRole implements IMenuItemCondition {
     return $this->user->isInRole($parameter);
   }
   
-  /**
-   * @return string
-   */
   public function getName(): string {
     return $this->name;
   }

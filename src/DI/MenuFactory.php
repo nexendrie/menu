@@ -30,8 +30,6 @@ class MenuFactory {
   }
   
   /**
-   * @param string $name
-   * @return IMenuItemCondition
    * @throws MenuItemConditionNotSupportedException
    */
   protected function getCondition(string $name): IMenuItemCondition {
@@ -46,9 +44,7 @@ class MenuFactory {
   }
   
   /**
-   * @param string $text
    * @param string|array $definition
-   * @return MenuItem
    * @throws \InvalidArgumentException
    * @throws InvalidMenuItemDefinitionException
    * @throws MenuItemConditionNotSupportedException
@@ -76,9 +72,6 @@ class MenuFactory {
   }
   
   /**
-   * @param string $name
-   * @param array $config
-   * @return Menu
    * @throws \InvalidArgumentException
    * @throws InvalidMenuItemDefinitionException
    * @throws MenuItemConditionNotSupportedException

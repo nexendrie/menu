@@ -42,51 +42,30 @@ class Menu extends Collection {
     };
   }
   
-  /**
-   * @return string
-   */
   public function getTitle(): string {
     return $this->title;
   }
   
-  /**
-   * @param string $title
-   */
   public function setTitle(string $title) {
     $this->title = $title;
   }
   
-  /**
-   * @return string
-   */
   public function getName(): string {
     return $this->name;
   }
   
-  /**
-   * @return string
-   */
   public function getHtmlId(): string {
     return $this->htmlId;
   }
   
-  /**
-   * @param string $htmlId
-   */
   public function setHtmlId(string $htmlId) {
     $this->htmlId = $htmlId;
   }
   
-  /**
-   * @return ITranslator
-   */
   public function getTranslator(): ITranslator {
     return $this->translator;
   }
   
-  /**
-   * @param ITranslator $translator
-   */
   public function setTranslator(ITranslator $translator) {
     $this->translator = $translator;
   }

@@ -24,7 +24,6 @@ class ConditionUserLoggedIn implements IMenuItemCondition {
   
   /**
    * @param bool $parameter
-   * @return bool
    * @throws \InvalidArgumentException
    */
   public function isAllowed($parameter = NULL): bool {
@@ -36,9 +35,6 @@ class ConditionUserLoggedIn implements IMenuItemCondition {
     return ($parameter === $this->user->isLoggedIn());
   }
   
-  /**
-   * @return string
-   */
   public function getName(): string {
     return $this->name;
   }
