@@ -14,9 +14,9 @@ namespace Nexendrie\Menu;
 class MenuItem {
   use \Nette\SmartObject;
   
-  /** @var  string */
+  /** @var string */
   protected $text;
-  /** @var  string */
+  /** @var string */
   protected $link;
   /** @var array of [IMenuItemCondition, parameter] */
   protected $conditions = [];

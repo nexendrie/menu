@@ -29,9 +29,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     "default" => [],
   ];
   
-  /**
-   * @var array
-   */
+  /** @var array */
   protected $menuDefaults = [
     "title" => "",
     "htmlId" => "menu",
