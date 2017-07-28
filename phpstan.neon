@@ -1,5 +1,6 @@
 includes:
     - vendor/nexendrie/code-quality/phpstan.neon
-    - vendor/phpstan/phpstan-nette/extension.neon
 parameters:
     ignoreErrors:
+    universalObjectCratesClasses:
+        - Nette\Bridges\ApplicationLatte\Template
