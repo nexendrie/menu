@@ -12,7 +12,7 @@
       <arg value="--output=public"/>
     </exec>
   </target>
-  <target name="ci-coverage" depends="install,lint,cs,phpstan">
+  <target name="ci-coverage">
     <exec executable="vendor/bin/run-tests" logoutput="true" passthru="true" checkreturn="true">
       <arg value="-p"/>
       <arg value="php"/>
