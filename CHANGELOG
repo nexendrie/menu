@@ -1,4 +1,4 @@
-Version 1.1.0+dev
+Version 1.2.0
 - added virtual property Menu::$allowedItems
 - added dependency on nexendrie/utils
 - added BaseCondition
