@@ -16,7 +16,7 @@ checks:
         no_goto: true
         naming_conventions:
             local_variable: '^[a-z][a-zA-Z0-9]*$'
-            abstract_class_name: ^Abstract|Factory|Base$
+            abstract_class_name: '^(Abstract|Factory|Base)[a-zA-Z0-9]*$'
             constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$'
             property_name: '^[a-z][a-zA-Z0-9]*$'
             method_name: '^(?:[a-z]|__)[a-zA-Z0-9]*$'
