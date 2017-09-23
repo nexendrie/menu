@@ -15,7 +15,8 @@
     ],
     "support": {
         "source": "https://gitlab.com/nexendrie/menu/",
-        "issues": "https://gitlab.com/nexendrie/menu/issues"
+        "issues": "https://gitlab.com/nexendrie/menu/issues",
+        "docs": "https://nexendrie.gitlab.io/menu"
     },
     "require": {
         "php": ">=7.1.0",
