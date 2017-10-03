@@ -76,11 +76,11 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     }
     foreach($config[static::SECTION_CONDITIONS] as $name => $class) {
       $builder->addDefinition($this->prefix("condition.$name"))
-        ->setClass($class);
+        ->setType($class);
     }
     foreach($this->defaultConditions as $name => $class) {
       $builder->addDefinition($this->prefix("condition.$name"))
-        ->setClass($class);
+        ->setType($class);
     }
     foreach($config as $name => $menu) {
       if(in_array($name, $this->specialSections)) {
