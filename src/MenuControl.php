@@ -63,9 +63,8 @@ class MenuControl extends \Nette\Application\UI\Control {
     $filename = Arrays::get($this->templates, $menuType, "");
     if($filename === "") {
       throw new MenuTypeNotSupportedException("Menu type $menuType is not supported.");
-    } else {
-      return $filename;
     }
+    return $filename;
   }
   
   /**
