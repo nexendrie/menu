@@ -26,7 +26,7 @@ class ConditionUserInRole extends BaseCondition {
    */
   public function isAllowed($parameter = NULL): bool {
     if(!is_string($parameter)) {
-      throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects string as parameter.");
+      throw new \InvalidArgumentException("Method " . __METHOD__ . " expects string as parameter.");
     }
     return $this->user->isInRole($parameter);
   }

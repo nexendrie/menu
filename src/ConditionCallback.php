@@ -16,11 +16,11 @@ class ConditionCallback extends BaseCondition {
    */
   public function isAllowed($parameter = NULL): bool {
     if(!is_callable($parameter)) {
-      throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects callback as parameter.");
+      throw new \InvalidArgumentException("Method " . __METHOD__ . " expects callback as parameter.");
     }
     $result = call_user_func($parameter);
     if(!is_bool($result)) {
-      throw new \UnexpectedValueException("The callback for method " . static::class . "::isAllowed has to return boolean, " . gettype($result) . " returned.");
+      throw new \UnexpectedValueException("The callback for method " . __METHOD__ . "::isAllowed has to return boolean, " . gettype($result) . " returned.");
     }
     return $result;
   }

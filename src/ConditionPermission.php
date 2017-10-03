@@ -28,9 +28,9 @@ class ConditionPermission extends BaseCondition {
    */
   public function isAllowed($parameter = NULL): bool {
     if(!is_string($parameter)) {
-      throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects string as parameter.");
+      throw new \InvalidArgumentException("Method " . __METHOD__ . " expects string as parameter.");
     } elseif(!Strings::contains($parameter, ":")) {
-      throw new \OutOfBoundsException("Method " . static::class . "::isAllowed expects parameter in format resource:privilege.");
+      throw new \OutOfBoundsException("Method " . __METHOD__ . " expects parameter in format resource:privilege.");
     }
     return $this->user->isAllowed(Strings::before($parameter, ":"), Strings::after($parameter, ":"));
   }

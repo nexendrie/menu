@@ -30,7 +30,7 @@ class ConditionUserLoggedIn extends BaseCondition {
     if(is_null($parameter)) {
       return true;
     } elseif(!is_bool($parameter)) {
-      throw new \InvalidArgumentException("Method " . static::class . "::isAllowed expects boolean as parameter.");
+      throw new \InvalidArgumentException("Method " . __METHOD__ . " expects boolean as parameter.");
     }
     return ($parameter === $this->user->isLoggedIn());
   }
