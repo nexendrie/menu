@@ -1,3 +1,7 @@
+Version 1.2.0+dev
+- removed build.xml from releases
+- deprecated constant MenuExtension::SECTION_CONDITIONS (was forgotten in 1.1.0)
+
 Version 1.2.0
 - added virtual property Menu::$allowedItems
 - added dependency on nexendrie/utils
