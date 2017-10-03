@@ -23,7 +23,7 @@ class ConditionUserLoggedIn extends BaseCondition {
   }
   
   /**
-   * @param bool $parameter
+   * @param bool|NULL $parameter
    * @throws \InvalidArgumentException
    */
   public function isAllowed($parameter = NULL): bool {
