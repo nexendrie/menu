@@ -19,17 +19,13 @@ use Nette\DI\Container,
 class MenuFactory {
   use \Nette\SmartObject;
   
+  protected const SECTION_CONDITIONS = "conditions";
+  
   /** @var Container */
   protected $container;
-  /** @var IMenuItemCondition[] */
-  protected $conditions = [];
   
-  /**
-   * @param IMenuItemCondition[] $conditions
-   */
-  public function __construct(array $conditions, Container $container) {
+  public function __construct(Container $container) {
     $this->container = $container;
-    $this->conditions = $conditions;
   }
   
   /**
@@ -61,8 +57,8 @@ class MenuFactory {
       throw new InvalidMenuItemDefinitionException("Menu item is missing link.");
     }
     $item = new MenuItem($definition["link"], $text);
-    if(array_key_exists(MenuExtension::SECTION_CONDITIONS, $definition) AND is_array($definition[MenuExtension::SECTION_CONDITIONS])) {
-      foreach($definition[MenuExtension::SECTION_CONDITIONS] as $condition => $value) {
+    if(array_key_exists(static::SECTION_CONDITIONS, $definition) AND is_array($definition[static::SECTION_CONDITIONS])) {
+      foreach($definition[static::SECTION_CONDITIONS] as $condition => $value) {
         try {
           $conditionService = $this->getCondition($condition);
         } catch(MenuItemConditionNotSupportedException $e) {

@@ -8,8 +8,7 @@ use Tester\Assert,
     Nexendrie\Menu\MenuControl,
     Nexendrie\Menu\Menu,
     Nexendrie\Menu\MenuTypeAlreadyDefinedException,
-    Nexendrie\Menu\ConditionCallback,
-    Nexendrie\Menu\CustomCondition;
+    Nexendrie\Menu\ConditionCallback;
 
 require __DIR__ . "/../../../bootstrap.php";
 
@@ -49,17 +48,6 @@ class MenuExtensionTest extends \Tester\TestCase {
   public function testConditions() {
     $condition = $this->getService(ConditionCallback::class);
     Assert::type(ConditionCallback::class, $condition);
-    set_error_handler(function($errno, $errstr, $errfile, $errline) {
-      return ($errno === E_USER_DEPRECATED);
-    });
-    $this->refreshContainer(["menu" => [
-      "conditions" => [
-        "custom" => CustomCondition::class
-      ]
-    ]]);
-    restore_error_handler();
-    $condition = $this->getService(CustomCondition::class);
-    Assert::type(CustomCondition::class, $condition);
   }
 }
 
