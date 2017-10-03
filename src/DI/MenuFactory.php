@@ -16,7 +16,7 @@ use Nette\DI\Container,
  * @author Jakub Konečný
  * @internal
  */
-class MenuFactory {
+final class MenuFactory {
   use \Nette\SmartObject;
   
   protected const SECTION_CONDITIONS = "conditions";

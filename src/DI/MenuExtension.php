@@ -18,7 +18,7 @@ use Nexendrie\Menu\IMenuControlFactory,
  *
  * @author Jakub Konečný
  */
-class MenuExtension extends \Nette\DI\CompilerExtension {
+final class MenuExtension extends \Nette\DI\CompilerExtension {
   public const SERVICE_COMPONENT_FACTORY = "componentFactory";
   public const SERVICE_MENU_FACTORY = "menuFactory";
   public const SECTION_MENU_TYPES = "menu_types";

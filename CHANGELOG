@@ -1,5 +1,6 @@
 Version 2.0.0-dev
 - removed support for section menu.conditions
+- marked some classes as final
 
 Version 1.2.1
 - removed build.xml from releases
