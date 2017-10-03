@@ -1,4 +1,4 @@
-Version 1.2.0+dev
+Version 1.2.1
 - removed build.xml from releases
 - deprecated constant MenuExtension::SECTION_CONDITIONS (was forgotten in 1.1.0)
 
