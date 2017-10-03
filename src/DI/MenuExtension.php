@@ -19,10 +19,10 @@ use Nexendrie\Menu\IMenuControlFactory,
  * @author Jakub Konečný
  */
 class MenuExtension extends \Nette\DI\CompilerExtension {
-  const SERVICE_COMPONENT_FACTORY = "componentFactory";
-  const SERVICE_MENU_FACTORY = "menuFactory";
-  const SECTION_MENU_TYPES = "menu_types";
-  const SECTION_CONDITIONS = "conditions";
+  public const SERVICE_COMPONENT_FACTORY = "componentFactory";
+  public const SERVICE_MENU_FACTORY = "menuFactory";
+  public const SECTION_MENU_TYPES = "menu_types";
+  public const SECTION_CONDITIONS = "conditions";
   
   /** @var array */
   protected $defaults = [
