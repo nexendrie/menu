@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "085fbf579584e884baa06d06d2c8f33a",
+    "content-hash": "4dee5fa49b3ce51e6f46c485fbea7899",
     "packages": [
         {
             "name": "latte/latte",

@@ -66,11 +66,11 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
     $builder->addDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY))
       ->setImplement(IMenuControlFactory::class);
     $builder->addDefinition($this->prefix(static::SERVICE_MENU_FACTORY))
-      ->setClass(MenuFactory::class)
+      ->setType(MenuFactory::class)
       ->setAutowired(false);
     foreach($this->defaultConditions as $name => $class) {
       $builder->addDefinition($this->prefix("condition.$name"))
-        ->setClass($class);
+        ->setType($class);
     }
     foreach($config as $name => $menu) {
       if(in_array($name, $this->specialSections)) {
