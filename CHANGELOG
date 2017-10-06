@@ -1,6 +1,8 @@
 Version 2.0.0-dev
 - removed support for section menu.conditions
 - marked some classes as final
+- introduced menu item link renders
+- allowed absolute urls as link target
 
 Version 1.2.1
 - removed build.xml from releases

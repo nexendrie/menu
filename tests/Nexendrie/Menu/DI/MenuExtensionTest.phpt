@@ -8,7 +8,8 @@ use Tester\Assert,
     Nexendrie\Menu\MenuControl,
     Nexendrie\Menu\Menu,
     Nexendrie\Menu\MenuTypeAlreadyDefinedException,
-    Nexendrie\Menu\ConditionCallback;
+    Nexendrie\Menu\ConditionCallback,
+    Nexendrie\Menu\LinkRenderPresenterAction;
 
 require __DIR__ . "/../../../bootstrap.php";
 
@@ -48,6 +49,11 @@ class MenuExtensionTest extends \Tester\TestCase {
   public function testConditions() {
     $condition = $this->getService(ConditionCallback::class);
     Assert::type(ConditionCallback::class, $condition);
+  }
+  
+  public function testLinkRenderers() {
+    $renderer = $this->getService(LinkRenderPresenterAction::class);
+    Assert::type(LinkRenderPresenterAction::class, $renderer);
   }
 }
 

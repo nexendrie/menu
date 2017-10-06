@@ -20,6 +20,8 @@ class MenuItem {
   protected $link;
   /** @var array of [IMenuItemCondition, parameter] */
   protected $conditions = [];
+  /** @var IMenuItemLinkRender[] */
+  protected $linkRenders = [];
   
   public function __construct(string $link, string $text) {
     $this->link = $link;
@@ -27,7 +29,14 @@ class MenuItem {
   }
   
   public function getLink(): string {
-    return $this->link;
+    $link = $this->link;
+    foreach($this->linkRenders as $render) {
+      if($render->isApplicable($this->link)) {
+        $link =  $render->renderLink($this->link);
+        break;
+      }
+    }
+    return $link;
   }
   
   public function setLink(string $link) {
@@ -47,6 +56,10 @@ class MenuItem {
    */
   public function addCondition(IMenuItemCondition $condition, $parameter): void {
     $this->conditions[$condition->getName()] = [$condition, $parameter];
+  }
+  
+  public function addLinkRender(IMenuItemLinkRender $render): void {
+    $this->linkRenders[$render->getName()] = $render;
   }
   
   public function isAllowed(): bool {

@@ -3,28 +3,32 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Tester\Assert;
-
 require __DIR__ . "/../../bootstrap.php";
 
-class BaseConditionTest extends \Tester\TestCase {
+use Tester\Assert;
+
+final class BaseLinkRenderTest extends \Tester\TestCase {
   public function testProperty() {
-    $condition = new class extends BaseCondition {
+    $condition = new class extends BaseLinkRender {
       protected $name = "abc";
       
-      public function isAllowed($parameter = NULL): bool {
+      public function isApplicable(string $link): bool {
         return true;
+      }
+      
+      public function renderLink(string $link): string {
+        return $link;
       }
     };
     Assert::same("abc", $condition->getName());
   }
   
   public function testClassName() {
-    $condition = new ConditionABC();
+    $condition = new LinkRenderAbc();
     Assert::same("abc", $condition->getName());
   }
 }
 
-$test = new BaseConditionTest;
+$test = new BaseLinkRenderTest();
 $test->run();
 ?>

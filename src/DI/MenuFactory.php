@@ -8,7 +8,8 @@ use Nette\DI\Container,
     Nexendrie\Menu\MenuItem,
     Nexendrie\Menu\IMenuItemCondition,
     Nexendrie\Menu\InvalidMenuItemDefinitionException,
-    Nexendrie\Menu\MenuItemConditionNotSupportedException;
+    Nexendrie\Menu\MenuItemConditionNotSupportedException,
+    Nexendrie\Menu\IMenuItemLinkRender;
 
 /**
  * MenuFactory
@@ -71,15 +72,32 @@ final class MenuFactory {
   }
   
   /**
+   * @return IMenuItemLinkRender[]
+   */
+  protected function getLinkRenders(): array {
+    $renders = [];
+    $serviceNames = $this->container->findByType(IMenuItemLinkRender::class);
+    foreach($serviceNames as $serviceName) {
+      $renders[] = $this->container->getService($serviceName);
+    }
+    return $renders;
+  }
+  
+  /**
    * @throws \InvalidArgumentException
    * @throws InvalidMenuItemDefinitionException
    * @throws MenuItemConditionNotSupportedException
    */
   public function createMenu(string $name, array $config): Menu {
+    $renders = $this->getLinkRenders();
     $menu = new Menu($name, $config["htmlId"]);
     $menu->title = $config["title"];
     foreach($config["items"] as $text => $definition) {
-      $menu[] = $this->createItem($text, $definition);
+      $item = $this->createItem($text, $definition);
+      foreach($renders as $render) {
+        $item->addLinkRender($render);
+      }
+      $menu[] = $item;
     }
     return $menu;
   }

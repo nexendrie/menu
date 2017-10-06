@@ -58,6 +58,11 @@ class MenuControlTest extends \Tester\TestCase {
     $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["list"]);
   }
   
+  public function testLinkRenders() {
+    $filename = __DIR__ . "/menuLinkRendersExpected.latte";
+    $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["renders"]);
+  }
+  
   public function testTranslating() {
     $filename = __DIR__ . "/menuTranslatedExpected.latte";
     $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["translated"]);

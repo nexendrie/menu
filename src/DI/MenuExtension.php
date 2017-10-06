@@ -11,7 +11,10 @@ use Nexendrie\Menu\IMenuControlFactory,
     Nexendrie\Menu\ConditionPermission,
     Nexendrie\Menu\ConditionCallback,
     Nette\Reflection\ClassType,
-    Nette\Utils\Strings;
+    Nette\Utils\Strings,
+    Nexendrie\Menu\LinkRenderPresenterAction,
+    Nexendrie\Menu\LinkRenderJavaScriptAction,
+    Nexendrie\Menu\LinkRenderUrl;
 
 /**
  * MenuExtension
@@ -47,6 +50,13 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
     "callback" => ConditionCallback::class,
   ];
   
+  /** @var string[] */
+  protected $linkRenders = [
+    "javascript" => LinkRenderJavaScriptAction::class,
+    "url" => LinkRenderUrl::class,
+    "presenterAction" => LinkRenderPresenterAction::class,
+  ];
+  
   public function __construct() {
     $this->defaults[static::SECTION_MENU_TYPES] = [
       "inline" => __DIR__ . "/../menuInline.latte",
@@ -70,6 +80,10 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
       ->setAutowired(false);
     foreach($this->defaultConditions as $name => $class) {
       $builder->addDefinition($this->prefix("condition.$name"))
+        ->setType($class);
+    }
+    foreach($this->linkRenders as $name => $class) {
+      $builder->addDefinition($this->prefix("linkRenderer.$name"))
         ->setType($class);
     }
     foreach($config as $name => $menu) {

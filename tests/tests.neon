@@ -1,5 +1,10 @@
 application:
     scanDirs: false
+    mapping:
+        *: Nexendrie\Menu\*Presenter
+routing:
+    routes:
+        "<presenter>[/<action>][/<id>]": "Test:default"
 services:
     testbench.presenterMock: Testbench\Mocks\PresenterMock
     - Nexendrie\Menu\Authorizator
@@ -33,3 +38,8 @@ menu:
         items:
             Test: "Test:"
             New Test: Test:new
+    renders:
+        items:
+            Absolute: https://nexendrie.gitlab.io/menu
+            Javascript: "javascript:void()"
+            Presenter: "Test:"
