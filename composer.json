@@ -40,7 +40,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Nexendrie\\Menu\\": "tests/"
+            "Nexendrie\\Menu\\": "tests/Nexendrie/Menu/"
         }
     },
     "config": {
