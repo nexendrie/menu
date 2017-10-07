@@ -20,7 +20,7 @@ final class ConditionCallback extends BaseCondition {
     }
     $result = call_user_func($parameter);
     if(!is_bool($result)) {
-      throw new \UnexpectedValueException("The callback for method " . __METHOD__ . "::isAllowed has to return boolean, " . gettype($result) . " returned.");
+      throw new \UnexpectedValueException("The callback for method " . __METHOD__ . " has to return boolean, " . gettype($result) . " returned.");
     }
     return $result;
   }
