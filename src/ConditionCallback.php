@@ -8,7 +8,7 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class ConditionCallback extends BaseCondition {
+final class ConditionCallback extends BaseCondition {
   /**
    * @param callable $parameter
    * @throws \InvalidArgumentException

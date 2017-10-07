@@ -11,7 +11,7 @@ use Nette\Security\User,
  *
  * @author Jakub Konečný
  */
-class ConditionPermission extends BaseCondition {
+final class ConditionPermission extends BaseCondition {
   /** @var  User */
   protected $user;
   /** @var string */
