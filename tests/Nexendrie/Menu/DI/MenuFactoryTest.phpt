@@ -10,7 +10,7 @@ use Tester\Assert,
 
 require __DIR__ . "/../../../bootstrap.php";
 
-class MenuFactoryTest extends \Tester\TestCase {
+final class MenuFactoryTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
   /** @var MenuFactory */

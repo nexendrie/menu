@@ -7,7 +7,7 @@ use Tester\Assert;
 
 require __DIR__ . "/../../bootstrap.php";
 
-class BaseConditionTest extends \Tester\TestCase {
+final class BaseConditionTest extends \Tester\TestCase {
   public function testProperty() {
     $condition = new class extends BaseCondition {
       protected $name = "abc";

@@ -7,7 +7,7 @@ use Tester\Assert;
 
 require __DIR__ . "/../../bootstrap.php";
 
-class ConditionCallbackTest extends \Tester\TestCase {
+final class ConditionCallbackTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
   /** @var ConditionCallback */

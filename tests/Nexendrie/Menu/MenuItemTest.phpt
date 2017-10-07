@@ -7,7 +7,7 @@ use Tester\Assert;
 
 require __DIR__ . "/../../bootstrap.php";
 
-class MenuItemTest extends \Tester\TestCase {
+final class MenuItemTest extends \Tester\TestCase {
   /** @var MenuItem */
   protected $item;
   
