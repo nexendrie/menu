@@ -34,7 +34,7 @@ menu:
             New Test: Test:new
 ```
 
-. This creates menu with 2 items. Format for items is simple: Text: Destination. Currently you can only create links to presenters in your application.
+. This creates menu with 2 items. Format for items is simple: Text: Destination. Destination can be a presenter's action or absolute url (supported protocols are http and https).
 
 Then inject the control to your presenter
 
@@ -187,15 +187,7 @@ menu:
 
 ### Custom conditions
 
-You can define custom conditions in neon:
-
-```yaml
-menu:
-    conditions:
-        custom: App\Menu\CustomCondition
-```
-
-or (preferably) register it as a service:
+You can define custom conditions in neon. Just register them as services:
 
 ```yaml
 services:
@@ -230,3 +222,20 @@ interface IMenuItemCondition {
 ```
 
 Method isAllowed return true if the item should be shown, else false. It accepts one argument. All conditions are registered as services in DI container, so they can depend on other services.
+
+Menu item link rendering
+------------------------
+
+Url of link is not created in the template, it is composed by link render. It is a service implementing Nexendrie\Menu\IMenuItemLinkRender interface.
+
+```php
+<?php
+interface IMenuItemLinkRender {
+  public function isApplicable(string $link): bool;
+  public function renderLink(string $link): string;
+  public function getName(): string;
+}
+?>
+```
+
+By default, there are renders for presenter's action, JavaScript action and absolute url. If you need more types, create your own classes implementing the interface and register them to DI container.
