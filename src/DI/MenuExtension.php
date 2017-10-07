@@ -83,7 +83,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
         ->setType($class);
     }
     foreach($this->linkRenders as $name => $class) {
-      $builder->addDefinition($this->prefix("linkRenderer.$name"))
+      $builder->addDefinition($this->prefix("linkRender.$name"))
         ->setType($class);
     }
     foreach($config as $name => $menu) {
