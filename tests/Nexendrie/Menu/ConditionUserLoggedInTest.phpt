@@ -7,7 +7,7 @@ use Tester\Assert;
 
 require __DIR__ . "/../../bootstrap.php";
 
-class ConditionUserLoggedInTest extends \Tester\TestCase {
+final class ConditionUserLoggedInTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
   /** @var ConditionUserLoggedIn */

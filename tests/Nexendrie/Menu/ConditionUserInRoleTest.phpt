@@ -8,7 +8,7 @@ use Tester\Assert,
 
 require __DIR__ . "/../../bootstrap.php";
 
-class ConditionUserInRoleTest extends \Tester\TestCase {
+final class ConditionUserInRoleTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
   /** @var ConditionUserInRole */

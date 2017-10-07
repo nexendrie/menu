@@ -13,7 +13,7 @@ use Tester\Assert,
 
 require __DIR__ . "/../../../bootstrap.php";
 
-class MenuExtensionTest extends \Tester\TestCase {
+final class MenuExtensionTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
   public function setUp() {

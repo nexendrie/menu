@@ -8,7 +8,7 @@ use Tester\Assert,
 
 require __DIR__ . "/../../bootstrap.php";
 
-class MenuControlTest extends \Tester\TestCase {
+final class MenuControlTest extends \Tester\TestCase {
   use \Testbench\TComponent;
   use \Testbench\TCompiledContainer;
   

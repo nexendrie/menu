@@ -7,7 +7,7 @@ use Tester\Assert;
 
 require __DIR__ . "/../../bootstrap.php";
 
-class ConditionPermissionTest extends \Tester\TestCase {
+final class ConditionPermissionTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
   /** @var ConditionPermission */
