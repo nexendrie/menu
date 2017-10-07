@@ -16,6 +16,9 @@ final class LinkRenderUrl extends BaseLinkRender {
   }
   
   public function renderLink(string $link): string {
+    if(!$this->isApplicable($link)) {
+      return "";
+    }
     return $link;
   }
 }

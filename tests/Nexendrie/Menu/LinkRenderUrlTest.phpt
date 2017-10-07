@@ -25,6 +25,7 @@ final class LinkRenderUrlTest extends \Tester\TestCase {
   
   public function testRenderLink() {
     Assert::same("https://nexendrie.gitlab.io/menu", $this->render->renderLink("https://nexendrie.gitlab.io/menu"));
+    Assert::same("", $this->render->renderLink("Test:new"));
   }
 }
 
