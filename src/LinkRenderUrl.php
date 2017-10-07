@@ -6,7 +6,7 @@ namespace Nexendrie\Menu;
 use Nette\Utils\Validators;
 
 /**
- * LinkRendererUrl
+ * LinkRenderUrl
  *
  * @author Jakub Konečný
  */

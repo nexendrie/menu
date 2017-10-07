@@ -6,7 +6,7 @@ namespace Nexendrie\Menu;
 use Nette\Utils\Strings;
 
 /**
- * LinkRendererJavaScriptAction
+ * LinkRenderJavaScriptAction
  *
  * @author Jakub Konečný
  */

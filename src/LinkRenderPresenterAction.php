@@ -7,7 +7,7 @@ use Nette\Application\LinkGenerator,
     Nette\Application\UI\InvalidLinkException;
 
 /**
- * LinkRendererPresenterAction
+ * LinkRenderPresenterAction
  *
  * @author Jakub Konečný
  */
