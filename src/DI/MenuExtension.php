@@ -10,7 +10,6 @@ use Nexendrie\Menu\IMenuControlFactory,
     Nexendrie\Menu\ConditionUserInRole,
     Nexendrie\Menu\ConditionPermission,
     Nexendrie\Menu\ConditionCallback,
-    Nette\Reflection\ClassType,
     Nette\Utils\Strings,
     Nexendrie\Menu\LinkRenderPresenterAction,
     Nexendrie\Menu\LinkRenderJavaScriptAction,
@@ -62,7 +61,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
       "inline" => __DIR__ . "/../menuInline.latte",
       "list" => __DIR__ . "/../menuList.latte",
     ];
-    $constants = (new ClassType(static::class))->constants;
+    $constants = (new \ReflectionClass(static::class))->getConstants();
     foreach($constants as $name => $value) {
       if(Strings::startsWith($name, "SECTION_")) {
         $this->specialSections[] = $value;
