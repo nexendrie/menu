@@ -12,7 +12,7 @@ use Nette\Security\User,
  * @author Jakub Konečný
  */
 class ConditionPermission extends BaseCondition {
-  /** @var  User */
+  /** @var User */
   protected $user;
   /** @var string */
   protected $name = "acl";

@@ -13,7 +13,7 @@ use Nette\Security\User;
 class ConditionUserLoggedIn extends BaseCondition {
   use \Nette\SmartObject;
   
-  /** @var  User */
+  /** @var User */
   protected $user;
   /** @var string */
   protected $name = "loggedIn";

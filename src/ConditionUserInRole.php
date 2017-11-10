@@ -11,7 +11,7 @@ use Nette\Security\User;
  * @author Jakub Konečný
  */
 class ConditionUserInRole extends BaseCondition {
-  /** @var  User */
+  /** @var User */
   protected $user;
   /** @var string */
   protected $name = "role";
