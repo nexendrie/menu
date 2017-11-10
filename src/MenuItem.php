@@ -18,7 +18,7 @@ class MenuItem {
   protected $text;
   /** @var string */
   protected $link;
-  /** @var array of [IMenuItemCondition, parameter] */
+  /** @var array[] of [IMenuItemCondition, string] */
   protected $conditions = [];
   
   public function __construct(string $link, string $text) {
