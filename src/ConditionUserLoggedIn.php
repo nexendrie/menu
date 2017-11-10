@@ -11,8 +11,6 @@ use Nette\Security\User;
  * @author Jakub Konečný
  */
 class ConditionUserLoggedIn extends BaseCondition {
-  use \Nette\SmartObject;
-  
   /** @var User */
   protected $user;
   /** @var string */
