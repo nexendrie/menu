@@ -19,8 +19,6 @@ use Nette\Localization\ITranslator,
 class Menu extends Collection {
   use \Nette\SmartObject;
   
-  /** @var MenuItem[] */
-  protected $items = [];
   /** @var string */
   protected $class = MenuItem::class;
   /** @var string */
@@ -74,13 +72,9 @@ class Menu extends Collection {
    * @return MenuItem[]
    */
   public function getAllowedItems(): array {
-    $items = [];
-    foreach($this->items as $item) {
-      if($item->isAllowed()) {
-        $items[] = $item;
-      }
-    }
-    return $items;
+    return array_values(array_filter($this->items, function(MenuItem $item) {
+      return $item->isAllowed();
+    }));
   }
 }
 ?>
