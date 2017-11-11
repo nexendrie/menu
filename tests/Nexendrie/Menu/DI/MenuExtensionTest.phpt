@@ -55,6 +55,12 @@ final class MenuExtensionTest extends \Tester\TestCase {
     $renderer = $this->getService(LinkRenderPresenterAction::class);
     Assert::type(LinkRenderPresenterAction::class, $renderer);
   }
+  
+  public function testSubitems() {
+    $menu = $this->getContainer()->getService("menu.subitems");
+    Assert::count(1, $menu);
+    Assert::count(1, $menu[0]);
+  }
 }
 
 $test = new MenuExtensionTest;

@@ -11,7 +11,7 @@ namespace Nexendrie\Menu;
  * @property string $text
  * @property-read bool $allowed
  */
-class MenuItem {
+class MenuItem extends Collection {
   use \Nette\SmartObject;
   
   /** @var string */

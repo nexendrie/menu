@@ -3,8 +3,7 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Nette\Localization\ITranslator,
-    Nexendrie\Utils\Collection;
+use Nette\Localization\ITranslator;
 
 /**
  * Menu
@@ -14,15 +13,10 @@ use Nette\Localization\ITranslator,
  * @property-read string $name
  * @property string $htmlId
  * @property ITranslator $translator
- * @property-read MenuItem[] $allowedItems
  */
 class Menu extends Collection {
   use \Nette\SmartObject;
   
-  /** @var MenuItem[] */
-  protected $items = [];
-  /** @var string */
-  protected $class = MenuItem::class;
   /** @var string */
   protected $title = "";
   /** @var string */
@@ -68,19 +62,6 @@ class Menu extends Collection {
   
   public function setTranslator(ITranslator $translator) {
     $this->translator = $translator;
-  }
-  
-  /**
-   * @return MenuItem[]
-   */
-  public function getAllowedItems(): array {
-    $items = [];
-    foreach($this->items as $item) {
-      if($item->isAllowed()) {
-        $items[] = $item;
-      }
-    }
-    return $items;
   }
 }
 ?>

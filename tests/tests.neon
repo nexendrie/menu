@@ -43,3 +43,9 @@ menu:
             Absolute: https://nexendrie.gitlab.io/menu
             Javascript: "javascript:void()"
             Presenter: "Test:"
+    subitems:
+        items:
+            Structured:
+                link: Test:structured
+                items:
+                    Subitem: Test:structured

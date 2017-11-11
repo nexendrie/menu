@@ -60,6 +60,23 @@ and show it in template
 
 .
 
+Subitems
+--------
+
+Menu items can contain unlimited number (and level) of subitems. They can be defined from neon.
+
+```yaml
+menu:
+    subitems:
+        items:
+            Structured:
+                link: Test:structured
+                items:
+                    Subitem: Test:structured
+```
+
+Standard templates are able to render only first level items.
+
 Menu types
 ----------
 

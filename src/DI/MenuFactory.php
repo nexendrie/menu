@@ -68,6 +68,11 @@ final class MenuFactory {
         $item->addCondition($conditionService, $value);
       }
     }
+    if(isset($definition["items"]) AND is_array($definition["items"])) {
+      foreach($definition["items"] as $subtext => $subdefinition) {
+        $item[] = $this->createItem($subtext, $subdefinition);
+      }
+    }
     return $item;
   }
   
