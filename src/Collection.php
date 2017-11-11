@@ -12,8 +12,6 @@ use Nexendrie\Utils\Collection as BaseCollection;
  * @property-read MenuItem[] $allowedItems
  */
 abstract class Collection extends BaseCollection {
-  /** @var MenuItem[] */
-  protected $items = [];
   /** @var string */
   protected $class = MenuItem::class;
   
