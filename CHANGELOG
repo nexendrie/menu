@@ -3,6 +3,7 @@ Version 2.0.0-dev
 - marked some classes as final
 - introduced menu item link renders
 - allowed absolute urls as link target
+- added support for subitems
 
 Version 1.2.1
 - removed build.xml from releases
