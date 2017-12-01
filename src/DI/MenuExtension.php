@@ -86,7 +86,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
         ->setType($class);
     }
     foreach($config as $name => $menu) {
-      if(in_array($name, $this->specialSections)) {
+      if(in_array($name, $this->specialSections, true)) {
         continue;
       }
       $data = Helpers::merge($menu, $this->menuDefaults);
