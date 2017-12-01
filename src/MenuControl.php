@@ -91,8 +91,8 @@ class MenuControl extends \Nette\Application\UI\Control {
    * renderAbc will try to render menu of abc type
    * Anything that does not start with render is handled by \Nette\SmartObject
    *
-   * @param $name
-   * @param $args
+   * @param string $name
+   * @param array $args
    * @return mixed
    */
   public function __call($name, $args) {
