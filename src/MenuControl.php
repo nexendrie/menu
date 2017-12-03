@@ -15,7 +15,7 @@ use Nette\Utils\Arrays,
  * @method void renderInline(string $menuName = "default")
  * @method void renderList(string $menuName = "default")
  */
-class MenuControl extends \Nette\Application\UI\Control {
+final class MenuControl extends \Nette\Application\UI\Control {
   /** @var Menu[] */
   protected $menus = [];
   /** @var array */
