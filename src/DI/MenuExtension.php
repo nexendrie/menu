@@ -70,7 +70,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
     $builder->addDefinition($this->prefix(static::SERVICE_MENU_FACTORY))
       ->setFactory(MenuFactory::class, [$config[static::SECTION_CONDITIONS]])
       ->setAutowired(false);
-    if(count($config[static::SECTION_CONDITIONS])) {
+    if(count($config[static::SECTION_CONDITIONS]) > 1) {
       trigger_error("Section " . $this->prefix(static::SECTION_CONDITIONS) . "is deprecated. Register custom conditions manually.", E_USER_DEPRECATED);
     }
     foreach($config[static::SECTION_CONDITIONS] as $name => $class) {
@@ -82,7 +82,7 @@ class MenuExtension extends \Nette\DI\CompilerExtension {
         ->setType($class);
     }
     foreach($config as $name => $menu) {
-      if(in_array($name, $this->specialSections)) {
+      if(in_array($name, $this->specialSections, true)) {
         continue;
       }
       $data = Helpers::merge($menu, $this->menuDefaults);
