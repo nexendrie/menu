@@ -75,8 +75,6 @@ menu:
                     Subitem: Test:structured
 ```
 
-Standard templates are able to render only first level items.
-
 Menu types
 ----------
 

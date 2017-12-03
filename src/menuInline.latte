@@ -1,3 +1,6 @@
+{define menu-level, $items}
+    {foreach $items->allowedItems as $item}<a href="{$item->link}">{_$item->text}</a>{if $item->allowedItems} {include this, $item}{/if}{if !$iterator->isLast()} {/if}{/foreach}
+{/define}
   <nav id="{$menu->htmlId}">
-    {foreach $menu->allowedItems as $item}<a href="{$item->link}">{_$item->text}</a>{if !$iterator->isLast()} {/if}{/foreach}
+    {include menu-level, $menu}
   </nav>

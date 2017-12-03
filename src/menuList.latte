@@ -1,6 +1,10 @@
-  <nav id="{$menu->htmlId}">
-    {if $menu->title}<h3>{_$menu->title}</h3>
-    {else}{/if}<ul>
-        <li n:foreach="$menu->allowedItems as $item"><a href="{$item->link}">{_$item->text}</a></li>
+{define menu-level, $items}
+    <ul>
+      <li n:foreach="$items->allowedItems as $item"><a href="{$item->link}">{_$item->text}</a>{if $item->allowedItems}
+      {include this, $item}{else}{/if}</li>
     </ul>
+{/define}
+  <nav id="{$menu->htmlId}">
+    {if $menu->title}<h3>{_$menu->title}</h3>{/if}
+    {include menu-level, $menu}
   </nav>

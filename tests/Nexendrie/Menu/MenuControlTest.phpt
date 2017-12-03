@@ -49,13 +49,13 @@ final class MenuControlTest extends \Tester\TestCase {
   }
   
   public function testRenderInline() {
-    $filename = __DIR__ . "/menuInlineExpected.latte";
-    $this->checkRenderOutput($this->control, $filename);
+    $this->checkRenderOutput($this->control, __DIR__ . "/menuInlineExpected.latte");
+    $this->checkRenderOutput($this->control, __DIR__ . "/menuInlineMultilevelExpected.latte", ["subitems"]);
   }
   
   public function testRenderList() {
-    $filename = __DIR__ . "/menuListExpected.latte";
-    $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["list"]);
+    $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuListExpected.latte", "renderList", ["list"]);
+    $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuListMultilevelExpected.latte", "renderList", ["subitems"]);
   }
   
   public function testLinkRenders() {
