@@ -10,7 +10,7 @@ use Nette\Application\UI\Presenter;
  *
  * @author Jakub Konečný
  */
-class TestPresenter extends Presenter {
+final class TestPresenter extends Presenter {
   public function actionNew() {
   
   }

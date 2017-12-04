@@ -8,7 +8,7 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class LinkRenderAbc extends BaseLinkRender {
+final class LinkRenderAbc extends BaseLinkRender {
   public function isApplicable(string $link): bool {
     return true;
   }
