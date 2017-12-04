@@ -15,8 +15,6 @@ use Nette\Localization\ITranslator;
  * @property ITranslator $translator
  */
 class Menu extends Collection {
-  use \Nette\SmartObject;
-  
   /** @var string */
   protected $title = "";
   /** @var string */

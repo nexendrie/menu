@@ -12,6 +12,8 @@ use Nexendrie\Utils\Collection as BaseCollection;
  * @property-read MenuItem[] $allowedItems
  */
 abstract class Collection extends BaseCollection {
+  use \Nette\SmartObject;
+  
   /** @var string */
   protected $class = MenuItem::class;
   
