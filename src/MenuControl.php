@@ -18,7 +18,7 @@ use Nette\Utils\Arrays,
 final class MenuControl extends \Nette\Application\UI\Control {
   /** @var Menu[] */
   protected $menus = [];
-  /** @var array */
+  /** @var string[] */
   protected $templates = [];
   
   public function addMenu(Menu $menu): void {
