@@ -34,7 +34,7 @@ class MenuControl extends \Nette\Application\UI\Control {
    */
   public function addMenuType(string $name, string $template): void {
     if(array_key_exists($name, $this->templates)) {
-      throw new MenuTypeAlreadyDefinedException("Menu type $name is already defined");
+      throw new MenuTypeAlreadyDefinedException("Menu type $name is already defined.");
     }
     if(!file_exists($template)) {
       throw new TemplateNotFoundException("File $template does not exist.");
