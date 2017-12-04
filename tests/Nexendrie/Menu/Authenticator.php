@@ -8,7 +8,7 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class Authenticator extends \Nette\Security\SimpleAuthenticator {
+final class Authenticator extends \Nette\Security\SimpleAuthenticator {
   public function __construct() {
     $userList = [
       "test" => "test",

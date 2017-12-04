@@ -10,7 +10,7 @@ use Nette\Localization\ITranslator;
  *
  * @author Jakub Konečný
  */
-class Translator implements ITranslator {
+final class Translator implements ITranslator {
   public function translate($message, $count = NULL): string {
     return "1$message";
   }

@@ -8,7 +8,7 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class Authorizator extends \Nette\Security\Permission {
+final class Authorizator extends \Nette\Security\Permission {
   public function __construct() {
     $this->addRole("guest");
     $this->addRole("abc", "guest");

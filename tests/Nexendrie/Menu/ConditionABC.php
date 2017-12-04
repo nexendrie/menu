@@ -8,7 +8,7 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class ConditionABC extends BaseCondition {
+final class ConditionABC extends BaseCondition {
   public function isAllowed($parameter = NULL): bool {
     return true;
   }
