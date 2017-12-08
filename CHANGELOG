@@ -1,3 +1,8 @@
+Version 1.2.1+dev
+- code cleaning
+- fixed some exception messages
+- removed indirect dependency on nette/reflection
+
 Version 1.2.1
 - removed build.xml from releases
 - deprecated constant MenuExtension::SECTION_CONDITIONS (was forgotten in 1.1.0)
