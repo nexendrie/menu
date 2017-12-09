@@ -47,6 +47,23 @@ class MenuFactory {
   }
   
   /**
+   * @throws MenuItemConditionNotSupportedException
+   */
+  protected function insertConditions(MenuItem &$item, array $definition): void {
+    if(!array_key_exists(MenuExtension::SECTION_CONDITIONS, $definition) OR !is_array($definition[MenuExtension::SECTION_CONDITIONS])) {
+      return;
+    }
+    foreach($definition[MenuExtension::SECTION_CONDITIONS] as $condition => $value) {
+      try {
+        $conditionService = $this->getCondition($condition);
+      } catch(MenuItemConditionNotSupportedException $e) {
+        throw $e;
+      }
+      $item->addCondition($conditionService, $value);
+    }
+  }
+  
+  /**
    * @param string|array $definition
    * @throws \InvalidArgumentException
    * @throws InvalidMenuItemDefinitionException
@@ -61,16 +78,7 @@ class MenuFactory {
       throw new InvalidMenuItemDefinitionException("Menu item is missing link.");
     }
     $item = new MenuItem($definition["link"], $text);
-    if(array_key_exists(MenuExtension::SECTION_CONDITIONS, $definition) AND is_array($definition[MenuExtension::SECTION_CONDITIONS])) {
-      foreach($definition[MenuExtension::SECTION_CONDITIONS] as $condition => $value) {
-        try {
-          $conditionService = $this->getCondition($condition);
-        } catch(MenuItemConditionNotSupportedException $e) {
-          throw $e;
-        }
-        $item->addCondition($conditionService, $value);
-      }
-    }
+    $this->insertConditions($item, $definition);
     return $item;
   }
   
