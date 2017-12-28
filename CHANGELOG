@@ -1,4 +1,4 @@
-Version 1.2.1+dev
+Version 1.2.2
 - code cleaning
 - fixed some exception messages
 - removed indirect dependency on nette/reflection
