@@ -9,6 +9,7 @@ use Nexendrie\Utils\Collection as BaseCollection;
  * Collection of menu items
  *
  * @author Jakub Konečný
+ * @internal
  * @property-read MenuItem[] $allowedItems
  */
 abstract class Collection extends BaseCollection {
