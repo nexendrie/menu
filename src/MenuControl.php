@@ -60,6 +60,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
    * @throws MenuTypeNotSupportedException
    */
   protected function getTemplateFilename(string $menuType): string {
+    /** @var string $filename */
     $filename = Arrays::get($this->templates, $menuType, "");
     if($filename === "") {
       throw new MenuTypeNotSupportedException("Menu type $menuType is not supported.");
