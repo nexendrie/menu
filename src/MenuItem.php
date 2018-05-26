@@ -22,6 +22,7 @@ class MenuItem extends Collection {
   protected $linkRenders = [];
   
   public function __construct(string $link, string $text) {
+    parent::__construct();
     $this->link = $link;
     $this->text = $text;
   }

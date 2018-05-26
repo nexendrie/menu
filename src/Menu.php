@@ -25,6 +25,7 @@ class Menu extends Collection {
   protected $translator;
   
   public function __construct(string $name = "default", string $htmlId = "menu") {
+    parent::__construct();
     $this->name = $name;
     $this->htmlId = $htmlId;
     $this->translator = new class implements ITranslator {
