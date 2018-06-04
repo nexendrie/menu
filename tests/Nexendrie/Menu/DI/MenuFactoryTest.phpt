@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu\DI;
 
-use Tester\Assert,
-    Nexendrie\Menu\Menu,
-    Nexendrie\Menu\InvalidMenuItemDefinitionException,
-    Nexendrie\Menu\MenuItemConditionNotSupportedException;
+use Tester\Assert;
+use Nexendrie\Menu\Menu;
+use Nexendrie\Menu\InvalidMenuItemDefinitionException;
+use Nexendrie\Menu\MenuItemConditionNotSupportedException;
 
 require __DIR__ . "/../../../bootstrap.php";
 

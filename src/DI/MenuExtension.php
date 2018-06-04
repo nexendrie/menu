@@ -3,17 +3,17 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu\DI;
 
-use Nexendrie\Menu\IMenuControlFactory,
-    Nexendrie\Menu\Menu,
-    Nette\DI\Config\Helpers,
-    Nexendrie\Menu\ConditionUserLoggedIn,
-    Nexendrie\Menu\ConditionUserInRole,
-    Nexendrie\Menu\ConditionPermission,
-    Nexendrie\Menu\ConditionCallback,
-    Nette\Utils\Strings,
-    Nexendrie\Menu\LinkRenderPresenterAction,
-    Nexendrie\Menu\LinkRenderJavaScriptAction,
-    Nexendrie\Menu\LinkRenderUrl;
+use Nexendrie\Menu\IMenuControlFactory;
+use Nexendrie\Menu\Menu;
+use Nette\DI\Config\Helpers;
+use Nexendrie\Menu\ConditionUserLoggedIn;
+use Nexendrie\Menu\ConditionUserInRole;
+use Nexendrie\Menu\ConditionPermission;
+use Nexendrie\Menu\ConditionCallback;
+use Nette\Utils\Strings;
+use Nexendrie\Menu\LinkRenderPresenterAction;
+use Nexendrie\Menu\LinkRenderJavaScriptAction;
+use Nexendrie\Menu\LinkRenderUrl;
 
 /**
  * MenuExtension

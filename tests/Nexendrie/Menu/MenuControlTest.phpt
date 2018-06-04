@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Tester\Assert,
-    Nette\ComponentModel\IComponent;
+use Tester\Assert;
+use Nette\ComponentModel\IComponent;
 
 require __DIR__ . "/../../bootstrap.php";
 

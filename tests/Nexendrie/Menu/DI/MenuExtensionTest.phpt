@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu\DI;
 
-use Tester\Assert,
-    Nexendrie\Menu\IMenuControlFactory,
-    Nexendrie\Menu\MenuControl,
-    Nexendrie\Menu\Menu,
-    Nexendrie\Menu\MenuTypeAlreadyDefinedException,
-    Nexendrie\Menu\ConditionCallback,
-    Nexendrie\Menu\LinkRenderPresenterAction;
+use Tester\Assert;
+use Nexendrie\Menu\IMenuControlFactory;
+use Nexendrie\Menu\MenuControl;
+use Nexendrie\Menu\Menu;
+use Nexendrie\Menu\MenuTypeAlreadyDefinedException;
+use Nexendrie\Menu\ConditionCallback;
+use Nexendrie\Menu\LinkRenderPresenterAction;
 
 require __DIR__ . "/../../../bootstrap.php";
 

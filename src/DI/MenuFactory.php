@@ -3,13 +3,13 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu\DI;
 
-use Nette\DI\Container,
-    Nexendrie\Menu\Menu,
-    Nexendrie\Menu\MenuItem,
-    Nexendrie\Menu\IMenuItemCondition,
-    Nexendrie\Menu\InvalidMenuItemDefinitionException,
-    Nexendrie\Menu\MenuItemConditionNotSupportedException,
-    Nexendrie\Menu\IMenuItemLinkRender;
+use Nette\DI\Container;
+use Nexendrie\Menu\Menu;
+use Nexendrie\Menu\MenuItem;
+use Nexendrie\Menu\IMenuItemCondition;
+use Nexendrie\Menu\InvalidMenuItemDefinitionException;
+use Nexendrie\Menu\MenuItemConditionNotSupportedException;
+use Nexendrie\Menu\IMenuItemLinkRender;
 
 /**
  * MenuFactory

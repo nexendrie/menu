@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Nette\Application\LinkGenerator,
-    Nette\Application\UI\InvalidLinkException;
+use Nette\Application\LinkGenerator;
+use Nette\Application\UI\InvalidLinkException;
 
 /**
  * LinkRenderPresenterAction

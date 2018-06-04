@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Nette\Security\User,
-    Nette\Utils\Strings;
+use Nette\Security\User;
+use Nette\Utils\Strings;
 
 /**
  * ConditionPermission

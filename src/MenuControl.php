@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Nette\Utils\Arrays,
-    Nette\Utils\Strings;
+use Nette\Utils\Arrays;
+use Nette\Utils\Strings;
 
 /**
  * MenuControl
