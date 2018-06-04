@@ -12,7 +12,7 @@ final class BaseConditionTest extends \Tester\TestCase {
     $condition = new class extends BaseCondition {
       protected $name = "abc";
       
-      public function isAllowed($parameter = NULL): bool {
+      public function isAllowed($parameter = null): bool {
         return true;
       }
     };

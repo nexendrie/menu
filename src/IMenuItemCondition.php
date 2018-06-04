@@ -10,6 +10,6 @@ namespace Nexendrie\Menu;
  */
 interface IMenuItemCondition {
   public function getName(): string;
-  public function isAllowed($parameter = NULL): bool;
+  public function isAllowed($parameter = null): bool;
 }
 ?>

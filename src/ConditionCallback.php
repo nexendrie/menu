@@ -14,7 +14,7 @@ final class ConditionCallback extends BaseCondition {
    * @throws \InvalidArgumentException
    * @throws \UnexpectedValueException
    */
-  public function isAllowed($parameter = NULL): bool {
+  public function isAllowed($parameter = null): bool {
     if(!is_callable($parameter)) {
       throw new \InvalidArgumentException("Method " . __METHOD__ . " expects callback as parameter.");
     }

@@ -31,10 +31,10 @@ final class MenuTest extends \Tester\TestCase {
         return "true";
       }
       
-      public function isAllowed($parameter = NULL): bool {
+      public function isAllowed($parameter = null): bool {
         return true;
       }
-    }, NULL);
+    }, null);
     $this->menu[] = $item1;
     $this->menu[] = $item1;
     $item2 = new MenuItem("Test:", "Test");
@@ -43,10 +43,10 @@ final class MenuTest extends \Tester\TestCase {
         return "false";
       }
     
-      public function isAllowed($parameter = NULL): bool {
+      public function isAllowed($parameter = null): bool {
         return false;
       }
-    }, NULL);
+    }, null);
     $this->menu[] = $item2;
     $items = $this->menu->getAllowedItems();
     Assert::type("array", $items);

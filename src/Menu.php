@@ -29,7 +29,7 @@ class Menu extends Collection {
     $this->name = $name;
     $this->htmlId = $htmlId;
     $this->translator = new class implements ITranslator {
-      public function translate($message, $count = NULL): string {
+      public function translate($message, $count = null): string {
         return $message;
       }
     };

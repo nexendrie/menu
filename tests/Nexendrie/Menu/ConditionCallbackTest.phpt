@@ -23,11 +23,11 @@ final class ConditionCallbackTest extends \Tester\TestCase {
   
   public function testIsAllowed() {
     Assert::exception(function() {
-      $this->condition->isAllowed(NULL);
+      $this->condition->isAllowed(null);
     }, \InvalidArgumentException::class);
     Assert::exception(function() {
       $this->condition->isAllowed(function() {
-        return NULL;
+        return null;
       });
     }, \UnexpectedValueException::class);
     Assert::true($this->condition->isAllowed(function() {

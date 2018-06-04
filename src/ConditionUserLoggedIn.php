@@ -21,10 +21,10 @@ final class ConditionUserLoggedIn extends BaseCondition {
   }
   
   /**
-   * @param bool|NULL $parameter
+   * @param bool|null $parameter
    * @throws \InvalidArgumentException
    */
-  public function isAllowed($parameter = NULL): bool {
+  public function isAllowed($parameter = null): bool {
     if(is_null($parameter)) {
       return true;
     } elseif(!is_bool($parameter)) {
