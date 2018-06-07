@@ -25,6 +25,6 @@ final class BaseConditionTest extends \Tester\TestCase {
   }
 }
 
-$test = new BaseConditionTest;
+$test = new BaseConditionTest();
 $test->run();
 ?>

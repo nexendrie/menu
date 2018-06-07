@@ -28,6 +28,6 @@ final class MenuItemTest extends \Tester\TestCase {
   }
 }
 
-$test = new MenuItemTest;
+$test = new MenuItemTest();
 $test->run();
 ?>

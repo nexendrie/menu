@@ -31,6 +31,6 @@ final class ConditionUserLoggedInTest extends \Tester\TestCase {
   }
 }
 
-$test = new ConditionUserLoggedInTest;
+$test = new ConditionUserLoggedInTest();
 $test->run();
 ?>

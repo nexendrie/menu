@@ -12,7 +12,7 @@ final class MenuTest extends \Tester\TestCase {
   protected $menu;
   
   public function setUp() {
-    $this->menu = new Menu;
+    $this->menu = new Menu();
   }
   
   public function testHtmlId() {
@@ -54,6 +54,6 @@ final class MenuTest extends \Tester\TestCase {
   }
 }
 
-$test = new MenuTest;
+$test = new MenuTest();
 $test->run();
 ?>

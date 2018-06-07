@@ -63,6 +63,6 @@ final class MenuExtensionTest extends \Tester\TestCase {
   }
 }
 
-$test = new MenuExtensionTest;
+$test = new MenuExtensionTest();
 $test->run();
 ?>

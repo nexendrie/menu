@@ -81,6 +81,6 @@ final class MenuControlTest extends \Tester\TestCase {
   }
 }
 
-$test = new MenuControlTest;
+$test = new MenuControlTest();
 $test->run();
 ?>

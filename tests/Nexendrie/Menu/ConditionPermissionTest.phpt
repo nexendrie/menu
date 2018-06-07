@@ -33,6 +33,6 @@ final class ConditionPermissionTest extends \Tester\TestCase {
   }
 }
 
-$test = new ConditionPermissionTest;
+$test = new ConditionPermissionTest();
 $test->run();
 ?>

@@ -53,6 +53,6 @@ final class MenuFactoryTest extends \Tester\TestCase {
   }
 }
 
-$test = new MenuFactoryTest;
+$test = new MenuFactoryTest();
 $test->run();
 ?>
