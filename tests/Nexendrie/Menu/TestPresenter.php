@@ -11,8 +11,7 @@ use Nette\Application\UI\Presenter;
  * @author Jakub Konečný
  */
 final class TestPresenter extends Presenter {
-  public function actionNew() {
-  
+  public function actionNew(): void {
   }
 }
 ?>

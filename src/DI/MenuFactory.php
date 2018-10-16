@@ -91,7 +91,9 @@ final class MenuFactory {
     $renders = [];
     $serviceNames = $this->container->findByType(IMenuItemLinkRender::class);
     foreach($serviceNames as $serviceName) {
-      $renders[] = $this->container->getService($serviceName);
+      /** @var IMenuItemLinkRender $service */
+      $service = $this->container->getService($serviceName);
+      $renders[] = $service;
     }
     return $renders;
   }

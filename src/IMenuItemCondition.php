@@ -10,6 +10,10 @@ namespace Nexendrie\Menu;
  */
 interface IMenuItemCondition {
   public function getName(): string;
+
+  /**
+   * @param mixed $parameter
+   */
   public function isAllowed($parameter = null): bool;
 }
 ?>

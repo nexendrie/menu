@@ -11,6 +11,7 @@ use Nette\Utils\Strings;
  * @author Jakub Konečný
  */
 final class LinkRenderJavaScriptAction extends BaseLinkRender {
+  /** @var string */
   protected $name = "javascript";
   
   public function isApplicable(string $link): bool {

@@ -39,7 +39,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
     if(!file_exists($template)) {
       throw new TemplateNotFoundException("File $template does not exist.");
     }
-    $this->templates[$name] = realpath($template);
+    $this->templates[$name] = (string) realpath($template);
   }
   
   /**
