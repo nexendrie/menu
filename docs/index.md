@@ -44,10 +44,7 @@ class BasePresenter extends \Nette\Application\UI\Presenter {
   /** @var \Nexendrie\Menu\IMenuControlFactory @inject */
   public $menuFactory;
   
-  /**
-   * @return \Nexendrie\Menu\MenuControl
-   */
-  protected function createComponentMenu() {
+  protected function createComponentMenu(): \Nexendrie\Menu\MenuControl {
     return $this->menuFactory->create();
   }
 }
@@ -106,10 +103,7 @@ class BasePresenter extends \Nette\Application\UI\Presenter {
   /** @var \Nexendrie\Menu\IMenuControlFactory @inject */
   public $menuFactory;
   
-  /**
-   * @return \Nexendrie\Menu\MenuControl
-   */
-  protected function createComponentMenu() {
+  protected function createComponentMenu(): \Nexendrie\Menu\MenuControl {
     $control = $this->menuFactory->create();
     $control->addMenuType("custom", __DIR__ . "/customMenuTemplate.latte");
     return $control;
