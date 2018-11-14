@@ -39,6 +39,7 @@ menu:
 Then inject the control to your presenter
 
 ```php
+<?php
 class BasePresenter extends \Nette\Application\UI\Presenter {
   /** @var \Nexendrie\Menu\IMenuControlFactory @inject */
   public $menuFactory;
@@ -50,6 +51,7 @@ class BasePresenter extends \Nette\Application\UI\Presenter {
     return $this->menuFactory->create();
   }
 }
+?>
 ```
 
 and show it in template
@@ -99,6 +101,7 @@ menu:
 It is possible to define custom menu types in MenuControl via method addMenuType. It expects type name and template's filename as arguments.
 
 ```php
+<?php
 class BasePresenter extends \Nette\Application\UI\Presenter {
   /** @var \Nexendrie\Menu\IMenuControlFactory @inject */
   public $menuFactory;
@@ -112,6 +115,7 @@ class BasePresenter extends \Nette\Application\UI\Presenter {
     return $control;
   }
 }
+?>
 ```
 
 Then you can use it just like the default types.
