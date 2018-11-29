@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project name="Nexendrie Menu" basedir="." default="test">
   <import file="vendor/nexendrie/code-quality/build.xml"/>
-  <target name="test" depends="install,lint,cs,phpstan,tests"/>
-  <target name="test-coverage" depends="install,lint,cs,phpstan,tests-coverage"/>
-  <target name="test-phpdbg" depends="install,lint,cs,phpstan,tests-phpdbg"/>
-  <target name="documentation" depends="install">
+  <target name="test" depends="lint,cs,phpstan,tests"/>
+  <target name="test-coverage" depends="lint,cs,phpstan,tests-coverage"/>
+  <target name="test-phpdbg" depends="lint,cs,phpstan,tests-phpdbg"/>
+  <target name="documentation">
     <exec executable="vendor/bin/generate-site" logoutput="true" passthru="true" checkreturn="true">
       <arg value="--source=docs"/>
       <arg value="--output=public"/>
@@ -29,15 +29,6 @@
       <arg path="./coverage.xml"/>
       <arg value="--coverage-src"/>
       <arg path="./src"/>
-    </exec>
-  </target>
-  <target name="install">
-    <exec executable="composer" logoutput="true" passthru="true" checkreturn="true">
-      <arg value="install"/>
-      <arg value="--prefer-dist"/>
-      <arg value="--no-progress"/>
-      <arg value="--no-suggest"/>
-      <arg value="--no-interaction"/>
     </exec>
   </target>
 </project>
