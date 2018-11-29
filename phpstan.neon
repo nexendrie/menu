@@ -6,6 +6,6 @@ parameters:
         - '#Call to function is_string\(\) with string will always evaluate to true#'
         - '#Only booleans are allowed in an if condition, mixed given#'
         - '#Method Nexendrie\\Menu\\[a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has no return typehint specified#'
-        - '#Method Nexendrie\\Menu\\[a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has parameter \$[a-zA-Z0-9_]+ with no typehint specified#'
+        - '#Method class@anonymous/Menu.php:31::translate\(\) has parameter \$[a-zA-Z0-9_]+ with no typehint specified#'
     universalObjectCratesClasses:
         - Nette\Bridges\ApplicationLatte\Template
