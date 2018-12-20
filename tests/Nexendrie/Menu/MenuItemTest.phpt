@@ -8,6 +8,8 @@ use Tester\Assert;
 require __DIR__ . "/../../bootstrap.php";
 
 final class MenuItemTest extends \Tester\TestCase {
+  use \Testbench\TCompiledContainer;
+
   /** @var MenuItem */
   protected $item;
   
@@ -19,6 +21,15 @@ final class MenuItemTest extends \Tester\TestCase {
     Assert::same("Test:", $this->item->link);
     $this->item->link = "Test:new";
     Assert::same("Test:new", $this->item->link);
+  }
+
+  public function testRawLink() {
+    /** @var Menu $menu */
+    $menu = $this->getService(Menu::class);
+    /** @var MenuItem $item */
+    $item = $menu[0];
+    Assert::same("http://test.bench/", $item->link);
+    Assert::same("Test:", $item->rawLink);
   }
   
   public function testText() {
