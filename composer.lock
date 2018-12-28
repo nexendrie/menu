@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e3d6eb575b26293ade003ba8c3693584",
+    "content-hash": "cc28b5bc1d8a2457bc7606bb71fb3ee2",
     "packages": [
         {
             "name": "latte/latte",
@@ -1645,12 +1645,12 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/nexendrie/code-quality.git",
-                "reference": "6bb509b2129087f83b0ab607f45dcdd1901f3674"
+                "reference": "1e7e2d89693e1c5914907e8a8e0570430094bee1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/nexendrie%2Fcode-quality/repository/archive.zip?sha=6bb509b2129087f83b0ab607f45dcdd1901f3674",
-                "reference": "6bb509b2129087f83b0ab607f45dcdd1901f3674",
+                "url": "https://gitlab.com/api/v4/projects/nexendrie%2Fcode-quality/repository/archive.zip?sha=1e7e2d89693e1c5914907e8a8e0570430094bee1",
+                "reference": "1e7e2d89693e1c5914907e8a8e0570430094bee1",
                 "shasum": ""
             },
             "require": {
@@ -1659,7 +1659,7 @@
                 "mrtnzlml/testbench": "dev-master",
                 "phpstan/phpstan": "^0.10",
                 "phpstan/phpstan-strict-rules": "^0.10",
-                "squizlabs/php_codesniffer": "^3.3"
+                "squizlabs/php_codesniffer": "^3.4"
             },
             "type": "library",
             "notification-url": "https://packagist.org/downloads/",
@@ -1679,7 +1679,7 @@
                 "quality",
                 "testing"
             ],
-            "time": "2018-11-29T12:02:35+00:00"
+            "time": "2018-12-28T13:57:02+00:00"
         },
         {
             "name": "nexendrie/site-generator",
@@ -1687,12 +1687,12 @@
             "source": {
                 "type": "git",
                 "url": "https://gitlab.com/nexendrie/site-generator.git",
-                "reference": "7de6b5155c64da847fb5b72b7f9506cd3c478fc6"
+                "reference": "11735f2b3bcc40bd3b0b5afac18811107c0b5511"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://gitlab.com/api/v4/projects/nexendrie%2Fsite-generator/repository/archive.zip?sha=7de6b5155c64da847fb5b72b7f9506cd3c478fc6",
-                "reference": "7de6b5155c64da847fb5b72b7f9506cd3c478fc6",
+                "url": "https://gitlab.com/api/v4/projects/nexendrie%2Fsite-generator/repository/archive.zip?sha=11735f2b3bcc40bd3b0b5afac18811107c0b5511",
+                "reference": "11735f2b3bcc40bd3b0b5afac18811107c0b5511",
                 "shasum": ""
             },
             "require": {
@@ -1702,7 +1702,7 @@
                 "nette/finder": "^2.4",
                 "nette/neon": "^2.4",
                 "nette/utils": "^2.4",
-                "php": ">=7.1.0",
+                "php": ">=7.2.0",
                 "symfony/options-resolver": "^4.0"
             },
             "require-dev": {
@@ -1743,20 +1743,20 @@
                 "static",
                 "website"
             ],
-            "time": "2018-11-29T13:00:22+00:00"
+            "time": "2018-12-28T14:03:37+00:00"
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.1.0",
+            "version": "v4.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "d0230c5c77a7e3cfa69446febf340978540958c0"
+                "reference": "8aae5b59b83bb4d0dbf07b0a835f2680a658f610"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/d0230c5c77a7e3cfa69446febf340978540958c0",
-                "reference": "d0230c5c77a7e3cfa69446febf340978540958c0",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8aae5b59b83bb4d0dbf07b0a835f2680a658f610",
+                "reference": "8aae5b59b83bb4d0dbf07b0a835f2680a658f610",
                 "shasum": ""
             },
             "require": {
@@ -1794,7 +1794,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2018-10-10T09:24:14+00:00"
+            "time": "2018-12-26T11:32:39+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -1893,16 +1893,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.10.6",
+            "version": "0.10.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "f0252a5ab6b4a293fb25f218d9c64386f272280f"
+                "reference": "b7a70043d9a933c9d1575df49a7b141dbc3c469f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/f0252a5ab6b4a293fb25f218d9c64386f272280f",
-                "reference": "f0252a5ab6b4a293fb25f218d9c64386f272280f",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b7a70043d9a933c9d1575df49a7b141dbc3c469f",
+                "reference": "b7a70043d9a933c9d1575df49a7b141dbc3c469f",
                 "shasum": ""
             },
             "require": {
@@ -1962,7 +1962,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2018-12-04T07:28:04+00:00"
+            "time": "2018-12-28T13:47:37+00:00"
         },
         {
             "name": "phpstan/phpstan-strict-rules",
@@ -2416,7 +2416,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.0"
+        "php": ">=7.2.0"
     },
     "platform-dev": []
 }
