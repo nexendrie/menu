@@ -22,9 +22,7 @@ abstract class Collection extends BaseCollection {
    * @return MenuItem[]
    */
   public function getAllowedItems(): array {
-    return array_values(array_filter($this->items, function(MenuItem $item) {
-      return $item->isAllowed();
-    }));
+    return $this->getItems(["allowed" => true]);
   }
 }
 ?>
