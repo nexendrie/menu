@@ -19,7 +19,7 @@
         "docs": "https://nexendrie.gitlab.io/menu"
     },
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.2.0",
         "nette/application": "^2.4",
         "nette/di": "^2.4.10",
         "nette/utils": "^2.4",
