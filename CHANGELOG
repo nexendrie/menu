@@ -1,4 +1,4 @@
-Version 2.1.0-dev
+Version 2.1.0
 - added property MenuItem::$rawLink
 - raised minimal version of PHP to 7.2
 
