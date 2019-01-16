@@ -89,6 +89,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
       if(in_array($name, $this->specialSections, true)) {
         continue;
       }
+      /** @var array $data */
       $data = Helpers::merge($menu, $this->menuDefaults);
       $service = $builder->addDefinition($this->prefix($name))
         ->setFactory("@" . $this->prefix(static::SERVICE_MENU_FACTORY) . "::createMenu", [$name, $data])
