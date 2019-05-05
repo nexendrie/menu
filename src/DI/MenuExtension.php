@@ -14,6 +14,7 @@ use Nette\Utils\Strings;
 use Nexendrie\Menu\LinkRenderPresenterAction;
 use Nexendrie\Menu\LinkRenderJavaScriptAction;
 use Nexendrie\Menu\LinkRenderUrl;
+use Nette\DI\Definitions\FactoryDefinition;
 
 /**
  * MenuExtension
@@ -68,11 +69,15 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
       }
     }
   }
-  
+
+  public function getConfig(): array {
+    return Helpers::merge($this->config, $this->defaults);
+  }
+
   public function loadConfiguration(): void {
-    $config = $this->getConfig($this->defaults);
+    $config = $this->getConfig();
     $builder = $this->getContainerBuilder();
-    $builder->addDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY))
+    $builder->addFactoryDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY))
       ->setImplement(IMenuControlFactory::class);
     $builder->addDefinition($this->prefix(static::SERVICE_MENU_FACTORY))
       ->setType(MenuFactory::class)
@@ -102,14 +107,15 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
   
   public function beforeCompile(): void {
     $builder = $this->getContainerBuilder();
-    $config = $this->getConfig($this->defaults);
+    $config = $this->getConfig();
+    /** @var FactoryDefinition $control */
     $control = $builder->getDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY));
     $menus = $builder->findByType(Menu::class);
     foreach($menus as $menuName => $menu) {
-      $control->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
+      $control->getResultDefinition()->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
     }
     foreach($config[static::SECTION_MENU_TYPES] as $type => $template) {
-      $control->addSetup('?->addMenuType(?,?);', ["@self", $type, $template]);
+      $control->getResultDefinition()->addSetup('?->addMenuType(?,?);', ["@self", $type, $template]);
     }
   }
 }

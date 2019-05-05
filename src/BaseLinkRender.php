@@ -21,9 +21,9 @@ abstract class BaseLinkRender implements IMenuItemLinkRender {
         return $this->name;
       }
     }
-    $class = Strings::after(static::class, "\\", -1);
+    $class = (string) Strings::after(static::class, "\\", -1);
     if(Strings::startsWith($class, "LinkRender")) {
-      $class = Strings::after($class, "LinkRender");
+      $class = (string) Strings::after($class, "LinkRender");
     }
     return Strings::lower($class);
   }

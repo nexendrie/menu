@@ -13,9 +13,8 @@ use Nette\Localization\ITranslator;
 final class Translator implements ITranslator {
   /**
    * @param string $message
-   * @param null $count
    */
-  public function translate($message, $count = null): string {
+  public function translate($message, ... $parameters): string {
     return "1$message";
   }
 }

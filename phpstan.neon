@@ -7,7 +7,8 @@ parameters:
         - '#Only booleans are allowed in an if condition, mixed given#'
         - '#Method Nexendrie\\Menu\\[a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has no return typehint specified#'
         - '#Parameter \#1 \$parameter \((\(callable\)|string|bool)\|null\) of method Nexendrie\\Menu\\Condition[a-zA-Z]+::isAllowed\(\) should be contravariant with parameter \$parameter \(mixed\) of method Nexendrie\\Menu\\IMenuItemCondition::isAllowed\(\)#'
-        - '#Parameter \#[0-9] (\$message|\$count) \((string|null)\) of method [a-zA-Z0-9]+::translate\(\) should be contravariant with parameter (\$message|\$count) \(mixed\) of method Nette\\Localization\\ITranslator::translate\(\)#'
-        - '#Parameter \#[0-9] (\$name|\$args) \(string|array\) of method Nexendrie\\Menu\\MenuControl::__call\(\) should be contravariant with parameter \$args \(mixed\) of method Nette\\ComponentModel\\Component::__call\(\)#'
+        - '#Call to function (is_bool|is_array)\(\) with (bool|array) will always evaluate to true#'
+        - '#Method Nexendrie\\Menu\\DI\\MenuExtension::getConfig\(\) should return array but returns array\|string#'
+        - '#Method class@anonymous/Menu.php:[0-9]+::translate\(\) has parameter (\$message|\$parameters) with no typehint specified#'
     universalObjectCratesClasses:
         - Nette\Bridges\ApplicationLatte\Template

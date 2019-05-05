@@ -21,9 +21,9 @@ abstract class BaseCondition implements IMenuItemCondition {
         return $this->name;
       }
     }
-    $class = Strings::after(static::class, "\\", -1);
+    $class = (string) Strings::after(static::class, "\\", -1);
     if(Strings::startsWith($class, "Condition")) {
-      $class = Strings::after($class, "Condition");
+      $class = (string) Strings::after($class, "Condition");
     }
     return Strings::lower($class);
   }
