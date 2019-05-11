@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu\DI;
 
-use Nette\DI\Container;
 use Nexendrie\Menu\Menu;
 use Nexendrie\Menu\MenuItem;
 use Nexendrie\Menu\IMenuItemCondition;
@@ -21,23 +20,28 @@ final class MenuFactory {
   use \Nette\SmartObject;
   
   protected const SECTION_CONDITIONS = "conditions";
-  
-  /** @var Container */
-  protected $container;
-  
-  public function __construct(Container $container) {
-    $this->container = $container;
+
+  /** @var IMenuItemLinkRender[] */
+  protected $linkRenders;
+  /** @var IMenuItemCondition[] */
+  protected $conditions;
+
+  /**
+   * @param IMenuItemLinkRender[] $linkRenders
+   * @param IMenuItemCondition[] $conditions
+   */
+  public function __construct(array $linkRenders, array $conditions) {
+    $this->linkRenders = $linkRenders;
+    $this->conditions = $conditions;
   }
   
   /**
    * @throws MenuItemConditionNotSupportedException
    */
   protected function getCondition(string $name): IMenuItemCondition {
-    foreach($this->container->findByType(IMenuItemCondition::class) as $serviceName) {
-      /** @var IMenuItemCondition $service */
-      $service = $this->container->createService($serviceName);
-      if($service->getName() === $name) {
-        return $service;
+    foreach($this->conditions as $condition) {
+      if($condition->getName() === $name) {
+        return $condition;
       }
     }
     throw new MenuItemConditionNotSupportedException("Condition $name is not defined.");
@@ -85,31 +89,16 @@ final class MenuFactory {
   }
   
   /**
-   * @return IMenuItemLinkRender[]
-   */
-  protected function getLinkRenders(): array {
-    $renders = [];
-    $serviceNames = $this->container->findByType(IMenuItemLinkRender::class);
-    foreach($serviceNames as $serviceName) {
-      /** @var IMenuItemLinkRender $service */
-      $service = $this->container->getService($serviceName);
-      $renders[] = $service;
-    }
-    return $renders;
-  }
-  
-  /**
    * @throws \InvalidArgumentException
    * @throws InvalidMenuItemDefinitionException
    * @throws MenuItemConditionNotSupportedException
    */
   public function createMenu(string $name, array $config): Menu {
-    $renders = $this->getLinkRenders();
     $menu = new Menu($name, $config["htmlId"]);
     $menu->title = $config["title"];
     foreach($config["items"] as $text => $definition) {
       $item = $this->createItem($text, $definition);
-      foreach($renders as $render) {
+      foreach($this->linkRenders as $render) {
         $item->addLinkRender($render);
       }
       $menu[] = $item;
