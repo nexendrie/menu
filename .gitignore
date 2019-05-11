@@ -5,3 +5,4 @@
 output/
 *.actual
 coverage.*
+/composer.lock
