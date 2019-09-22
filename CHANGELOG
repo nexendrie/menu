@@ -1,3 +1,6 @@
+Version 2.2.0+dev
+- re-added support for Latte 2.5
+
 Version 2.2.0
 - dropped support for Nette 2.4
 
