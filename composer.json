@@ -28,8 +28,7 @@
     },
     "require-dev": {
         "nexendrie/code-quality": "dev-master",
-        "nexendrie/site-generator": "^0.5",
-        "phpstan/phpstan": "^0.11.6"
+        "nexendrie/site-generator": "^0.5"
     },
     "suggest": {
         "nette/security": "To use menu item conditions related to user"
