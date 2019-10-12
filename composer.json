@@ -28,7 +28,7 @@
     },
     "require-dev": {
         "nexendrie/code-quality": "dev-master",
-        "nexendrie/site-generator": "^0.5"
+        "nexendrie/site-generator": "^0.6"
     },
     "suggest": {
         "nette/security": "To use menu item conditions related to user"
