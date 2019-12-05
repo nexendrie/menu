@@ -16,6 +16,8 @@ env:
 matrix:
     allow_failures:
         - php: nightly
+        - php: '7.4'
+          env: dependencies=lowest
     fast_finish: true
 
 install:
