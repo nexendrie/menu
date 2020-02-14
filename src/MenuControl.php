@@ -94,9 +94,8 @@ final class MenuControl extends \Nette\Application\UI\Control {
    *
    * @param string $name
    * @param array $args
-   * @return mixed
    */
-  public function __call($name, $args) {
+  public function __call($name, $args): void {
     if($name === "render") {
       $name = "renderInline";
     }
@@ -106,7 +105,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
       $this->baseRender($menuName, $render);
       return;
     }
-    return parent::__call($name, $args);
+    parent::__call($name, $args);
   }
 }
 ?>
