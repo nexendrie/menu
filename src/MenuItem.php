@@ -39,7 +39,7 @@ class MenuItem extends Collection {
     return $link;
   }
   
-  public function setLink(string $link) {
+  public function setLink(string $link): void {
     $this->link = $link;
   }
 
@@ -51,7 +51,7 @@ class MenuItem extends Collection {
     return $this->text;
   }
   
-  public function setText(string $text) {
+  public function setText(string $text): void {
     $this->text = $text;
   }
   

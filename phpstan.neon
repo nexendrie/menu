@@ -4,7 +4,6 @@ includes:
 parameters:
     ignoreErrors:
         - '#Call to function is_string\(\) with string will always evaluate to true#'
-        - '#Method Nexendrie\\Menu\\[a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has no return typehint specified#'
         - '#Method Nexendrie\\Menu\\DI\\MenuExtension::getConfig\(\) should return array but returns array\|string#'
     universalObjectCratesClasses:
         - Nette\Bridges\ApplicationLatte\Template

@@ -19,7 +19,7 @@ class Menu extends Collection {
   protected $title = "";
   /** @var string */
   protected $name;
-  /** @var string*/
+  /** @var string */
   protected $htmlId;
   /** @var ITranslator */
   protected $translator;
@@ -39,7 +39,7 @@ class Menu extends Collection {
     return $this->title;
   }
   
-  public function setTitle(string $title) {
+  public function setTitle(string $title): void {
     $this->title = $title;
   }
   
@@ -51,7 +51,7 @@ class Menu extends Collection {
     return $this->htmlId;
   }
   
-  public function setHtmlId(string $htmlId) {
+  public function setHtmlId(string $htmlId): void {
     $this->htmlId = $htmlId;
   }
   
@@ -59,7 +59,7 @@ class Menu extends Collection {
     return $this->translator;
   }
   
-  public function setTranslator(ITranslator $translator) {
+  public function setTranslator(ITranslator $translator): void {
     $this->translator = $translator;
   }
 }
