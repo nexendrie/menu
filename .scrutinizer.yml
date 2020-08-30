@@ -160,6 +160,9 @@ build:
         rabbitmq: false
     nodes:
         tests:
+            cache:
+                directories:
+                    - vendor/
             dependencies:
                 override:
                     - wget https://www.phing.info/get/phing-latest.phar && mv phing-latest.phar phing && chmod +x phing
