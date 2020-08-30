@@ -8,6 +8,10 @@ use Nette\ComponentModel\IComponent;
 
 require __DIR__ . "/../../bootstrap.php";
 
+/**
+ * @author Jakub Konečný
+ * @testCase
+ */
 final class MenuControlTest extends \Tester\TestCase {
   use \Testbench\TComponent;
   use \Testbench\TCompiledContainer;

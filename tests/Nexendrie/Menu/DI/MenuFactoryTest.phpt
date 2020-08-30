@@ -10,6 +10,10 @@ use Nexendrie\Menu\MenuItemConditionNotSupportedException;
 
 require __DIR__ . "/../../../bootstrap.php";
 
+/**
+ * @author Jakub Konečný
+ * @testCase
+ */
 final class MenuFactoryTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   

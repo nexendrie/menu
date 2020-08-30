@@ -8,6 +8,10 @@ use Nette\Security\User;
 
 require __DIR__ . "/../../bootstrap.php";
 
+/**
+ * @author Jakub Konečný
+ * @testCase
+ */
 final class ConditionUserInRoleTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   

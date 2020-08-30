@@ -13,6 +13,10 @@ use Nexendrie\Menu\LinkRenderPresenterAction;
 
 require __DIR__ . "/../../../bootstrap.php";
 
+/**
+ * @author Jakub Konečný
+ * @testCase
+ */
 final class MenuExtensionTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
   
