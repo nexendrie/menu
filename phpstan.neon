@@ -1,13 +1,10 @@
 includes:
-    - vendor/nexendrie/code-quality/phpstan.neon
     - vendor/phpstan/phpstan-strict-rules/rules.neon
+    - vendor/nexendrie/code-quality/phpstan.neon
 parameters:
     ignoreErrors:
         - '#Call to function is_string\(\) with string will always evaluate to true#'
         - '#Method Nexendrie\\Menu\\[a-zA-Z0-9\\_]+::[a-zA-Z0-9\\_]+\(\) has no return typehint specified#'
-        - '#Parameter \#1 \$parameter \((\(callable\)|string|bool)\|null\) of method Nexendrie\\Menu\\Condition[a-zA-Z]+::isAllowed\(\) should be contravariant with parameter \$parameter \(mixed\) of method Nexendrie\\Menu\\IMenuItemCondition::isAllowed\(\)#'
-        - '#Call to function (is_bool|is_array)\(\) with (bool|array) will always evaluate to true#'
         - '#Method Nexendrie\\Menu\\DI\\MenuExtension::getConfig\(\) should return array but returns array\|string#'
-        - '#Method class@anonymous/Menu.php:[0-9]+::translate\(\) has parameter (\$message|\$parameters) with no typehint specified#'
     universalObjectCratesClasses:
         - Nette\Bridges\ApplicationLatte\Template
