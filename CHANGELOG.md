@@ -2,6 +2,7 @@ Version 2.3.0-dev
 - raised minimal version of PHP to 7.3
 - deprecated getters and setters of Collection, Menu and MenuItem
 - made Menu::$name writable
+- MenuItem::$link is deprecated for raw link, use MenuItem::$rawLink instead
 
 Version 2.2.1
 - re-added support for Latte 2.5
