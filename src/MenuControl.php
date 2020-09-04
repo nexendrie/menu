@@ -22,7 +22,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
   protected $templates = [];
   
   public function addMenu(Menu $menu): void {
-    $this->menus[$menu->name] = & $menu;
+    $this->menus[] = $menu;
   }
   
   /**
@@ -46,8 +46,8 @@ final class MenuControl extends \Nette\Application\UI\Control {
    * @throws MenuNotFoundException
    */
   protected function getMenu(string $menuName): Menu {
-    foreach($this->menus as $name => $menu) {
-      if($name === $menuName) {
+    foreach($this->menus as $menu) {
+      if($menu->name === $menuName) {
         return $menu;
       }
     }

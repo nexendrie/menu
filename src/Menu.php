@@ -10,7 +10,7 @@ use Nette\Localization\ITranslator;
  *
  * @author Jakub Konečný
  * @property string $title
- * @property-read string $name
+ * @property string $name
  * @property string $htmlId
  * @property ITranslator $translator
  */
@@ -54,6 +54,10 @@ class Menu extends Collection {
    */
   public function getName(): string {
     return $this->name;
+  }
+
+  protected function setName(string $name): void {
+    $this->name = $name;
   }
 
   /**
