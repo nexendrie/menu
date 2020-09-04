@@ -20,6 +20,7 @@ abstract class Collection extends BaseCollection {
   
   /**
    * @return MenuItem[]
+   * @deprecated Access the property directly
    */
   public function getAllowedItems(): array {
     return $this->getItems(["allowed" => true]);

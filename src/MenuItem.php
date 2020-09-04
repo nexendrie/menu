@@ -27,7 +27,10 @@ class MenuItem extends Collection {
     $this->link = $link;
     $this->text = $text;
   }
-  
+
+  /**
+   * @deprecated Access the property directly
+   */
   public function getLink(): string {
     $link = $this->link;
     foreach($this->linkRenders as $render) {
@@ -38,19 +41,31 @@ class MenuItem extends Collection {
     }
     return $link;
   }
-  
+
+  /**
+   * @deprecated Access the property directly
+   */
   public function setLink(string $link): void {
     $this->link = $link;
   }
 
+  /**
+   * @deprecated Access the property directly
+   */
   public function getRawLink(): string {
     return $this->link;
   }
 
+  /**
+   * @deprecated Access the property directly
+   */
   public function getText(): string {
     return $this->text;
   }
-  
+
+  /**
+   * @deprecated Access the property directly
+   */
   public function setText(string $text): void {
     $this->text = $text;
   }
@@ -65,7 +80,10 @@ class MenuItem extends Collection {
   public function addLinkRender(IMenuItemLinkRender $render): void {
     $this->linkRenders[$render->getName()] = $render;
   }
-  
+
+  /**
+   * @deprecated Access the property directly
+   */
   public function isAllowed(): bool {
     foreach($this->conditions as $condition) {
       if(!$condition[0]->isAllowed($condition[1])) {

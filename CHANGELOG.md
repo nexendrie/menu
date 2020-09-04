@@ -1,5 +1,6 @@
 Version 2.3.0-dev
 - raised minimal version of PHP to 7.3
+- deprecated getters and setters of Collection, Menu and MenuItem
 
 Version 2.2.1
 - re-added support for Latte 2.5
