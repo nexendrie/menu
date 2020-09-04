@@ -25,7 +25,7 @@ final class ConditionUserLoggedIn extends BaseCondition {
    * @throws \InvalidArgumentException
    */
   public function isAllowed($parameter = null): bool {
-    if(is_null($parameter)) {
+    if($parameter === null) {
       return true;
     } elseif(!is_bool($parameter)) {
       throw new \InvalidArgumentException("Method " . __METHOD__ . " expects boolean as parameter.");

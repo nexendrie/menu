@@ -21,7 +21,7 @@ final class MenuControlTest extends \Tester\TestCase {
   
   public function setUp() {
     static $control = null;
-    if(is_null($control)) {
+    if($control === null) {
       $control = $this->getService(IMenuControlFactory::class)->create();
     }
     $this->control = $control;
