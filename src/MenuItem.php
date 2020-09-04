@@ -7,12 +7,11 @@ namespace Nexendrie\Menu;
  * Menu item
  *
  * @author Jakub Konečný
- * @property string $link
+ * @property-read string $link
  * @property-read bool $allowed
  */
 class MenuItem extends Collection {
   public string $text;
-  protected string $link;
   public string $rawLink;
   /** @var array[] of [IMenuItemCondition, string] */
   protected array $conditions = [];
@@ -21,14 +20,11 @@ class MenuItem extends Collection {
   
   public function __construct(string $link, string $text) {
     parent::__construct();
-    $this->setRawLink($link);
+    $this->rawLink = $link;
     $this->text = $text;
   }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getLink(): string {
+  protected function getLink(): string {
     $link = $this->rawLink;
     foreach($this->linkRenders as $render) {
       if($render->isApplicable($link)) {
@@ -37,38 +33,6 @@ class MenuItem extends Collection {
       }
     }
     return $link;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function setLink(string $link): void {
-    $this->setRawLink($link);
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getRawLink(): string {
-    return $this->link;
-  }
-
-  protected function setRawLink(string $rawLink): void {
-    $this->rawLink = $this->link = $rawLink;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getText(): string {
-    return $this->text;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function setText(string $text): void {
-    $this->text = $text;
   }
 
   /**
@@ -82,10 +46,7 @@ class MenuItem extends Collection {
     $this->linkRenders[$render->getName()] = $render;
   }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function isAllowed(): bool {
+  protected function isAllowed(): bool {
     foreach($this->conditions as $condition) {
       if(!$condition[0]->isAllowed($condition[1])) {
         return false;

@@ -28,53 +28,7 @@ class Menu extends Collection {
   }
 
   /**
-   * @deprecated Access the property directly
-   */
-  public function getTitle(): string {
-    return $this->title;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function setTitle(string $title): void {
-    $this->title = $title;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getName(): string {
-    return $this->name;
-  }
-
-  protected function setName(string $name): void {
-    $this->name = $name;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getHtmlId(): string {
-    return $this->htmlId;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function setHtmlId(string $htmlId): void {
-    $this->htmlId = $htmlId;
-  }
-
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getTranslator(): ITranslator {
-    return $this->translator;
-  }
-
-  /**
-   * @deprecated Access the property directly
+   * @internal
    */
   public function setTranslator(ITranslator $translator): void {
     $this->translator = $translator;
