@@ -15,9 +15,8 @@ require __DIR__ . "/../../bootstrap.php";
 final class MenuControlTest extends \Tester\TestCase {
   use \Testbench\TComponent;
   use \Testbench\TCompiledContainer;
-  
-  /** @var MenuControl */
-  protected $control;
+
+  protected MenuControl $control;
   
   public function setUp() {
     static $control = null;

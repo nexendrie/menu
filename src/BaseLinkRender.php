@@ -14,8 +14,7 @@ use Nette\Utils\Strings;
 abstract class BaseLinkRender implements IMenuItemLinkRender {
   use \Nette\SmartObject;
 
-  /** @var string */
-  protected $name;
+  protected string $name;
   
   public function getName(): string {
     $reflection = new \ReflectionClass($this);

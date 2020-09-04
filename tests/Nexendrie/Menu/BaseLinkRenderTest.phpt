@@ -14,7 +14,7 @@ use Tester\Assert;
 final class BaseLinkRenderTest extends \Tester\TestCase {
   public function testProperty() {
     $condition = new class extends BaseLinkRender {
-      protected $name = "abc";
+      protected string $name = "abc";
       
       public function isApplicable(string $link): bool {
         return true;

@@ -17,9 +17,9 @@ use Nette\Utils\Strings;
  */
 final class MenuControl extends \Nette\Application\UI\Control {
   /** @var Menu[] */
-  private $menus = [];
+  private array $menus = [];
   /** @var string[] */
-  private $templates = [];
+  private array $templates = [];
   
   public function addMenu(Menu $menu): void {
     $this->menus[] = $menu;

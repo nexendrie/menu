@@ -11,10 +11,9 @@ use Nette\Security\User;
  * @author Jakub Konečný
  */
 final class ConditionUserLoggedIn extends BaseCondition {
-  /** @var User */
-  private $user;
+  private User $user;
   /** @var string */
-  protected $name = "loggedIn";
+  protected string $name = "loggedIn";
   
   public function __construct(User $user) {
     $this->user = $user;

@@ -14,9 +14,8 @@ require __DIR__ . "/../../bootstrap.php";
  */
 final class ConditionUserInRoleTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
-  
-  /** @var ConditionUserInRole */
-  protected $condition;
+
+  protected ConditionUserInRole $condition;
   
   public function setUp() {
     $this->condition = $this->getService(ConditionUserInRole::class);

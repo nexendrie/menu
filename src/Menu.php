@@ -9,20 +9,12 @@ use Nette\Localization\ITranslator;
  * Menu
  *
  * @author Jakub Konečný
- * @property string $title
- * @property string $name
- * @property string $htmlId
- * @property ITranslator $translator
  */
 class Menu extends Collection {
-  /** @var string */
-  protected $title = "";
-  /** @var string */
-  protected $name;
-  /** @var string */
-  protected $htmlId;
-  /** @var ITranslator */
-  protected $translator;
+  public string $title = "";
+  public string $name;
+  public string $htmlId;
+  public ITranslator $translator;
   
   public function __construct(string $name = "default", string $htmlId = "menu") {
     parent::__construct();

@@ -8,21 +8,16 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  * @property string $link
- * @property string $rawLink
- * @property string $text
  * @property-read bool $allowed
  */
 class MenuItem extends Collection {
-  /** @var string */
-  protected $text;
-  /** @var string */
-  protected $link;
-  /** @var string */
-  protected $rawLink;
+  public string $text;
+  protected string $link;
+  public string $rawLink;
   /** @var array[] of [IMenuItemCondition, string] */
-  protected $conditions = [];
+  protected array $conditions = [];
   /** @var IMenuItemLinkRender[] */
-  protected $linkRenders = [];
+  protected array $linkRenders = [];
   
   public function __construct(string $link, string $text) {
     parent::__construct();
@@ -34,10 +29,10 @@ class MenuItem extends Collection {
    * @deprecated Access the property directly
    */
   public function getLink(): string {
-    $link = $this->link;
+    $link = $this->rawLink;
     foreach($this->linkRenders as $render) {
-      if($render->isApplicable($this->link)) {
-        $link = $render->renderLink($this->link);
+      if($render->isApplicable($link)) {
+        $link = $render->renderLink($link);
         break;
       }
     }
@@ -75,7 +70,7 @@ class MenuItem extends Collection {
   public function setText(string $text): void {
     $this->text = $text;
   }
-  
+
   /**
    * @param mixed $parameter
    */

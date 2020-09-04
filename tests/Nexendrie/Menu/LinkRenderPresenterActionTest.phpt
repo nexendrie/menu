@@ -13,9 +13,8 @@ use Tester\Assert;
  */
 final class LinkRenderPresenterActionTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
-  
-  /** @var LinkRenderPresenterAction */
-  protected $render;
+
+  protected LinkRenderPresenterAction $render;
   
   protected function setUp() {
     $this->render = $this->getService(LinkRenderPresenterAction::class);

@@ -22,9 +22,9 @@ final class MenuFactory {
   private const SECTION_CONDITIONS = "conditions";
 
   /** @var IMenuItemLinkRender[] */
-  private $linkRenders;
+  private array $linkRenders;
   /** @var IMenuItemCondition[] */
-  private $conditions;
+  private array $conditions;
 
   /**
    * @param IMenuItemLinkRender[] $linkRenders

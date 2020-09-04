@@ -24,14 +24,12 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
   public const SERVICE_COMPONENT_FACTORY = "componentFactory";
   public const SERVICE_MENU_FACTORY = "menuFactory";
   public const SECTION_MENU_TYPES = "menu_types";
-  
-  /** @var array */
-  private $defaults = [
+
+  private array $defaults = [
     "default" => [],
   ];
-  
-  /** @var array */
-  private $menuDefaults = [
+
+  private array $menuDefaults = [
     "title" => "",
     "htmlId" => "menu",
     "translate" => false,
@@ -39,10 +37,10 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
   ];
   
   /** @var string[] */
-  private $specialSections = [];
+  private array $specialSections = [];
   
   /** @var string[] */
-  private $defaultConditions = [
+  private array $defaultConditions = [
     "loggedIn" => ConditionUserLoggedIn::class,
     "role" => ConditionUserInRole::class,
     "acl" => ConditionPermission::class,
@@ -50,7 +48,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
   ];
   
   /** @var string[] */
-  private $linkRenders = [
+  private array $linkRenders = [
     "javascript" => LinkRenderJavaScriptAction::class,
     "url" => LinkRenderUrl::class,
     "presenterAction" => LinkRenderPresenterAction::class,

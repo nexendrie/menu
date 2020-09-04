@@ -13,9 +13,8 @@ use Tester\Assert;
  */
 final class LinkRenderJavaScriptActionTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
-  
-  /** @var LinkRenderJavaScriptAction */
-  protected $render;
+
+  protected LinkRenderJavaScriptAction $render;
   
   protected function setUp() {
     $this->render = $this->getService(LinkRenderJavaScriptAction::class);

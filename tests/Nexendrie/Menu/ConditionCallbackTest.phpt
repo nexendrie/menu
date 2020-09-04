@@ -13,9 +13,8 @@ require __DIR__ . "/../../bootstrap.php";
  */
 final class ConditionCallbackTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
-  
-  /** @var ConditionCallback */
-  protected $condition;
+
+  protected ConditionCallback $condition;
   
   public function setUp() {
     $this->condition = $this->getService(ConditionCallback::class);

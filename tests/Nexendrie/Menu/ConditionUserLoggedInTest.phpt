@@ -13,9 +13,8 @@ require __DIR__ . "/../../bootstrap.php";
  */
 final class ConditionUserLoggedInTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
-  
-  /** @var ConditionUserLoggedIn */
-  protected $condition;
+
+  protected ConditionUserLoggedIn $condition;
   
   public function setUp() {
     $this->condition = $this->getService(ConditionUserLoggedIn::class);

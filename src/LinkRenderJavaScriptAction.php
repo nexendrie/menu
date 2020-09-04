@@ -9,8 +9,7 @@ namespace Nexendrie\Menu;
  * @author Jakub Konečný
  */
 final class LinkRenderJavaScriptAction extends BaseLinkRender {
-  /** @var string */
-  protected $name = "javascript";
+  protected string $name = "javascript";
   
   public function isApplicable(string $link): bool {
     return str_starts_with($link, "javascript:");

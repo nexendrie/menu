@@ -12,11 +12,9 @@ use Nette\Application\UI\InvalidLinkException;
  * @author Jakub Konečný
  */
 final class LinkRenderPresenterAction extends BaseLinkRender {
-  /** @var string */
-  protected $name = "presenterAction";
-  
-  /** @var LinkGenerator */
-  private $linkGenerator;
+  protected string $name = "presenterAction";
+
+  private LinkGenerator $linkGenerator;
   
   public function __construct(LinkGenerator $linkGenerator) {
     $this->linkGenerator = $linkGenerator;

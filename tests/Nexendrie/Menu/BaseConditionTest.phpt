@@ -14,7 +14,7 @@ require __DIR__ . "/../../bootstrap.php";
 final class BaseConditionTest extends \Tester\TestCase {
   public function testProperty() {
     $condition = new class extends BaseCondition {
-      protected $name = "abc";
+      protected string $name = "abc";
       
       public function isAllowed($parameter = null): bool {
         return true;

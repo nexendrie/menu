@@ -13,9 +13,8 @@ require __DIR__ . "/../../bootstrap.php";
  */
 final class ConditionPermissionTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
-  
-  /** @var ConditionPermission */
-  protected $condition;
+
+  protected ConditionPermission $condition;
   
   public function setUp() {
     $this->condition = $this->getService(ConditionPermission::class);

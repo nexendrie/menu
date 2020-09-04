@@ -12,17 +12,10 @@ require __DIR__ . "/../../bootstrap.php";
  * @testCase
  */
 final class MenuTest extends \Tester\TestCase {
-  /** @var Menu */
-  protected $menu;
+  protected Menu $menu;
   
   public function setUp() {
     $this->menu = new Menu();
-  }
-  
-  public function testHtmlId() {
-    Assert::same("menu", $this->menu->htmlId);
-    $this->menu->htmlId = "testMenu";
-    Assert::same("testMenu", $this->menu->htmlId);
   }
   
   /**
@@ -52,7 +45,7 @@ final class MenuTest extends \Tester\TestCase {
       }
     }, null);
     $this->menu[] = $item2;
-    $items = $this->menu->getAllowedItems();
+    $items = $this->menu->allowedItems;
     Assert::type("array", $items);
     Assert::count(2, $items);
   }

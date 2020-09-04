@@ -12,10 +12,9 @@ use Nette\Utils\Strings;
  * @author Jakub Konečný
  */
 final class ConditionPermission extends BaseCondition {
-  /** @var User */
-  private $user;
+  private User $user;
   /** @var string */
-  protected $name = "acl";
+  protected string $name = "acl";
   
   public function __construct(User $user) {
     $this->user = $user;
