@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Nette\Utils\Strings;
-
 /**
  * LinkRenderJavaScriptAction
  *
@@ -15,7 +13,7 @@ final class LinkRenderJavaScriptAction extends BaseLinkRender {
   protected $name = "javascript";
   
   public function isApplicable(string $link): bool {
-    return Strings::startsWith($link, "javascript:");
+    return str_starts_with($link, "javascript:");
   }
   
   public function renderLink(string $link): string {

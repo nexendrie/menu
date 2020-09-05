@@ -10,7 +10,6 @@ use Nexendrie\Menu\ConditionUserLoggedIn;
 use Nexendrie\Menu\ConditionUserInRole;
 use Nexendrie\Menu\ConditionPermission;
 use Nexendrie\Menu\ConditionCallback;
-use Nette\Utils\Strings;
 use Nexendrie\Menu\LinkRenderPresenterAction;
 use Nexendrie\Menu\LinkRenderJavaScriptAction;
 use Nexendrie\Menu\LinkRenderUrl;
@@ -64,7 +63,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
     ];
     $constants = (new \ReflectionClass(static::class))->getConstants();
     foreach($constants as $name => $value) {
-      if(Strings::startsWith($name, "SECTION_")) {
+      if(str_starts_with($name, "SECTION_")) {
         $this->specialSections[] = $value;
       }
     }

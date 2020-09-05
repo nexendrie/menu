@@ -99,7 +99,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
     if($name === "render") {
       $name = "renderInline";
     }
-    if(Strings::startsWith($name, "render")) {
+    if(str_starts_with($name, "render")) {
       $render = Strings::firstLower((string) Strings::after($name, "render"));
       $menuName = Arrays::get($args, 0, "default");
       $this->baseRender($menuName, $render);
