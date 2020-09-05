@@ -13,11 +13,14 @@ use Nette\Utils\Strings;
  */
 abstract class BaseLinkRender implements IMenuItemLinkRender {
   use \Nette\SmartObject;
+
+  /** @var string */
+  protected $name;
   
   public function getName(): string {
     $reflection = new \ReflectionClass($this);
     if($reflection->hasProperty("name")) {
-      if(is_string($this->name)) {
+      if(isset($this->name)) {
         return $this->name;
       }
     }

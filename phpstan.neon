@@ -3,7 +3,6 @@ includes:
     - vendor/nexendrie/code-quality/phpstan.neon
 parameters:
     ignoreErrors:
-        - '#Call to function is_string\(\) with string will always evaluate to true#'
         - '#Method Nexendrie\\Menu\\DI\\MenuExtension::getConfig\(\) should return array but returns array\|string#'
     universalObjectCratesClasses:
         - Nette\Bridges\ApplicationLatte\Template
