@@ -34,9 +34,6 @@
     "suggest": {
         "nette/security": "To use menu item conditions related to user"
     },
-    "conflict": {
-        "latte/latte": "2.5.2"
-    },
     "autoload": {
         "psr-4": {
             "Nexendrie\\Menu\\": "src/"
