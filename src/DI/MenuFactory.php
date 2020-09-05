@@ -51,7 +51,7 @@ final class MenuFactory {
    * @throws MenuItemConditionNotSupportedException
    */
   private function insertConditions(MenuItem &$item, array $definition): void {
-    if(!array_key_exists(static::SECTION_CONDITIONS, $definition) OR !is_array($definition[static::SECTION_CONDITIONS])) {
+    if(!array_key_exists(static::SECTION_CONDITIONS, $definition) || !is_array($definition[static::SECTION_CONDITIONS])) {
       return;
     }
     foreach($definition[static::SECTION_CONDITIONS] as $condition => $value) {
@@ -80,7 +80,7 @@ final class MenuFactory {
     }
     $item = new MenuItem($definition["link"], $text);
     $this->insertConditions($item, $definition);
-    if(isset($definition["items"]) AND is_array($definition["items"])) {
+    if(isset($definition["items"]) && is_array($definition["items"])) {
       foreach($definition["items"] as $subtext => $subdefinition) {
         $item[] = $this->createItem($subtext, $subdefinition);
       }
