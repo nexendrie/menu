@@ -37,7 +37,7 @@ class MenuItem extends Collection {
     $link = $this->link;
     foreach($this->linkRenders as $render) {
       if($render->isApplicable($this->link)) {
-        $link =  $render->renderLink($this->link);
+        $link = $render->renderLink($this->link);
         break;
       }
     }
