@@ -1,4 +1,4 @@
-Version 2.3.0-dev
+Version 2.3.0
 - raised minimal version of PHP to 7.3
 - deprecated getters and setters of Collection, Menu and MenuItem
 - made Menu::$name writable
