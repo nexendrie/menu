@@ -19,12 +19,12 @@ use Nexendrie\Menu\IMenuItemLinkRender;
 final class MenuFactory {
   use \Nette\SmartObject;
   
-  protected const SECTION_CONDITIONS = "conditions";
+  private const SECTION_CONDITIONS = "conditions";
 
   /** @var IMenuItemLinkRender[] */
-  protected $linkRenders;
+  private $linkRenders;
   /** @var IMenuItemCondition[] */
-  protected $conditions;
+  private $conditions;
 
   /**
    * @param IMenuItemLinkRender[] $linkRenders
@@ -38,7 +38,7 @@ final class MenuFactory {
   /**
    * @throws MenuItemConditionNotSupportedException
    */
-  protected function getCondition(string $name): IMenuItemCondition {
+  private function getCondition(string $name): IMenuItemCondition {
     foreach($this->conditions as $condition) {
       if($condition->getName() === $name) {
         return $condition;
@@ -50,7 +50,7 @@ final class MenuFactory {
   /**
    * @throws MenuItemConditionNotSupportedException
    */
-  protected function insertConditions(MenuItem &$item, array $definition): void {
+  private function insertConditions(MenuItem &$item, array $definition): void {
     if(!array_key_exists(static::SECTION_CONDITIONS, $definition) OR !is_array($definition[static::SECTION_CONDITIONS])) {
       return;
     }
@@ -70,7 +70,7 @@ final class MenuFactory {
    * @throws InvalidMenuItemDefinitionException
    * @throws MenuItemConditionNotSupportedException
    */
-  protected function createItem(string $text, $definition): MenuItem {
+  private function createItem(string $text, $definition): MenuItem {
     if(is_string($definition)) {
       return new MenuItem($definition, $text);
     } elseif(!is_array($definition)) {

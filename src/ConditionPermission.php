@@ -13,7 +13,7 @@ use Nette\Utils\Strings;
  */
 final class ConditionPermission extends BaseCondition {
   /** @var User */
-  protected $user;
+  private $user;
   /** @var string */
   protected $name = "acl";
   

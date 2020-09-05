@@ -12,7 +12,7 @@ use Nette\Security\User;
  */
 final class ConditionUserLoggedIn extends BaseCondition {
   /** @var User */
-  protected $user;
+  private $user;
   /** @var string */
   protected $name = "loggedIn";
   

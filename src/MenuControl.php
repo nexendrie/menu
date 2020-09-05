@@ -17,9 +17,9 @@ use Nette\Utils\Strings;
  */
 final class MenuControl extends \Nette\Application\UI\Control {
   /** @var Menu[] */
-  protected $menus = [];
+  private $menus = [];
   /** @var string[] */
-  protected $templates = [];
+  private $templates = [];
   
   public function addMenu(Menu $menu): void {
     $this->menus[] = $menu;
@@ -45,7 +45,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
   /**
    * @throws MenuNotFoundException
    */
-  protected function getMenu(string $menuName): Menu {
+  private function getMenu(string $menuName): Menu {
     foreach($this->menus as $menu) {
       if($menu->name === $menuName) {
         return $menu;
@@ -59,7 +59,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
    *
    * @throws MenuTypeNotSupportedException
    */
-  protected function getTemplateFilename(string $menuType): string {
+  private function getTemplateFilename(string $menuType): string {
     /** @var string $filename */
     $filename = Arrays::get($this->templates, $menuType, "");
     if($filename === "") {
@@ -74,7 +74,7 @@ final class MenuControl extends \Nette\Application\UI\Control {
    * @throws MenuNotFoundException
    * @throws MenuTypeNotSupportedException
    */
-  protected function baseRender(string $menuName, string $menuType): void {
+  private function baseRender(string $menuName, string $menuType): void {
     try {
       $menu = $this->getMenu($menuName);
       $templateFile = $this->getTemplateFilename($menuType);
