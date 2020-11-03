@@ -2,7 +2,9 @@ includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
     - vendor/nexendrie/code-quality/phpstan.neon
 parameters:
+    reportUnmatchedIgnoredErrors: false
     ignoreErrors:
         - '#Method Nexendrie\\Menu\\DI\\MenuExtension::getConfig\(\) should return array but returns array\|string#'
+        - '#Argument of an invalid type array\<string, mixed\>\|null supplied for foreach, only iterables are supported#'
     universalObjectCratesClasses:
         - Nette\Bridges\ApplicationLatte\Template
