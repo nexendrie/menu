@@ -6,5 +6,6 @@ parameters:
     ignoreErrors:
         - '#Method Nexendrie\\Menu\\DI\\MenuExtension::getConfig\(\) should return array but returns array\|string#'
         - '#Argument of an invalid type array\<string, mixed\>\|null supplied for foreach, only iterables are supported#'
+        - '#Property Nexendrie\\Menu\\Menu::\$translator \(Nette\\Localization\\Translator\) does not accept class\@anonymous/src/Menu.php:23#'
     universalObjectCratesClasses:
         - Nette\Bridges\ApplicationLatte\Template
