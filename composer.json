@@ -20,16 +20,17 @@
     },
     "require": {
         "php": ">=7.4.0",
-        "nette/application": "^3.1.2",
-        "nette/di": "^3.0.8",
-        "nette/utils": "^3.2.2",
+        "nette/application": "^3.1.5",
+        "nette/di": "^3.0.9",
+        "nette/utils": "^3.2.7",
         "latte/latte": "^2.5.3 || ^3.0",
-        "nexendrie/utils": "^1.8",
+        "nexendrie/utils": "^1.8.1",
         "symfony/polyfill-php80": "^1.18"
     },
     "require-dev": {
         "nexendrie/code-quality": "dev-master",
-        "nexendrie/site-generator": "^0.6"
+        "nexendrie/site-generator": "^0.7",
+        "nette/http": "3.1.2"
     },
     "suggest": {
         "nette/security": "To use menu item conditions related to user"
