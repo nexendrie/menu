@@ -16,15 +16,15 @@ final class ConditionPermissionTest extends \Tester\TestCase {
 
   protected ConditionPermission $condition;
   
-  public function setUp() {
-    $this->condition = $this->getService(ConditionPermission::class);
+  public function setUp(): void {
+    $this->condition = $this->getService(ConditionPermission::class); // @phpstan-ignore assign.propertyType
   }
   
-  public function testGetName() {
+  public function testGetName(): void {
     Assert::same("acl", $this->condition->getName());
   }
   
-  public function testIsAllowed() {
+  public function testIsAllowed(): void {
     Assert::exception(function() {
       $this->condition->isAllowed();
     }, \InvalidArgumentException::class);

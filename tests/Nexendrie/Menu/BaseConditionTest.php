@@ -12,7 +12,7 @@ require __DIR__ . "/../../bootstrap.php";
  * @testCase
  */
 final class BaseConditionTest extends \Tester\TestCase {
-  public function testProperty() {
+  public function testProperty(): void {
     $condition = new class extends BaseCondition {
       protected string $name = "abc";
       
@@ -23,7 +23,7 @@ final class BaseConditionTest extends \Tester\TestCase {
     Assert::same("abc", $condition->getName());
   }
   
-  public function testClassName() {
+  public function testClassName(): void {
     $condition = new ConditionABC();
     Assert::same("abc", $condition->getName());
   }

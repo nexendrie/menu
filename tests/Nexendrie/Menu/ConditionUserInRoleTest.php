@@ -17,15 +17,15 @@ final class ConditionUserInRoleTest extends \Tester\TestCase {
 
   protected ConditionUserInRole $condition;
   
-  public function setUp() {
-    $this->condition = $this->getService(ConditionUserInRole::class);
+  public function setUp(): void {
+    $this->condition = $this->getService(ConditionUserInRole::class); // @phpstan-ignore assign.propertyType
   }
   
-  public function testGetName() {
+  public function testGetName(): void {
     Assert::same("role", $this->condition->getName());
   }
   
-  public function testIsAllowed() {
+  public function testIsAllowed(): void {
     Assert::exception(function() {
       $this->condition->isAllowed();
     }, \InvalidArgumentException::class);

@@ -16,17 +16,17 @@ final class LinkRenderUrlTest extends \Tester\TestCase {
 
   protected LinkRenderUrl $render;
   
-  protected function setUp() {
-    $this->render = $this->getService(LinkRenderUrl::class);
+  protected function setUp(): void {
+    $this->render = $this->getService(LinkRenderUrl::class); // @phpstan-ignore assign.propertyType
   }
   
-  public function testIsApplicable() {
+  public function testIsApplicable(): void {
     Assert::true($this->render->isApplicable("https://nexendrie.gitlab.io/menu"));
     Assert::false($this->render->isApplicable("javascript:void()"));
     Assert::false($this->render->isApplicable("Test:new"));
   }
   
-  public function testRenderLink() {
+  public function testRenderLink(): void {
     Assert::same("https://nexendrie.gitlab.io/menu", $this->render->renderLink("https://nexendrie.gitlab.io/menu"));
     Assert::same("", $this->render->renderLink("Test:new"));
   }

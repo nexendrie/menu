@@ -14,14 +14,14 @@ require __DIR__ . "/../../bootstrap.php";
 final class MenuTest extends \Tester\TestCase {
   protected Menu $menu;
   
-  public function setUp() {
+  public function setUp(): void {
     $this->menu = new Menu();
   }
   
   /**
    * @return void
    */
-  public function testGetAllowedItems() {
+  public function testGetAllowedItems(): void {
     $item1 = new MenuItem("Test:", "Test");
     $item1->addCondition(new class implements IMenuItemCondition {
       public function getName(): string {

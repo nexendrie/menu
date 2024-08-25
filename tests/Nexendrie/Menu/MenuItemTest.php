@@ -16,11 +16,11 @@ final class MenuItemTest extends \Tester\TestCase {
 
   protected MenuItem $item;
   
-  public function setUp() {
+  public function setUp(): void {
     $this->item = new MenuItem("Test:", "Test");
   }
 
-  public function testLink() {
+  public function testLink(): void {
     /** @var Menu $menu */
     $menu = $this->getService(Menu::class);
     /** @var MenuItem $item */

@@ -18,21 +18,23 @@ final class MenuControlTest extends \Tester\TestCase {
 
   protected MenuControl $control;
   
-  public function setUp() {
+  public function setUp(): void {
     static $control = null;
     if($control === null) {
-      $control = $this->getService(IMenuControlFactory::class)->create();
+      /** @var IMenuControlFactory $factory */
+      $factory = $this->getService(IMenuControlFactory::class);
+      $control = $factory->create();
     }
     $this->control = $control;
     $this->attachToPresenter($this->control);
   }
   
-  protected function checkRenderMethodOutput(IComponent $control, $expected, $method = "render", array $renderParameters = []) {
-    if(!$control->getParent()) {
+  protected function checkRenderMethodOutput(IComponent $control, string $expected, string $method = "render", array $renderParameters = []): void {
+    if($control->getParent() === null) {
       $this->attachToPresenter($control);
     }
     ob_start();
-    $control->$method(...$renderParameters);
+    $control->$method(...$renderParameters); // @phpstan-ignore method.dynamicName
     if(is_file($expected)) {
       Assert::matchFile($expected, ob_get_clean());
     } else {
@@ -40,7 +42,7 @@ final class MenuControlTest extends \Tester\TestCase {
     }
   }
   
-  public function testAddMenuType() {
+  public function testAddMenuType(): void {
     Assert::exception(function() {
       $this->control->addMenuType("inline", "");
     }, MenuTypeAlreadyDefinedException::class);
@@ -51,35 +53,35 @@ final class MenuControlTest extends \Tester\TestCase {
     $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuCustom.Expected.latte", "renderCustom");
   }
   
-  public function testRenderInline() {
+  public function testRenderInline(): void {
     $this->checkRenderOutput($this->control, __DIR__ . "/menuInlineExpected.latte");
     $this->checkRenderOutput($this->control, __DIR__ . "/menuInlineMultilevelExpected.latte", ["subitems"]);
   }
   
-  public function testRenderList() {
+  public function testRenderList(): void {
     $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuListExpected.latte", "renderList", ["list"]);
     $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuListMultilevelExpected.latte", "renderList", ["subitems"]);
   }
   
-  public function testLinkRenders() {
+  public function testLinkRenders(): void {
     $filename = __DIR__ . "/menuLinkRendersExpected.latte";
     $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["renders"]);
   }
   
-  public function testTranslating() {
+  public function testTranslating(): void {
     $filename = __DIR__ . "/menuTranslatedExpected.latte";
     $this->checkRenderMethodOutput($this->control, $filename, "renderList", ["translated"]);
   }
   
-  public function testInvalidMenu() {
+  public function testInvalidMenu(): void {
     Assert::exception(function() {
       $this->control->render("invalid");
     }, MenuNotFoundException::class);
   }
   
-  public function testInvalidMenuType() {
+  public function testInvalidMenuType(): void {
     Assert::exception(function() {
-      $this->control->renderInvalid();
+      $this->control->renderInvalid(); // @phpstan-ignore method.notFound
     }, MenuTypeNotSupportedException::class);
   }
 }

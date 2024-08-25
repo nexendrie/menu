@@ -12,7 +12,7 @@ use Tester\Assert;
  * @testCase
  */
 final class BaseLinkRenderTest extends \Tester\TestCase {
-  public function testProperty() {
+  public function testProperty(): void {
     $condition = new class extends BaseLinkRender {
       protected string $name = "abc";
       
@@ -27,7 +27,7 @@ final class BaseLinkRenderTest extends \Tester\TestCase {
     Assert::same("abc", $condition->getName());
   }
   
-  public function testClassName() {
+  public function testClassName(): void {
     $condition = new LinkRenderAbc();
     Assert::same("abc", $condition->getName());
   }

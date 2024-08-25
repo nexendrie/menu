@@ -20,11 +20,12 @@ final class MenuFactoryTest extends \Tester\TestCase {
   /** @var MenuFactory */
   protected $factory;
   
-  public function setUp() {
+  public function setUp(): void {
+    // @phpstan-ignore assign.propertyType
     $this->factory = $this->getContainer()->getService("menu." . MenuExtension::SERVICE_MENU_FACTORY);
   }
   
-  public function testCreateMenu() {
+  public function testCreateMenu(): void {
     $config = [
       "htmlId" => "menu",
       "title" => "Menu",

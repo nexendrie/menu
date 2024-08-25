@@ -16,18 +16,18 @@ final class ConditionUserLoggedInTest extends \Tester\TestCase {
 
   protected ConditionUserLoggedIn $condition;
   
-  public function setUp() {
-    $this->condition = $this->getService(ConditionUserLoggedIn::class);
+  public function setUp(): void {
+    $this->condition = $this->getService(ConditionUserLoggedIn::class); // @phpstan-ignore assign.propertyType
   }
   
-  public function testGetName() {
+  public function testGetName(): void {
     Assert::same("loggedIn", $this->condition->getName());
   }
   
-  public function testIsAllowed() {
+  public function testIsAllowed(): void {
     Assert::true($this->condition->isAllowed());
     Assert::exception(function() {
-      $this->condition->isAllowed("yes");
+      $this->condition->isAllowed("yes"); // @phpstan-ignore argument.type
     }, \InvalidArgumentException::class);
     Assert::false($this->condition->isAllowed(true));
     Assert::true($this->condition->isAllowed(false));

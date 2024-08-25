@@ -16,16 +16,16 @@ final class LinkRenderPresenterActionTest extends \Tester\TestCase {
 
   protected LinkRenderPresenterAction $render;
   
-  protected function setUp() {
-    $this->render = $this->getService(LinkRenderPresenterAction::class);
+  protected function setUp(): void {
+    $this->render = $this->getService(LinkRenderPresenterAction::class); // @phpstan-ignore assign.propertyType
   }
   
-  public function testIsApplicable() {
+  public function testIsApplicable(): void {
     Assert::true($this->render->isApplicable("Test:new"));
     Assert::false($this->render->isApplicable("https://nexendrie.gitlab.io"));
   }
   
-  public function testRenderLink() {
+  public function testRenderLink(): void {
     Assert::same("http://test.bench/test/new", $this->render->renderLink("Test:new"));
     Assert::same("", $this->render->renderLink("Abc"));
   }
