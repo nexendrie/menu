@@ -19,7 +19,7 @@
         "docs": "https://nexendrie.gitlab.io/menu"
     },
     "require": {
-        "php": ">=7.4.0",
+        "php": ">=8.0.0",
         "nette/application": "^3.1.5",
         "nette/di": "^3.0.9",
         "nette/utils": "^3.2.7",
@@ -50,7 +50,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.4.x-dev"
+            "dev-master": "2.5.x-dev"
         }
     },
     "minimum-stability": "dev",
