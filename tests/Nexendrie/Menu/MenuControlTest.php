@@ -36,9 +36,9 @@ final class MenuControlTest extends \Tester\TestCase {
     ob_start();
     $control->$method(...$renderParameters); // @phpstan-ignore method.dynamicName
     if(is_file($expected)) {
-      Assert::matchFile($expected, ob_get_clean());
+      Assert::matchFile($expected, (string) ob_get_clean());
     } else {
-      Assert::match($expected, ob_get_clean());
+      Assert::match($expected, (string) ob_get_clean());
     }
   }
   
