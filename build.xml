@@ -2,7 +2,6 @@
 <project name="Nexendrie Menu" basedir="." default="test">
   <import file="vendor/nexendrie/code-quality/build.xml"/>
   <target name="test" depends="lint,cs,phpstan,tests"/>
-  <target name="test-coverage" depends="lint,cs,phpstan,tests-coverage"/>
   <target name="documentation">
     <exec executable="vendor/bin/generate-site" logoutput="true" passthru="true" checkreturn="true">
       <arg value="--source=docs"/>
