@@ -14,6 +14,7 @@ use Nexendrie\Menu\LinkRenderPresenterAction;
 use Nexendrie\Menu\LinkRenderJavaScriptAction;
 use Nexendrie\Menu\LinkRenderUrl;
 use Nette\DI\Definitions\FactoryDefinition;
+use Nexendrie\Utils\Constants;
 
 /**
  * MenuExtension
@@ -59,12 +60,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
       "inline" => __DIR__ . "/../menuInline.latte",
       "list" => __DIR__ . "/../menuList.latte",
     ];
-    $constants = (new \ReflectionClass(self::class))->getConstants();
-    foreach($constants as $name => $value) {
-      if(str_starts_with($name, "SECTION_")) {
-        $this->specialSections[] = $value;
-      }
-    }
+    $this->specialSections = Constants::getConstantsValues(self::class, "SECTION_");
   }
 
   public function getConfig(): array {
