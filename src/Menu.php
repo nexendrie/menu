@@ -48,6 +48,9 @@ class Menu extends Collection {
     return $this->name;
   }
 
+  /**
+   * @deprecated Access the property directly
+   */
   protected function setName(string $name): void {
     $this->name = $name;
   }
