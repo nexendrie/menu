@@ -11,7 +11,6 @@ namespace Nexendrie\Menu;
  * @property-read bool $allowed
  */
 class MenuItem extends Collection {
-  public string $text;
   protected string $link;
   public string $rawLink;
   /** @var array[] of [IMenuItemCondition, string] */
@@ -19,10 +18,9 @@ class MenuItem extends Collection {
   /** @var IMenuItemLinkRender[] */
   protected array $linkRenders = [];
   
-  public function __construct(string $link, string $text) {
+  public function __construct(string $link, public string $text) {
     parent::__construct();
     $this->setRawLink($link);
-    $this->text = $text;
   }
 
   /**

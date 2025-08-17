@@ -16,9 +16,8 @@ require __DIR__ . "/../../../bootstrap.php";
  */
 final class MenuFactoryTest extends \Tester\TestCase {
   use \Testbench\TCompiledContainer;
-  
-  /** @var MenuFactory */
-  protected $factory;
+
+  protected MenuFactory $factory;
   
   public function setUp(): void {
     // @phpstan-ignore assign.propertyType
@@ -38,10 +37,6 @@ final class MenuFactoryTest extends \Tester\TestCase {
     Assert::same("menu", $menu->htmlId);
     Assert::same("Menu", $menu->title);
     Assert::count(1, $menu);
-    $config["items"]["Item 1"] =  1;
-    Assert::exception(function() use($config) {
-      $this->factory->createMenu("default", $config);
-    }, \InvalidArgumentException::class);
     $config["items"]["Item 1"] =  [];
     Assert::exception(function() use($config) {
       $this->factory->createMenu("default", $config);

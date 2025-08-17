@@ -21,18 +21,11 @@ final class MenuFactory {
   
   private const SECTION_CONDITIONS = "conditions";
 
-  /** @var IMenuItemLinkRender[] */
-  private array $linkRenders;
-  /** @var IMenuItemCondition[] */
-  private array $conditions;
-
   /**
    * @param IMenuItemLinkRender[] $linkRenders
    * @param IMenuItemCondition[] $conditions
    */
-  public function __construct(array $linkRenders, array $conditions) {
-    $this->linkRenders = $linkRenders;
-    $this->conditions = $conditions;
+  public function __construct(private readonly array $linkRenders, private readonly array $conditions) {
   }
   
   /**
@@ -65,16 +58,12 @@ final class MenuFactory {
   }
   
   /**
-   * @param string|array $definition
-   * @throws \InvalidArgumentException
    * @throws InvalidMenuItemDefinitionException
    * @throws MenuItemConditionNotSupportedException
    */
-  private function createItem(string $text, $definition): MenuItem {
+  private function createItem(string $text, string|array $definition): MenuItem {
     if(is_string($definition)) {
       return new MenuItem($definition, $text);
-    } elseif(!is_array($definition)) {
-      throw new \InvalidArgumentException("Menu item has to be either string or array.");
     } elseif(!array_key_exists("link", $definition)) {
       throw new InvalidMenuItemDefinitionException("Menu item is missing link.");
     }

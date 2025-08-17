@@ -12,14 +12,10 @@ use Nette\Localization\Translator;
  */
 class Menu extends Collection {
   public string $title = "";
-  public string $name;
-  public string $htmlId;
   public Translator $translator;
   
-  public function __construct(string $name = "default", string $htmlId = "menu") {
+  public function __construct(public string $name = "default", public string $htmlId = "menu") {
     parent::__construct();
-    $this->name = $name;
-    $this->htmlId = $htmlId;
     $this->translator = new class implements Translator {
       public function translate($message, ... $parameters): string {
         return $message;

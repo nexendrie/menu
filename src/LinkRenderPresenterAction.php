@@ -13,18 +13,15 @@ use Nette\Application\UI\InvalidLinkException;
  */
 final class LinkRenderPresenterAction extends BaseLinkRender {
   protected string $name = "presenterAction";
-
-  private LinkGenerator $linkGenerator;
   
-  public function __construct(LinkGenerator $linkGenerator) {
-    $this->linkGenerator = $linkGenerator;
+  public function __construct(private readonly LinkGenerator $linkGenerator) {
   }
   
   public function isApplicable(string $link): bool {
     try {
       $this->linkGenerator->link($link);
       return true;
-    } catch(InvalidLinkException $e) {
+    } catch(InvalidLinkException) {
       return false;
     }
   }
@@ -32,7 +29,7 @@ final class LinkRenderPresenterAction extends BaseLinkRender {
   public function renderLink(string $link): string {
     try {
       return $this->linkGenerator->link($link);
-    } catch(InvalidLinkException $e) {
+    } catch(InvalidLinkException) {
       return "";
     }
   }
