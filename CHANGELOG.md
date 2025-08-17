@@ -1,5 +1,5 @@
 Version 2.5.0-dev
-- raised minimal version of PHP to 8.0
+- raised minimal version of PHP to 8.1
 - deprecated Menu::setName()
 
 Version 2.4.0
