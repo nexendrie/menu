@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Nexendrie\Menu;
 
-use Nette\Localization\ITranslator;
+use Nette\Localization\Translator;
 
 /**
  * Menu
@@ -14,13 +14,13 @@ class Menu extends Collection {
   public string $title = "";
   public string $name;
   public string $htmlId;
-  public ITranslator $translator;
+  public Translator $translator;
   
   public function __construct(string $name = "default", string $htmlId = "menu") {
     parent::__construct();
     $this->name = $name;
     $this->htmlId = $htmlId;
-    $this->translator = new class implements ITranslator {
+    $this->translator = new class implements Translator {
       public function translate($message, ... $parameters): string {
         return $message;
       }
@@ -69,14 +69,14 @@ class Menu extends Collection {
   /**
    * @deprecated Access the property directly
    */
-  public function getTranslator(): ITranslator {
+  public function getTranslator(): Translator {
     return $this->translator;
   }
 
   /**
    * @deprecated Access the property directly
    */
-  public function setTranslator(ITranslator $translator): void {
+  public function setTranslator(Translator $translator): void {
     $this->translator = $translator;
   }
 }

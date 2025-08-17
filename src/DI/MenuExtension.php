@@ -5,7 +5,7 @@ namespace Nexendrie\Menu\DI;
 
 use Nexendrie\Menu\IMenuControlFactory;
 use Nexendrie\Menu\Menu;
-use Nette\DI\Config\Helpers;
+use Nette\Schema\Helpers;
 use Nexendrie\Menu\ConditionUserLoggedIn;
 use Nexendrie\Menu\ConditionUserInRole;
 use Nexendrie\Menu\ConditionPermission;
@@ -68,7 +68,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
   }
 
   public function getConfig(): array {
-    return Helpers::merge($this->config, $this->defaults);
+    return Helpers::merge($this->config, $this->defaults); // @phpstan-ignore return.type
   }
 
   public function loadConfiguration(): void {

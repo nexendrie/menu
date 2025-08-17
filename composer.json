@@ -29,7 +29,8 @@
     "require-dev": {
         "nexendrie/code-quality": "dev-master",
         "nexendrie/site-generator": "^0.7",
-        "nette/http": "3.1.2"
+        "nette/http": "3.1.2",
+        "phpstan/phpstan-deprecation-rules": "^2.0"
     },
     "suggest": {
         "nette/security": "To use menu item conditions related to user"
