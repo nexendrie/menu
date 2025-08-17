@@ -51,10 +51,10 @@ final class MenuFactory {
    * @throws MenuItemConditionNotSupportedException
    */
   private function insertConditions(MenuItem &$item, array $definition): void {
-    if(!array_key_exists(static::SECTION_CONDITIONS, $definition) || !is_array($definition[static::SECTION_CONDITIONS])) {
+    if(!array_key_exists(self::SECTION_CONDITIONS, $definition) || !is_array($definition[self::SECTION_CONDITIONS])) {
       return;
     }
-    foreach($definition[static::SECTION_CONDITIONS] as $condition => $value) {
+    foreach($definition[self::SECTION_CONDITIONS] as $condition => $value) {
       try {
         $conditionService = $this->getCondition($condition);
       } catch(MenuItemConditionNotSupportedException $e) {

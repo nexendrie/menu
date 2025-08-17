@@ -55,11 +55,11 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
   ];
   
   public function __construct() {
-    $this->defaults[static::SECTION_MENU_TYPES] = [
+    $this->defaults[self::SECTION_MENU_TYPES] = [
       "inline" => __DIR__ . "/../menuInline.latte",
       "list" => __DIR__ . "/../menuList.latte",
     ];
-    $constants = (new \ReflectionClass(static::class))->getConstants();
+    $constants = (new \ReflectionClass(self::class))->getConstants();
     foreach($constants as $name => $value) {
       if(str_starts_with($name, "SECTION_")) {
         $this->specialSections[] = $value;
@@ -74,9 +74,9 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
   public function loadConfiguration(): void {
     $config = $this->getConfig();
     $builder = $this->getContainerBuilder();
-    $builder->addFactoryDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY))
+    $builder->addFactoryDefinition($this->prefix(self::SERVICE_COMPONENT_FACTORY))
       ->setImplement(IMenuControlFactory::class);
-    $builder->addDefinition($this->prefix(static::SERVICE_MENU_FACTORY))
+    $builder->addDefinition($this->prefix(self::SERVICE_MENU_FACTORY))
       ->setType(MenuFactory::class)
       ->setAutowired(false);
     foreach($this->defaultConditions as $name => $class) {
@@ -94,7 +94,7 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
       /** @var array $data */
       $data = Helpers::merge($menu, $this->menuDefaults);
       $service = $builder->addDefinition($this->prefix($name))
-        ->setFactory("@" . $this->prefix(static::SERVICE_MENU_FACTORY) . "::createMenu", [$name, $data])
+        ->setFactory("@" . $this->prefix(self::SERVICE_MENU_FACTORY) . "::createMenu", [$name, $data])
         ->setAutowired(($name === "default"));
       if($data["translate"]) {
         $service->addSetup("setTranslator");
@@ -106,12 +106,12 @@ final class MenuExtension extends \Nette\DI\CompilerExtension {
     $builder = $this->getContainerBuilder();
     $config = $this->getConfig();
     /** @var FactoryDefinition $control */
-    $control = $builder->getDefinition($this->prefix(static::SERVICE_COMPONENT_FACTORY));
+    $control = $builder->getDefinition($this->prefix(self::SERVICE_COMPONENT_FACTORY));
     $menus = $builder->findByType(Menu::class);
     foreach($menus as $menuName => $menu) {
       $control->getResultDefinition()->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
     }
-    foreach($config[static::SECTION_MENU_TYPES] as $type => $template) {
+    foreach($config[self::SECTION_MENU_TYPES] as $type => $template) {
       $control->getResultDefinition()->addSetup('?->addMenuType(?,?);', ["@self", $type, $template]);
     }
   }
