@@ -10,16 +10,18 @@ use Nette\Utils\Validators;
  *
  * @author Jakub Konečný
  */
-final class LinkRenderUrl extends BaseLinkRender {
-  public function isApplicable(string $link): bool {
-    return Validators::isUrl($link);
-  }
-  
-  public function renderLink(string $link): string {
-    if(!$this->isApplicable($link)) {
-      return "";
+final class LinkRenderUrl extends BaseLinkRender
+{
+    public function isApplicable(string $link): bool
+    {
+        return Validators::isUrl($link);
     }
-    return $link;
-  }
+
+    public function renderLink(string $link): string
+    {
+        if (!$this->isApplicable($link)) {
+            return "";
+        }
+        return $link;
+    }
 }
-?>

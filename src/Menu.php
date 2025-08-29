@@ -10,73 +10,83 @@ use Nette\Localization\Translator;
  *
  * @author Jakub Konečný
  */
-class Menu extends Collection {
-  public string $title = "";
-  public Translator $translator;
-  
-  public function __construct(public string $name = "default", public string $htmlId = "menu") {
-    parent::__construct();
-    $this->translator = new class implements Translator {
-      public function translate($message, ... $parameters): string {
-        return $message;
-      }
-    };
-  }
+class Menu extends Collection
+{
+    public string $title = "";
+    public Translator $translator;
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getTitle(): string {
-    return $this->title;
-  }
+    public function __construct(public string $name = "default", public string $htmlId = "menu")
+    {
+        parent::__construct();
+        $this->translator = new class implements Translator {
+            public function translate($message, ...$parameters): string
+            {
+                return $message;
+            }
+        };
+    }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function setTitle(string $title): void {
-    $this->title = $title;
-  }
+    /**
+     * @deprecated Access the property directly
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getName(): string {
-    return $this->name;
-  }
+    /**
+     * @deprecated Access the property directly
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  protected function setName(string $name): void {
-    $this->name = $name;
-  }
+    /**
+     * @deprecated Access the property directly
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getHtmlId(): string {
-    return $this->htmlId;
-  }
+    /**
+     * @deprecated Access the property directly
+     */
+    protected function setName(string $name): void
+    {
+        $this->name = $name;
+    }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function setHtmlId(string $htmlId): void {
-    $this->htmlId = $htmlId;
-  }
+    /**
+     * @deprecated Access the property directly
+     */
+    public function getHtmlId(): string
+    {
+        return $this->htmlId;
+    }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function getTranslator(): Translator {
-    return $this->translator;
-  }
+    /**
+     * @deprecated Access the property directly
+     */
+    public function setHtmlId(string $htmlId): void
+    {
+        $this->htmlId = $htmlId;
+    }
 
-  /**
-   * @deprecated Access the property directly
-   */
-  public function setTranslator(Translator $translator): void {
-    $this->translator = $translator;
-  }
+    /**
+     * @deprecated Access the property directly
+     */
+    public function getTranslator(): Translator
+    {
+        return $this->translator;
+    }
+
+    /**
+     * @deprecated Access the property directly
+     */
+    public function setTranslator(Translator $translator): void
+    {
+        $this->translator = $translator;
+    }
 }
-?>

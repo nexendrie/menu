@@ -8,7 +8,6 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class MenuTypeAlreadyDefinedException extends \RuntimeException {
-  
+class MenuTypeAlreadyDefinedException extends \RuntimeException
+{
 }
-?>

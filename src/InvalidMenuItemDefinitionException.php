@@ -8,7 +8,6 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class InvalidMenuItemDefinitionException extends \RuntimeException {
-  
+class InvalidMenuItemDefinitionException extends \RuntimeException
+{
 }
-?>

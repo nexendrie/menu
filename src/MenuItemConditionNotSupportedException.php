@@ -8,7 +8,6 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class MenuItemConditionNotSupportedException extends \OutOfBoundsException {
-  
+class MenuItemConditionNotSupportedException extends \OutOfBoundsException
+{
 }
-?>

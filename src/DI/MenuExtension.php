@@ -21,95 +21,99 @@ use Nexendrie\Utils\Constants;
  *
  * @author Jakub Konečný
  */
-final class MenuExtension extends \Nette\DI\CompilerExtension {
-  public const SERVICE_COMPONENT_FACTORY = "componentFactory";
-  public const SERVICE_MENU_FACTORY = "menuFactory";
-  public const SECTION_MENU_TYPES = "menu_types";
+final class MenuExtension extends \Nette\DI\CompilerExtension
+{
+    public const SERVICE_COMPONENT_FACTORY = "componentFactory";
+    public const SERVICE_MENU_FACTORY = "menuFactory";
+    public const SECTION_MENU_TYPES = "menu_types";
 
-  private array $defaults = [
-    "default" => [],
-  ];
-
-  private array $menuDefaults = [
-    "title" => "",
-    "htmlId" => "menu",
-    "translate" => false,
-    "items" => [],
-  ];
-  
-  /** @var string[] */
-  private array $specialSections = [];
-  
-  /** @var string[] */
-  private array $defaultConditions = [
-    "loggedIn" => ConditionUserLoggedIn::class,
-    "role" => ConditionUserInRole::class,
-    "acl" => ConditionPermission::class,
-    "callback" => ConditionCallback::class,
-  ];
-  
-  /** @var string[] */
-  private array $linkRenders = [
-    "javascript" => LinkRenderJavaScriptAction::class,
-    "url" => LinkRenderUrl::class,
-    "presenterAction" => LinkRenderPresenterAction::class,
-  ];
-  
-  public function __construct() {
-    $this->defaults[self::SECTION_MENU_TYPES] = [
-      "inline" => __DIR__ . "/../menuInline.latte",
-      "list" => __DIR__ . "/../menuList.latte",
+    private array $defaults = [
+        "default" => [],
     ];
-    $this->specialSections = Constants::getConstantsValues(self::class, "SECTION_");
-  }
 
-  public function getConfig(): array {
-    return Helpers::merge($this->config, $this->defaults); // @phpstan-ignore return.type
-  }
+    private array $menuDefaults = [
+        "title" => "",
+        "htmlId" => "menu",
+        "translate" => false,
+        "items" => [],
+    ];
 
-  public function loadConfiguration(): void {
-    $config = $this->getConfig();
-    $builder = $this->getContainerBuilder();
-    $builder->addFactoryDefinition($this->prefix(self::SERVICE_COMPONENT_FACTORY))
-      ->setImplement(IMenuControlFactory::class);
-    $builder->addDefinition($this->prefix(self::SERVICE_MENU_FACTORY))
-      ->setType(MenuFactory::class)
-      ->setAutowired(false);
-    foreach($this->defaultConditions as $name => $class) {
-      $builder->addDefinition($this->prefix("condition.$name"))
-        ->setType($class);
+    /** @var string[] */
+    private array $specialSections = [];
+
+    /** @var string[] */
+    private array $defaultConditions = [
+        "loggedIn" => ConditionUserLoggedIn::class,
+        "role" => ConditionUserInRole::class,
+        "acl" => ConditionPermission::class,
+        "callback" => ConditionCallback::class,
+    ];
+
+    /** @var string[] */
+    private array $linkRenders = [
+        "javascript" => LinkRenderJavaScriptAction::class,
+        "url" => LinkRenderUrl::class,
+        "presenterAction" => LinkRenderPresenterAction::class,
+    ];
+
+    public function __construct()
+    {
+        $this->defaults[self::SECTION_MENU_TYPES] = [
+            "inline" => __DIR__ . "/../menuInline.latte",
+            "list" => __DIR__ . "/../menuList.latte",
+        ];
+        $this->specialSections = Constants::getConstantsValues(self::class, "SECTION_");
     }
-    foreach($this->linkRenders as $name => $class) {
-      $builder->addDefinition($this->prefix("linkRender.$name"))
-        ->setType($class);
+
+    public function getConfig(): array
+    {
+        return Helpers::merge($this->config, $this->defaults); // @phpstan-ignore return.type
     }
-    foreach($config as $name => $menu) {
-      if(in_array($name, $this->specialSections, true)) {
-        continue;
-      }
-      /** @var array $data */
-      $data = Helpers::merge($menu, $this->menuDefaults);
-      $service = $builder->addDefinition($this->prefix($name))
-        ->setFactory("@" . $this->prefix(self::SERVICE_MENU_FACTORY) . "::createMenu", [$name, $data])
-        ->setAutowired(($name === "default"));
-      if($data["translate"]) {
-        $service->addSetup("setTranslator");
-      }
+
+    public function loadConfiguration(): void
+    {
+        $config = $this->getConfig();
+        $builder = $this->getContainerBuilder();
+        $builder->addFactoryDefinition($this->prefix(self::SERVICE_COMPONENT_FACTORY))
+            ->setImplement(IMenuControlFactory::class);
+        $builder->addDefinition($this->prefix(self::SERVICE_MENU_FACTORY))
+            ->setType(MenuFactory::class)
+            ->setAutowired(false);
+        foreach ($this->defaultConditions as $name => $class) {
+            $builder->addDefinition($this->prefix("condition.$name"))
+                ->setType($class);
+        }
+        foreach ($this->linkRenders as $name => $class) {
+            $builder->addDefinition($this->prefix("linkRender.$name"))
+                ->setType($class);
+        }
+        foreach ($config as $name => $menu) {
+            if (in_array($name, $this->specialSections, true)) {
+                continue;
+            }
+            /** @var array $data */
+            $data = Helpers::merge($menu, $this->menuDefaults);
+            $service = $builder->addDefinition($this->prefix($name))
+                ->setFactory("@" . $this->prefix(self::SERVICE_MENU_FACTORY) . "::createMenu", [$name, $data])
+                ->setAutowired(($name === "default"));
+            if ($data["translate"]) {
+                $service->addSetup("setTranslator");
+            }
+        }
     }
-  }
-  
-  public function beforeCompile(): void {
-    $builder = $this->getContainerBuilder();
-    $config = $this->getConfig();
-    /** @var FactoryDefinition $control */
-    $control = $builder->getDefinition($this->prefix(self::SERVICE_COMPONENT_FACTORY));
-    $menus = $builder->findByType(Menu::class);
-    foreach($menus as $menuName => $menu) {
-      $control->getResultDefinition()->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
+
+    public function beforeCompile(): void
+    {
+        $builder = $this->getContainerBuilder();
+        $config = $this->getConfig();
+        /** @var FactoryDefinition $control */
+        $control = $builder->getDefinition($this->prefix(self::SERVICE_COMPONENT_FACTORY));
+        $menus = $builder->findByType(Menu::class);
+        foreach ($menus as $menuName => $menu) {
+            $control->getResultDefinition()->addSetup('?->addMenu(?);', ["@self", "@$menuName"]);
+        }
+        foreach ($config[self::SECTION_MENU_TYPES] as $type => $template) {
+            $control->getResultDefinition()->addSetup('?->addMenuType(?,?);', ["@self", $type, $template]);
+        }
     }
-    foreach($config[self::SECTION_MENU_TYPES] as $type => $template) {
-      $control->getResultDefinition()->addSetup('?->addMenuType(?,?);', ["@self", $type, $template]);
-    }
-  }
 }
-?>

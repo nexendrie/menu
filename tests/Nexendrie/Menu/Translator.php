@@ -8,12 +8,13 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-final class Translator implements \Nette\Localization\Translator {
-  /**
-   * @param string $message
-   */
-  public function translate($message, ... $parameters): string {
-    return "1$message";
-  }
+final class Translator implements \Nette\Localization\Translator
+{
+    /**
+     * @param string $message
+     */
+    public function translate($message, ...$parameters): string
+    {
+        return "1$message";
+    }
 }
-?>

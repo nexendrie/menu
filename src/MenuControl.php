@@ -15,97 +15,99 @@ use Nette\Utils\Strings;
  * @method void renderInline(string $menuName = "default")
  * @method void renderList(string $menuName = "default")
  */
-final class MenuControl extends \Nette\Application\UI\Control {
-  /** @var Menu[] */
-  private array $menus = [];
-  /** @var string[] */
-  private array $templates = [];
-  
-  public function addMenu(Menu $menu): void {
-    $this->menus[] = $menu;
-  }
-  
-  /**
-   * Register new menu type
-   * Also creates new virtual method renderName
-   *
-   * @throws MenuTypeAlreadyDefinedException
-   * @throws TemplateNotFoundException
-   */
-  public function addMenuType(string $name, string $template): void {
-    if(array_key_exists($name, $this->templates)) {
-      throw new MenuTypeAlreadyDefinedException("Menu type $name is already defined.");
+final class MenuControl extends \Nette\Application\UI\Control
+{
+    /** @var Menu[] */
+    private array $menus = [];
+    /** @var string[] */
+    private array $templates = [];
+
+    public function addMenu(Menu $menu): void
+    {
+        $this->menus[] = $menu;
     }
-    if(!file_exists($template)) {
-      throw new TemplateNotFoundException("File $template does not exist.");
+
+    /**
+     * Register new menu type
+     * Also creates new virtual method renderName
+     *
+     * @throws MenuTypeAlreadyDefinedException
+     * @throws TemplateNotFoundException
+     */
+    public function addMenuType(string $name, string $template): void
+    {
+        if (array_key_exists($name, $this->templates)) {
+            throw new MenuTypeAlreadyDefinedException("Menu type $name is already defined.");
+        }
+        if (!file_exists($template)) {
+            throw new TemplateNotFoundException("File $template does not exist.");
+        }
+        $this->templates[$name] = (string) realpath($template);
     }
-    $this->templates[$name] = (string) realpath($template);
-  }
-  
-  /**
-   * @throws MenuNotFoundException
-   */
-  private function getMenu(string $menuName): Menu {
-    foreach($this->menus as $menu) {
-      if($menu->name === $menuName) {
-        return $menu;
-      }
+
+    /**
+     * @throws MenuNotFoundException
+     */
+    private function getMenu(string $menuName): Menu
+    {
+        foreach ($this->menus as $menu) {
+            if ($menu->name === $menuName) {
+                return $menu;
+            }
+        }
+        throw new MenuNotFoundException("Menu $menuName not found.");
     }
-    throw new MenuNotFoundException("Menu $menuName not found.");
-  }
-  
-  /**
-   * Returns filename of template for a menu type
-   *
-   * @throws MenuTypeNotSupportedException
-   */
-  private function getTemplateFilename(string $menuType): string {
-    /** @var string $filename */
-    $filename = Arrays::get($this->templates, $menuType, "");
-    if($filename === "") {
-      throw new MenuTypeNotSupportedException("Menu type $menuType is not supported.");
+
+    /**
+     * Returns filename of template for a menu type
+     *
+     * @throws MenuTypeNotSupportedException
+     */
+    private function getTemplateFilename(string $menuType): string
+    {
+        /** @var string $filename */
+        $filename = Arrays::get($this->templates, $menuType, "");
+        if ($filename === "") {
+            throw new MenuTypeNotSupportedException("Menu type $menuType is not supported.");
+        }
+        return $filename;
     }
-    return $filename;
-  }
-  
-  /**
-   * Contains all logic for rendering the component
-   *
-   * @throws MenuNotFoundException
-   * @throws MenuTypeNotSupportedException
-   */
-  private function baseRender(string $menuName, string $menuType): void {
-    try {
-      $menu = $this->getMenu($menuName);
-      $templateFile = $this->getTemplateFilename($menuType);
-    } catch(MenuNotFoundException | MenuTypeNotSupportedException $e) {
-      throw $e;
+
+    /**
+     * Contains all logic for rendering the component
+     *
+     * @throws MenuNotFoundException
+     * @throws MenuTypeNotSupportedException
+     */
+    private function baseRender(string $menuName, string $menuType): void
+    {
+        $menu = $this->getMenu($menuName);
+        $templateFile = $this->getTemplateFilename($menuType);
+        $this->template->setFile($templateFile);
+        $this->template->setTranslator($menu->translator);
+        $this->template->menu = $menu;
+        $this->template->render();
     }
-    $this->template->setFile($templateFile);
-    $this->template->setTranslator($menu->translator);
-    $this->template->menu = $menu;
-    $this->template->render();
-  }
-  
-  /**
-   * Defines virtual methods for rendering menu types
-   * renderAbc will try to render menu of abc type
-   * Anything that does not start with render is handled by \Nette\SmartObject
-   *
-   * @param string $name
-   * @param array $args
-   */
-  public function __call($name, $args): void {
-    if($name === "render") {
-      $name = "renderInline";
+
+    /**
+     * Defines virtual methods for rendering menu types
+     * renderAbc will try to render menu of abc type
+     * Anything that does not start with render is handled by \Nette\SmartObject
+     *
+     * @param string $name
+     * @param array $args
+     */
+    public function __call($name, $args): void
+    {
+        if ($name === "render") {
+            $name = "renderInline";
+        }
+        if (str_starts_with($name, "render")) {
+            $render = Strings::firstLower((string) Strings::after($name, "render"));
+            $menuName = Arrays::get($args, 0, "default");
+            $this->baseRender($menuName, $render);
+            return;
+        }
+        parent::__call($name, $args);
     }
-    if(str_starts_with($name, "render")) {
-      $render = Strings::firstLower((string) Strings::after($name, "render"));
-      $menuName = Arrays::get($args, 0, "default");
-      $this->baseRender($menuName, $render);
-      return;
-    }
-    parent::__call($name, $args);
-  }
 }
-?>

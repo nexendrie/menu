@@ -8,7 +8,6 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class MenuNotFoundException extends \OutOfBoundsException {
-  
+class MenuNotFoundException extends \OutOfBoundsException
+{
 }
-?>

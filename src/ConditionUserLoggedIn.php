@@ -10,23 +10,25 @@ use Nette\Security\User;
  *
  * @author Jakub Konečný
  */
-final class ConditionUserLoggedIn extends BaseCondition {
-  protected string $name = "loggedIn";
-  
-  public function __construct(private readonly User $user) {
-  }
-  
-  /**
-   * @param bool|null $parameter
-   * @throws \InvalidArgumentException
-   */
-  public function isAllowed($parameter = null): bool {
-    if($parameter === null) {
-      return true;
-    } elseif(!is_bool($parameter)) {
-      throw new \InvalidArgumentException("Method " . __METHOD__ . " expects boolean as parameter.");
+final class ConditionUserLoggedIn extends BaseCondition
+{
+    protected string $name = "loggedIn";
+
+    public function __construct(private readonly User $user)
+    {
     }
-    return ($parameter === $this->user->isLoggedIn());
-  }
+
+    /**
+     * @param bool|null $parameter
+     * @throws \InvalidArgumentException
+     */
+    public function isAllowed($parameter = null): bool
+    {
+        if ($parameter === null) {
+            return true;
+        } elseif (!is_bool($parameter)) {
+            throw new \InvalidArgumentException("Method " . __METHOD__ . " expects boolean as parameter.");
+        }
+        return ($parameter === $this->user->isLoggedIn());
+    }
 }
-?>

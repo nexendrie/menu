@@ -8,12 +8,12 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-interface IMenuItemCondition {
-  public function getName(): string;
+interface IMenuItemCondition
+{
+    public function getName(): string;
 
-  /**
-   * @param mixed $parameter
-   */
-  public function isAllowed($parameter = null): bool;
+    /**
+     * @param mixed $parameter
+     */
+    public function isAllowed($parameter = null): bool;
 }
-?>

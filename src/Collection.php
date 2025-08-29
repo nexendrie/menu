@@ -12,17 +12,18 @@ use Nexendrie\Utils\Collection as BaseCollection;
  * @internal
  * @property-read MenuItem[] $allowedItems
  */
-abstract class Collection extends BaseCollection {
-  use \Nette\SmartObject;
+abstract class Collection extends BaseCollection
+{
+    use \Nette\SmartObject;
 
-  protected string $class = MenuItem::class;
-  
-  /**
-   * @return MenuItem[]
-   * @deprecated Access the property directly
-   */
-  public function getAllowedItems(): array {
-    return $this->getItems(["allowed" => true]);
-  }
+    protected string $class = MenuItem::class;
+
+    /**
+     * @return MenuItem[]
+     * @deprecated Access the property directly
+     */
+    public function getAllowedItems(): array
+    {
+        return $this->getItems(["allowed" => true]);
+    }
 }
-?>

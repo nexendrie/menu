@@ -8,7 +8,7 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-interface IMenuControlFactory {
-  public function create(): MenuControl;
+interface IMenuControlFactory
+{
+    public function create(): MenuControl;
 }
-?>

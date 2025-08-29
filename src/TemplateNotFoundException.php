@@ -8,8 +8,6 @@ namespace Nexendrie\Menu;
  *
  * @author Jakub Konečný
  */
-class TemplateNotFoundException extends \RuntimeException {
-  
+class TemplateNotFoundException extends \RuntimeException
+{
 }
-
-?>
