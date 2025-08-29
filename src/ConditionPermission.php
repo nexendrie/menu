@@ -29,7 +29,9 @@ final class ConditionPermission extends BaseCondition
         if (!is_string($parameter)) {
             throw new \InvalidArgumentException("Method " . __METHOD__ . " expects string as parameter.");
         } elseif (!str_contains($parameter, ":")) {
-            throw new \OutOfBoundsException("Method " . __METHOD__ . " expects parameter in format resource:privilege.");
+            throw new \OutOfBoundsException(
+                "Method " . __METHOD__ . " expects parameter in format resource:privilege."
+            );
         }
         return $this->user->isAllowed(Strings::before($parameter, ":"), Strings::after($parameter, ":"));
     }

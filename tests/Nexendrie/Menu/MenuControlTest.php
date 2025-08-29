@@ -31,8 +31,12 @@ final class MenuControlTest extends \Tester\TestCase
         $this->attachToPresenter($this->control);
     }
 
-    protected function checkRenderMethodOutput(IComponent $control, string $expected, string $method = "render", array $renderParameters = []): void
-    {
+    protected function checkRenderMethodOutput(
+        IComponent $control,
+        string $expected,
+        string $method = "render",
+        array $renderParameters = []
+    ): void {
         if ($control->getParent() === null) {
             $this->attachToPresenter($control);
         }
@@ -66,7 +70,12 @@ final class MenuControlTest extends \Tester\TestCase
     public function testRenderList(): void
     {
         $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuListExpected.latte", "renderList", ["list"]);
-        $this->checkRenderMethodOutput($this->control, __DIR__ . "/menuListMultilevelExpected.latte", "renderList", ["subitems"]);
+        $this->checkRenderMethodOutput(
+            $this->control,
+            __DIR__ . "/menuListMultilevelExpected.latte",
+            "renderList",
+            ["subitems"]
+        );
     }
 
     public function testLinkRenders(): void
