@@ -2,17 +2,15 @@ stages:
   - test
   - deploy
 
-cache:
-  paths:
-  - vendor/
-
-before_script:
-  - composer update --prefer-dist --no-progress --no-interaction
-
 .job_template: &test_job
   stage: test
+  before_script:
+  - composer update --prefer-dist --no-progress --no-interaction
   script:
   - phing test
+  cache:
+    paths:
+      - vendor/
 
 test:php8.1:
   <<: *test_job
@@ -29,10 +27,27 @@ pages:
     name: documentation
     url: https://nexendrie.gitlab.io/menu
   image: nexendrie/php:8.1
+  before_script:
+    - composer update --prefer-dist --no-progress --no-interaction
   script:
   - phing documentation
+  cache:
+    paths:
+      - vendor/
   artifacts:
       paths:
       - public
   only:
   - tags@nexendrie/menu
+
+release:
+  stage: deploy
+  image: registry.gitlab.com/gitlab-org/release-cli:latest
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - echo "Creating GitLab release"
+  release:
+    tag_name: $CI_COMMIT_TAG
+    name: "Version $CI_COMMIT_TAG"
+    description: "./RELEASE_NOTES"

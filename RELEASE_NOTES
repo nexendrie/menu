@@ -1,0 +1,5 @@
+A new version of Menu is out. It requires PHP 8.1 and makes use of some of its new features.
+
+Method Menu::setName is now deprecated and just like other getters and setters will be made protected and/or internal in the next major version.
+
+For complete list of changes since previous version, see CHANGELOG.md.
